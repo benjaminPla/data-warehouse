@@ -39,6 +39,10 @@ const countries = {
     const sql = "INSERT INTO countries (name) VALUES (?);";
     return await sequelize.query(sql, { replacements: [data] });
   },
+  delete: async (data) => {
+    const sql = "DELETE FROM countries WHERE id = :value OR name = :value;";
+    return await sequelize.query(sql, { replacements: { value: data } });
+  },
 };
 
 export { countries };

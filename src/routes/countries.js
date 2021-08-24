@@ -19,5 +19,10 @@ countriesRoutes.post(
   countriesMiddlewares.post,
   controllers.countriesPost
 );
+countriesRoutes.delete(
+  "/countriesDelete",
+  countriesMiddlewares.delete,
+  controllers.countriesDelete
+);
 
 export { countriesRoutes };
