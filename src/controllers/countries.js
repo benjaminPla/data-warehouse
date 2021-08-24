@@ -11,6 +11,10 @@ const controllers = {
     let find = await countries.findOne(idOrName);
     res.send(find[0]);
   },
+  countriesPost: async (req, res) => {
+    countries.post(req.body.name);
+    res.send(`posted ${req.body.name}`);
+  },
 };
 
 export { controllers };

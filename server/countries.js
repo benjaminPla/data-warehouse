@@ -35,6 +35,10 @@ const countries = {
     const sql = "SELECT * FROM countries WHERE id = :value OR name = :value;";
     return await sequelize.query(sql, { replacements: { value: data } });
   },
+  post: async (data) => {
+    const sql = "INSERT INTO countries (name) VALUES (?);";
+    return await sequelize.query(sql, { replacements: [data] });
+  },
 };
 
 export { countries };

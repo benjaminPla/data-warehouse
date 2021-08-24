@@ -14,5 +14,10 @@ countriesRoutes.get(
   countriesMiddlewares.checkIdOrName,
   controllers.countriesFindOne
 );
+countriesRoutes.post(
+  "/countriesPost",
+  countriesMiddlewares.post,
+  controllers.countriesPost
+);
 
 export { countriesRoutes };

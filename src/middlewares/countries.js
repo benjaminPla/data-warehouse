@@ -10,6 +10,15 @@ const countriesMiddlewares = {
       next();
     }
   },
+  post: async (req, res, next) => {
+    const name = req.body.name || req.params.name;
+    let find = await countries.findOne(name);
+    if (find[0] == "") {
+      next();
+    } else {
+      res.send("country already exists");
+    }
+  },
 };
 
 export { countriesMiddlewares };
