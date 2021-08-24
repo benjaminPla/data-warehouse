@@ -1,21 +1,33 @@
 {
   "name": "data-warehouse",
   "version": "1.0.0",
-  "description": "proyect4-acamica",
-  "main": "index.js",
+  "description": "proyect4_acamica",
+  "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/benjaminPla/data-warehouse.git"
   },
-  "keywords": ["data warehouse","acamica"],
+  "keywords": [
+    "data warehouse",
+    "acamica"
+  ],
   "author": "benjaminPla.dev@gmail.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/benjaminPla/data-warehouse/issues"
   },
-  "homepage": "https://github.com/benjaminPla/data-warehouse#readme"
+  "homepage": "https://github.com/benjaminPla/data-warehouse#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mariadb": "^2.5.4",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
