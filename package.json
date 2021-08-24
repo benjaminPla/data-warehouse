@@ -1,0 +1,21 @@
+{
+  "name": "data-warehouse",
+  "version": "1.0.0",
+  "description": "proyect4-acamica",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjaminPla/data-warehouse.git"
+  },
+  "keywords": ["data warehouse","acamica"],
+  "author": "benjaminPla.dev@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjaminPla/data-warehouse/issues"
+  },
+  "homepage": "https://github.com/benjaminPla/data-warehouse#readme"
+}
