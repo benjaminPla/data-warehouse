@@ -2,46 +2,60 @@ import { sequelize } from "./server.js";
 
 const countries = {
   dropTable: async () => {
-    const sql = "DROP TABLE IF EXISTS countries;";
-    return await sequelize.query(sql);
+    await sequelize.query("DROP TABLE IF EXISTS countries;");
   },
   createTable: async () => {
-    const sql =
-      "CREATE TABLE countries (" +
-      "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY," +
-      "name VARCHAR(50) NOT NULL);";
-    return await sequelize.query(sql);
+    await sequelize.query(
+      "CREATE TABLE IF NOT EXISTS countries (" +
+        "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY," +
+        "name VARCHAR(50) NOT NULL);"
+    );
   },
   insertInto: async () => {
-    const sql =
+    await sequelize.query(
       "INSERT INTO countries VALUES" +
-      "(1, 'Philippines')," +
-      "(2, 'China')," +
-      "(3, 'Sweden')," +
-      "(4, 'Sri Lanka')," +
-      "(5, 'Argentina')," +
-      "(6, 'Bolivia')," +
-      "(7, 'Ukraine')," +
-      "(8, 'Colombia')," +
-      "(9, 'Portugal')," +
-      "(10, 'Indonesia');";
-    return await sequelize.query(sql);
+        "(1, 'Philippines')," +
+        "(2, 'China')," +
+        "(3, 'Sweden')," +
+        "(4, 'Sri Lanka')," +
+        "(5, 'Argentina')," +
+        "(6, 'Bolivia')," +
+        "(7, 'Ukraine')," +
+        "(8, 'Colombia')," +
+        "(9, 'Portugal')," +
+        "(10, 'Indonesia');"
+    );
   },
   findAll: async () => {
-    const sql = "SELECT * FROM countries WHERE 1;";
-    return await sequelize.query(sql);
+    return await sequelize.query("SELECT * FROM countries WHERE 1;", {
+      type: "SELECT",
+    });
   },
   findOne: async (data) => {
-    const sql = "SELECT * FROM countries WHERE id = :value OR name = :value;";
-    return await sequelize.query(sql, { replacements: { value: data } });
+    return await sequelize.query(
+      "SELECT * FROM countries WHERE id = :value OR name = :value;",
+      { replacements: { value: data }, type: "SELECT" }
+    );
   },
   post: async (data) => {
-    const sql = "INSERT INTO countries (name) VALUES (?);";
-    return await sequelize.query(sql, { replacements: [data] });
+    await sequelize.query("INSERT INTO countries (name) VALUES (?);", {
+      replacements: [data],
+    });
   },
   delete: async (data) => {
-    const sql = "DELETE FROM countries WHERE id = :value OR name = :value;";
-    return await sequelize.query(sql, { replacements: { value: data } });
+    await sequelize.query(
+      "DELETE FROM countries WHERE id = :value OR name = :value;",
+      { replacements: { value: data } }
+    );
+  },
+  put: async (data) => {
+    await sequelize.query(
+      "UPDATE countries SET name = :put WHERE id = :idOrName OR name = :idOrName;",
+      {
+        replacements: { put: data.put, idOrName: data.idOrName },
+        type: "UPDATE",
+      }
+    );
   },
 };
 

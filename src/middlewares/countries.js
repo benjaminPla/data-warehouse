@@ -1,28 +1,31 @@
 import { countries } from "../../server/countries.js";
 
 const countriesMiddlewares = {
-  checkIdOrName: async (req, res, next) => {
+  idOrNameNotFound: async (req, res, next) => {
     const idOrName = req.body.id || req.body.name || req.params.idOrName;
-    let find = await countries.findOne(idOrName);
-    if (find[0] == "") {
+    if ((await countries.findOne(idOrName)) == "") {
       res.send("country not found");
     } else {
       next();
     }
   },
-  post: async (req, res, next) => {
-    const name = req.body.name || req.params.name;
-    let find = await countries.findOne(name);
-    if (find[0] == "") {
+  nameAlreadyExists: async (req, res, next) => {
+    if ((await countries.findOne(req.body.name)) == "") {
       next();
     } else {
       res.send("country already exists");
     }
   },
+  missingId: (req, res, next) => {
+    !req.body.id ? res.send("missing id") : next();
+  },
+  missingName: (req, res, next) => {
+    !req.body.name ? res.send("missing name") : next();
+  },
   delete: async (req, res, next) => {
     const idOrName = req.body.id || req.body.name || req.params.idOrName;
     let find = await countries.findOne(idOrName);
-    if (find[0] == "") {
+    if (find == "") {
       res.send("country not found");
     } else {
       next();

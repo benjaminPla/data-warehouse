@@ -6,17 +6,20 @@ const countriesRoutes = express.Router();
 countriesRoutes.get("/countriesFindAll", controllers.countriesFindAll);
 countriesRoutes.get(
   "/countriesFindOne",
-  countriesMiddlewares.checkIdOrName,
+  countriesMiddlewares.missingId,
+  countriesMiddlewares.idOrNameNotFound,
   controllers.countriesFindOne
 );
 countriesRoutes.get(
   "/countriesFindOne/:idOrName",
-  countriesMiddlewares.checkIdOrName,
+  countriesMiddlewares.missingId,
+  countriesMiddlewares.idOrNameNotFound,
   controllers.countriesFindOne
 );
 countriesRoutes.post(
   "/countriesPost",
-  countriesMiddlewares.post,
+  countriesMiddlewares.missingName,
+  countriesMiddlewares.nameAlreadyExists,
   controllers.countriesPost
 );
 countriesRoutes.delete(
@@ -24,5 +27,6 @@ countriesRoutes.delete(
   countriesMiddlewares.delete,
   controllers.countriesDelete
 );
+countriesRoutes.put("/countriesPut", controllers.countriesPut);
 
 export { countriesRoutes };
