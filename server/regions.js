@@ -1,9 +1,6 @@
 import { sequelize } from "./server.js";
 
 const regions = {
-  dropTable: async () => {
-    await sequelize.query("DROP TABLE IF EXISTS regions;");
-  },
   createTable: async () => {
     await sequelize.query(
       "CREATE TABLE IF NOT EXISTS regions (" +
@@ -23,6 +20,12 @@ const regions = {
   },
   findAll: async () => {
     return await sequelize.query("SELECT * FROM regions WHERE 1;", {
+      type: "SELECT",
+    });
+  },
+  findById: async (data) => {
+    return await sequelize.query("SELECT * FROM regions WHERE id = ?", {
+      replacements: [data],
       type: "SELECT",
     });
   },

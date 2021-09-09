@@ -8,7 +8,7 @@ countriesRoutes.get("/countries/findAll", countriesControllers.findAll);
 countriesRoutes.get(
   "/countries/findByName",
   countriesMiddlewares.missingName,
-  countriesMiddlewares.notFound,
+  countriesMiddlewares.countryNotFound,
   countriesControllers.findByName
 );
 countriesRoutes.post(
@@ -20,14 +20,16 @@ countriesRoutes.post(
 countriesRoutes.delete(
   "/countries/delete",
   countriesMiddlewares.missingName,
-  countriesMiddlewares.notFound,
+  countriesMiddlewares.countryNotFound,
   countriesControllers.delete
 );
 countriesRoutes.put(
   "/countries/put",
   countriesMiddlewares.missingName,
   countriesMiddlewares.missingNewName,
-  countriesMiddlewares.notFound,
+  countriesMiddlewares.missingRegionId,
+  countriesMiddlewares.regionNotFound,
+  countriesMiddlewares.countryNotFound,
   countriesControllers.put
 );
 

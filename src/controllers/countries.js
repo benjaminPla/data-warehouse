@@ -9,7 +9,7 @@ const countriesControllers = {
     res.send(await countries.findByName(req.body.name));
   },
   post: (req, res) => {
-    countries.post(req.body.name);
+    countries.post(req.body);
     res.send(`posted ${req.body.name}`);
   },
   delete: (req, res) => {

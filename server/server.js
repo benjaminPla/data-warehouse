@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
-import { countries } from "./countries.js";
 import { regions } from "./regions.js";
+import { countries } from "./countries.js";
+import { cities } from "./cities.js";
 
 const sequelize = new Sequelize("data_warehouse", "root", "", {
   host: "localhost",
@@ -12,14 +13,8 @@ const sequelize = new Sequelize("data_warehouse", "root", "", {
 });
 await sequelize.authenticate(console.log("sequelize on"));
 
-countries
-  .dropTable()
-  .then(() => countries.createTable())
-  .then(() => countries.insertInto());
-
-regions
-  .dropTable()
-  .then(() => regions.createTable())
-  .then(() => regions.insertInto());
+// regions.createTable().then(() => regions.insertInto());
+// countries.createTable().then(() => countries.insertInto());
+// cities.createTable().then(() => cities.insertInto());
 
 export { sequelize };

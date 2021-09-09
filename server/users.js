@@ -1,7 +1,4 @@
 const users = {
-  dropTable: () => {
-    return "DROP TABLE IF EXISTS users;";
-  },
   createTable: () => {
     return (
       "CREATE TABLE IF NOT EXISTS users (" +
