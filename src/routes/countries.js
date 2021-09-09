@@ -26,6 +26,7 @@ countriesRoutes.delete(
 countriesRoutes.put(
   "/countries/put",
   countriesMiddlewares.missingName,
+  countriesMiddlewares.missingNewName,
   countriesMiddlewares.notFound,
   countriesControllers.put
 );

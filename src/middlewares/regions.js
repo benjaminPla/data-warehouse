@@ -14,6 +14,9 @@ const regionsMiddlewares = {
   missingName: (req, res, next) => {
     !req.body.name ? res.send("missing name") : next();
   },
+  missingNewName: (req, res, next) => {
+    !req.body.newName ? res.send("missing newName") : next();
+  },
 };
 
 export { regionsMiddlewares };

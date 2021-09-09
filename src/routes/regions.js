@@ -11,23 +11,24 @@ regionsRoutes.get(
   regionsMiddlewares.notFound,
   regionsControllers.findByName
 );
-// regionsRoutes.post(
-//   "/countries/post",
-//   regionsMiddlewares.missingName,
-//   regionsMiddlewares.nameAlreadyExists,
-//   regionsControllers.post
-// );
-// regionsRoutes.delete(
-//   "/countries/delete",
-//   regionsMiddlewares.missingName,
-//   regionsMiddlewares.notFound,
-//   regionsControllers.delete
-// );
-// regionsRoutes.put(
-//   "/countries/put",
-//   regionsMiddlewares.missingName,
-//   regionsMiddlewares.notFound,
-//   regionsControllers.put
-// );
+regionsRoutes.post(
+  "/regions/post",
+  regionsMiddlewares.missingName,
+  regionsMiddlewares.nameAlreadyExists,
+  regionsControllers.post
+);
+regionsRoutes.delete(
+  "/regions/delete",
+  regionsMiddlewares.missingName,
+  regionsMiddlewares.notFound,
+  regionsControllers.delete
+);
+regionsRoutes.put(
+  "/regions/put",
+  regionsMiddlewares.missingName,
+  regionsMiddlewares.missingNewName,
+  regionsMiddlewares.notFound,
+  regionsControllers.put
+);
 
 export { regionsRoutes };
