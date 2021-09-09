@@ -1,32 +1,33 @@
 import express from "express";
-import { controllers } from "../controllers/countries.js";
+import { countriesControllers } from "../controllers/countries.js";
 import { countriesMiddlewares } from "../middlewares/countries.js";
+
 const countriesRoutes = express.Router();
 
-countriesRoutes.get("/countriesFindAll", controllers.countriesFindAll);
+countriesRoutes.get("/countries/findAll", countriesControllers.findAll);
 countriesRoutes.get(
-  "/countriesFindOne",
-  countriesMiddlewares.missingId,
-  countriesMiddlewares.idOrNameNotFound,
-  controllers.countriesFindOne
-);
-countriesRoutes.get(
-  "/countriesFindOne/:idOrName",
-  countriesMiddlewares.missingId,
-  countriesMiddlewares.idOrNameNotFound,
-  controllers.countriesFindOne
+  "/countries/findByName",
+  countriesMiddlewares.missingName,
+  countriesMiddlewares.notFound,
+  countriesControllers.findByName
 );
 countriesRoutes.post(
-  "/countriesPost",
+  "/countries/post",
   countriesMiddlewares.missingName,
   countriesMiddlewares.nameAlreadyExists,
-  controllers.countriesPost
+  countriesControllers.post
 );
 countriesRoutes.delete(
-  "/countriesDelete",
-  countriesMiddlewares.delete,
-  controllers.countriesDelete
+  "/countries/delete",
+  countriesMiddlewares.missingName,
+  countriesMiddlewares.notFound,
+  countriesControllers.delete
 );
-countriesRoutes.put("/countriesPut", controllers.countriesPut);
+countriesRoutes.put(
+  "/countries/put",
+  countriesMiddlewares.missingName,
+  countriesMiddlewares.notFound,
+  countriesControllers.put
+);
 
 export { countriesRoutes };

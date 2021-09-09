@@ -31,11 +31,11 @@ const countries = {
       type: "SELECT",
     });
   },
-  findOne: async (data) => {
-    return await sequelize.query(
-      "SELECT * FROM countries WHERE id = :value OR name = :value;",
-      { replacements: { value: data }, type: "SELECT" }
-    );
+  findByName: async (data) => {
+    return await sequelize.query("SELECT * FROM countries WHERE name = ?", {
+      replacements: [data],
+      type: "SELECT",
+    });
   },
   post: async (data) => {
     await sequelize.query("INSERT INTO countries (name) VALUES (?);", {
@@ -43,19 +43,14 @@ const countries = {
     });
   },
   delete: async (data) => {
-    await sequelize.query(
-      "DELETE FROM countries WHERE id = :value OR name = :value;",
-      { replacements: { value: data } }
-    );
+    await sequelize.query("DELETE FROM countries WHERE name = ?;", {
+      replacements: [data],
+    });
   },
   put: async (data) => {
-    await sequelize.query(
-      "UPDATE countries SET name = :put WHERE id = :idOrName OR name = :idOrName;",
-      {
-        replacements: { put: data.put, idOrName: data.idOrName },
-        type: "UPDATE",
-      }
-    );
+    await sequelize.query("UPDATE countries SET name = ? WHERE name = ?;", {
+      replacements: [data.newName, data.name],
+    });
   },
 };
 

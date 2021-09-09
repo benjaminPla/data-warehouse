@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import { countries } from "./countries.js";
+import { regions } from "./regions.js";
 
 const sequelize = new Sequelize("data_warehouse", "root", "", {
   host: "localhost",
@@ -15,5 +16,10 @@ countries
   .dropTable()
   .then(() => countries.createTable())
   .then(() => countries.insertInto());
+
+regions
+  .dropTable()
+  .then(() => regions.createTable())
+  .then(() => regions.insertInto());
 
 export { sequelize };
