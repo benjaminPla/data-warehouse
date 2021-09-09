@@ -40,9 +40,12 @@ const cities = {
     });
   },
   post: async (data) => {
-    await sequelize.query("INSERT INTO cities (name) VALUES (?);", {
-      replacements: [data],
-    });
+    await sequelize.query(
+      "INSERT INTO cities (name, country_id) VALUES (?, ?);",
+      {
+        replacements: [data.name, data.countryId],
+      }
+    );
   },
   delete: async (data) => {
     await sequelize.query("DELETE FROM cities WHERE name = ?;", {

@@ -43,7 +43,7 @@ const countries = {
     await sequelize.query(
       "INSERT INTO countries (name, region_id) VALUES (?, ?);",
       {
-        replacements: [data.name, data.region_id],
+        replacements: [data.name, data.regionId],
       }
     );
   },

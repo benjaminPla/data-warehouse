@@ -14,7 +14,9 @@ countriesRoutes.get(
 countriesRoutes.post(
   "/countries/post",
   countriesMiddlewares.missingName,
+  countriesMiddlewares.missingRegionId,
   countriesMiddlewares.nameAlreadyExists,
+  countriesMiddlewares.regionNotFound,
   countriesControllers.post
 );
 countriesRoutes.delete(
