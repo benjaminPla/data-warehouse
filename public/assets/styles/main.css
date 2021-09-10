@@ -1,0 +1,224 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fff;
+  color: #353535;
+}
+
+body #section-login {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: #3c6e71;
+  font-family: "Mulish", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body #section-login .container {
+  text-align: center;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 30%;
+  background-color: #ffffff;
+}
+
+body #section-login .container h1 {
+  font-size: 2rem;
+}
+
+body #section-login .container input {
+  outline: none;
+  padding: 0 1rem;
+  border: none;
+  height: 30px;
+  margin: 1rem 0;
+}
+
+body #section-login .container input[type="button"] {
+  background-color: #353535;
+}
+
+body #section-login .container input[type="button"]:hover {
+  cursor: pointer;
+  background-color: #d9d9d9;
+}
+
+@-webkit-keyframes hover {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
+@keyframes hover {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
+#section-main {
+  padding: 0 1rem;
+}
+
+#section-main .control-panel {
+  background-color: #284b63;
+  border-bottom: 1px solid #000;
+  border-radius: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+#section-main .control-panel div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#section-main .control-panel div input {
+  border-radius: 2rem;
+  border: none;
+  height: 25px;
+  outline: none;
+  padding: 0 1rem;
+  width: 250px;
+}
+
+#section-main .control-panel div button {
+  font-size: 1.5rem;
+  color: #ffffff;
+  border: none;
+  background-color: transparent;
+  margin-left: 1rem;
+}
+
+#section-main .control-panel div button:hover {
+  cursor: pointer;
+  color: #d9d9d9;
+}
+
+#section-main #areas {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+  padding: 0 1rem;
+}
+
+#section-main #areas li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #d9d9d9;
+  border-bottom: 1px solid #000;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  list-style: none;
+  margin-bottom: 0.5rem;
+  padding: 0.1rem 1rem;
+}
+
+#section-main #areas li button {
+  border: none;
+  background-color: transparent;
+  margin-left: 1rem;
+}
+
+#section-main #areas li button:hover {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+#section-main #areas li:hover {
+  background-color: #284b63;
+  color: #ffffff;
+}
+
+nav {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Josefin Sans", sans-serif;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0.5rem 0.5rem 0 0.5rem;
+}
+
+nav #home {
+  background-color: #3c6e71;
+  color: #ffffff;
+  border-bottom: 1px solid #000;
+  border-radius: 2rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+nav ul {
+  background-color: #d9d9d9;
+  border-bottom: 1px solid #000;
+  border-radius: 2rem;
+  padding: 1rem;
+  text-align: right;
+  width: 100%;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+nav #home:hover {
+  background-color: #d9d9d9;
+  cursor: pointer;
+  color: #000;
+}
+
+nav li:hover {
+  -webkit-animation: hover 0.1s linear forwards;
+          animation: hover 0.1s linear forwards;
+  cursor: pointer;
+}
+/*# sourceMappingURL=main.css.map */
