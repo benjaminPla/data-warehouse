@@ -1,7 +1,16 @@
 const functions = {
-  fetchGet: (endpoint) => {
+  fetchGet: async (endpoint) => {
     return fetch(endpoint)
       .then((res) => res.json())
+      .catch((err) => console.log(err));
+  },
+  fetchPost: async (endpoint, body) => {
+    return fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.text())
       .catch((err) => console.log(err));
   },
   clearNode: (node) => {

@@ -173,6 +173,61 @@ body #section-login .container input[type="button"]:hover {
   color: #ffffff;
 }
 
+#pop {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(60, 110, 113, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Mulish", sans-serif;
+  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
+
+#pop #pop-container {
+  background-color: #d9d9d9;
+  border-bottom: 1px solid #000;
+  border-radius: 2rem;
+  padding: 2rem;
+  text-align: right;
+}
+
+#pop #pop-container input {
+  border-radius: 2rem;
+  border: none;
+  display: block;
+  height: 30px;
+  margin: 1rem 0;
+  outline: none;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+#pop #pop-container button {
+  background-color: #3c6e71;
+  border-radius: 1rem;
+  border: none;
+  color: #ffffff;
+  font-family: "Mulish", sans-serif;
+  -ms-grid-column-align: right;
+      justify-self: right;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+#pop #pop-container button:hover {
+  cursor: pointer;
+  background-color: #284b63;
+}
+
 nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
