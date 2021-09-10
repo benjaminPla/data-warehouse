@@ -6,7 +6,7 @@ const dom = {
     "<button><i class='fas fa-search'></i></button>" +
     "</div>" +
     "<div>" +
-    "<button><i class='fas fa-plus-square'></i></button>" +
+    "<button id='post_area-btn'><i class='fas fa-plus-square'></i></button>" +
     "<button><i class='fas fa-file-download'></i></button>" +
     "<button><i class='fas fa-file-upload'></i></button>" +
     "</div>" +
