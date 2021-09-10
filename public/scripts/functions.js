@@ -1,9 +1,14 @@
 const functions = {
-  fetch: async (endpoint) => {
-    return await fetch(endpoint).then((res) => res.json());
+  fetchGet: (endpoint) => {
+    return fetch(endpoint)
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+  },
+  clearNode: (node) => {
+    document.getElementById(node).innerHTML = "";
   },
   fillNode: (node, content) => {
-    document.getElementById(node).innerHTML = content;
+    document.getElementById(node).innerHTML += content;
   },
 };
 
