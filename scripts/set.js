@@ -4,8 +4,14 @@ const set = {
   nav: () => {
     events.areasBtn();
   },
-  areasControlPanel: () => {
+  areas: () => {
     events.postAreaBtn();
+  },
+  pop: () => {
+    events.closePop();
+  },
+  popAreaPost: () => {
+    events.areaPostSaveBtn();
   },
 };
 

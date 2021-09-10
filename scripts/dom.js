@@ -1,5 +1,5 @@
 const dom = {
-  areasControlPanel:
+  areas:
     "<div class='control-panel'>" +
     "<div>" +
     "<input type='text' />" +
@@ -21,6 +21,20 @@ const dom = {
     <button><i class="fas fa-trash-alt"></i></button>
     </div>
     </li>`;
+  },
+  pop: () => {
+    return "<div id='pop'><div id='pop-container'></div></div>";
+  },
+  areaPost: () => {
+    return (
+      "<h2>Crear tu nueva ciudad</h2>" +
+      "<input id='area_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />" +
+      "<input id='country_name-post-input' type='text' placeholder='Ingresa a que país pertenece' autocomplete='off' />" +
+      "<button id='area_save-btn'>Guardar</button>"
+    );
+  },
+  apiResponse: (response) => {
+    return `<h2>${response}</h2>`;
   },
 };
 
