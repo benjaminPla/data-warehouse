@@ -12,10 +12,10 @@ const dom = {
     "</div>" +
     "</div>" +
     "<ul id='areas'></ul>",
-  area: (name) => {
+  area: (area) => {
     return `
-    <li>
-    <span>${name}</span>
+    <li area-id="${area.id}">
+    <span>${area.name}</span>
     <div>
     <button><i class="fas fa-pencil-alt"></i></button>
     <button><i class="fas fa-trash-alt"></i></button>
@@ -30,11 +30,9 @@ const dom = {
       "<h2>Crear tu nueva ciudad</h2>" +
       "<input id='area_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />" +
       "<input id='country_name-post-input' type='text' placeholder='Ingresa a que país pertenece' autocomplete='off' />" +
-      "<button id='area_save-btn'>Guardar</button>"
+      "<button id='area_save-btn'>Guardar</button>" +
+      "<span id='post-response'></span>"
     );
-  },
-  apiResponse: (response) => {
-    return `<h2>${response}</h2>`;
   },
 };
 
