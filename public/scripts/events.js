@@ -1,6 +1,5 @@
 import { functions } from "./functions.js";
 import { dom } from "./dom.js";
-import { set } from "./set.js";
 
 const events = {
   areasBtn: () => {
@@ -9,18 +8,17 @@ const events = {
       functions.fillNode("section-main", dom.areas);
       const areas = await functions.fetchGet("http://localhost:3000/cities/findAll");
       areas.forEach((area) => {
-        functions.fillNode("areas", dom.area(area.name));
+        functions.fillNode("areas", dom.area(area));
       });
-      set.areas();
+      events.postAreaBtn();
     });
   },
   postAreaBtn: () => {
     document.getElementById("post_area-btn").addEventListener("click", () => {
       functions.fillNode("section-main", dom.pop());
-      // document.querySelector("body").innerHTML += dom.pop();
-      set.pop();
+      events.closePop();
       functions.fillNode("pop-container", dom.areaPost());
-      set.popAreaPost();
+      events.areaPostSaveBtn();
     });
   },
   closePop: () => {
@@ -30,11 +28,16 @@ const events = {
   },
   areaPostSaveBtn: () => {
     document.getElementById("area_save-btn").addEventListener("click", async () => {
-      const body = { name: document.getElementById("area_name-post-input").value, countryId: 1 };
+      const body = { name: document.getElementById("area_name-post-input").value, countryId: 1 }; //cambiar el countryId
       const response = await functions.fetchPost("http://localhost:3000/cities/post", body);
-      functions.clearNode("pop-container");
-      functions.fillNode("pop-container", dom.apiResponse(response));
-      document.getElementById("areas-btn").click();
+      functions.clearNode("post-response");
+      functions.fillNode("post-response", response.response);
+      if (response.success) {
+        setTimeout(() => {
+          document.getElementById("pop").remove();
+          document.getElementById("areas-btn").click();
+        }, 1000);
+      }
     });
   },
 };

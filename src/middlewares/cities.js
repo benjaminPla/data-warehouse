@@ -9,7 +9,7 @@ const citiesMiddlewares = {
     (await cities.findByName(req.body.name)) == "" ? next() : res.send("city already exists");
   },
   missingName: (req, res, next) => {
-    !req.body.name ? res.send("missing name") : next();
+    !req.body.name ? res.status(400).send("missing name") : next();
   },
   missingNewName: (req, res, next) => {
     !req.body.newName ? res.send("missing newName") : next();
