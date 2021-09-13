@@ -4,17 +4,16 @@ const functions = {
       .then((res) => res.json())
       .catch((err) => console.log(err));
   },
-  fetchPost: async (endpoint, body) => {
-    const response = {};
-    let orto = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    let text = await orto.text();
-    response.response = text;
-    response.success = orto.ok;
-    return response;
+  fetch: async (endpoint, method, body) => {
+    const response = { response: "", success: "" };
+    try {
+      let res = await fetch(endpoint, { method: method, headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      response.response = await res.text();
+      response.success = res.ok;
+      return response;
+    } catch (err) {
+      console.log(err);
+    }
   },
   clearNode: (node) => {
     document.getElementById(node).innerHTML = "";

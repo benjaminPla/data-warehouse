@@ -11,6 +11,7 @@ const events = {
         functions.fillNode("areas", dom.area(area));
       });
       events.postAreaBtn();
+      events.areaDeleteBtn();
     });
   },
   postAreaBtn: () => {
@@ -30,11 +31,11 @@ const events = {
     document.getElementById("area_save-btn").addEventListener("click", async () => {
       const body = {
         name: document.getElementById("area_name-post-input").value,
-        countryId: document.getElementById("country_name-post-input").value, //cambiar el countryId por countryName || mejor un <select>
+        countryId: document.getElementById("country_name-post-input").value, // mejor un <select>
       };
-      const response = await functions.fetchPost("http://localhost:3000/cities/post", body);
+      const response = await functions.fetch("http://localhost:3000/cities/post", "POST", body);
+      functions.fillNode("pop-container", dom.response);
       if (response.success) {
-        functions.clearNode("response");
         document.getElementById("response").classList.remove("response-error");
         document.getElementById("response").classList.add("response-success");
         functions.fillNode("response", dom.successIcon);
@@ -44,12 +45,37 @@ const events = {
           document.getElementById("areas-btn").click();
         }, 1000);
       } else {
-        functions.clearNode("response");
         document.getElementById("response").classList.remove("response-success");
         document.getElementById("response").classList.add("response-error");
         functions.fillNode("response", dom.errorIcon);
         functions.fillNode("response", response.response);
       }
+    });
+  },
+  areaDeleteBtn: () => {
+    document.querySelectorAll(".fa-trash-alt").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        functions.fillNode("section-main", dom.pop);
+        events.closePop();
+        functions.fillNode("pop-container", dom.response);
+        const body = { name: btn.parentElement.parentElement.parentElement.childNodes[1].textContent };
+        let response = await functions.fetch("http://localhost:3000/cities/delete", "DELETE", body);
+        if (response.success) {
+          document.getElementById("response").classList.remove("response-error");
+          document.getElementById("response").classList.add("response-success");
+          functions.fillNode("response", dom.successIcon);
+          functions.fillNode("response", response.response);
+          setTimeout(() => {
+            document.getElementById("pop").remove();
+            document.getElementById("areas-btn").click();
+          }, 1000);
+        } else {
+          document.getElementById("response").classList.remove("response-success");
+          document.getElementById("response").classList.add("response-error");
+          functions.fillNode("response", dom.errorIcon);
+          functions.fillNode("response", response.response);
+        }
+      });
     });
   },
 };
