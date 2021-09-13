@@ -22,18 +22,15 @@ const dom = {
     </div>
     </li>`;
   },
-  pop: () => {
-    return "<div id='pop'><div id='pop-container'></div></div>";
-  },
-  areaPost: () => {
-    return (
-      "<h2>Crear tu nueva ciudad</h2>" +
-      "<input id='area_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />" +
-      "<input id='country_name-post-input' type='text' placeholder='Ingresa a que país pertenece' autocomplete='off' />" +
-      "<button id='area_save-btn'>Guardar</button>" +
-      "<span id='post-response'></span>"
-    );
-  },
+  pop: "<div id='pop'><div id='pop-container'></div></div>",
+  areaPost:
+    "<h2>Crear tu nueva ciudad</h2>" +
+    "<input id='area_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />" +
+    "<input id='country_name-post-input' type='number' placeholder='Ingresa a que país pertenece' autocomplete='off' />" +
+    "<button id='area_save-btn'>Guardar</button>" +
+    "<span id='response'></span>",
+  successIcon: "<i class='fas fa-check-circle'></i>",
+  errorIcon: "<i class='fas fa-exclamation-circle'></i>",
 };
 
 export { dom };
