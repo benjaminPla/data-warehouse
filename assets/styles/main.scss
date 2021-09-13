@@ -186,8 +186,20 @@ body {
       cursor: pointer;
       background-color: $color5;
     }
-    #post-response {
+    #response {
+      border-radius: 1rem;
+      font-family: "Josefin Sans", sans-serif;
       margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      .fas {
+        margin-right: 0.5rem;
+      }
+    }
+    .response-success {
+      background-color: #00ff0066;
+    }
+    .response-error {
+      background-color: #ff000066;
     }
   }
 }
