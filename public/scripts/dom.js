@@ -25,10 +25,11 @@ const dom = {
   pop: "<div id='pop'><div id='pop-container'></div></div>",
   response: "<span id='response'></span>",
   areaPost:
-    "<h2>Crear tu nueva ciudad</h2>" +
+    "<h2>Crear una nueva ciudad</h2>" +
     "<input id='area_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />" +
     "<input id='country_name-post-input' type='number' placeholder='Ingresa a que país pertenece' autocomplete='off' />" +
-    "<button id='area_save-btn'>Guardar</button>",
+    "<button id='area_save-btn'>Guardar</button>" +
+    "<div id='response-container'></div>",
   successIcon: "<i class='fas fa-check-circle'></i>",
   errorIcon: "<i class='fas fa-exclamation-circle'></i>",
 };

@@ -1,24 +1,32 @@
 import { cities } from "../../server/cities.js";
 import { regions } from "../../server/regions.js";
 
+let response = { success: false, body: null };
+
 const citiesMiddlewares = {
   cityNotFound: async (req, res, next) => {
-    (await cities.findByName(req.body.name)) == "" ? res.status(400).send("city not found") : next();
+    response.body = "city not found";
+    (await cities.findByName(req.body.name)) == "" ? res.send(response) : next();
   },
   nameAlreadyExists: async (req, res, next) => {
-    (await cities.findByName(req.body.name)) == "" ? next() : res.status(400).send("city already exists");
+    response.body = "city already exists";
+    (await cities.findByName(req.body.name)) == "" ? next() : res.send(response);
   },
   missingName: (req, res, next) => {
-    !req.body.name ? res.status(400).send("missing name") : next();
+    response.body = "missing name";
+    !req.body.name ? res.send(response) : next();
   },
   missingNewName: (req, res, next) => {
-    !req.body.newName ? res.status(400).send("missing newName") : next();
+    response.body = "missing newName";
+    !req.body.newName ? res.send(response) : next();
   },
   missingCountryId: (req, res, next) => {
-    !req.body.countryId ? res.status(400).send("missing countryId") : next();
+    response.body = "missing countryId";
+    !req.body.countryId ? res.send(response) : next();
   },
   countryNotFound: async (req, res, next) => {
-    (await regions.findById(req.body.countryId)) == "" ? res.status(400).send("country not found") : next();
+    response.body = "country not found";
+    (await regions.findById(req.body.countryId)) == "" ? res.send(response) : next();
   },
 };
 

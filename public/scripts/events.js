@@ -6,8 +6,8 @@ const events = {
     document.getElementById("areas-btn").addEventListener("click", async () => {
       functions.clearNode("section-main");
       functions.fillNode("section-main", dom.areas);
-      const areas = await functions.fetchGet("http://localhost:3000/cities/findAll");
-      areas.forEach((area) => {
+      const areas = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
+      areas.body.forEach((area) => {
         functions.fillNode("areas", dom.area(area));
       });
       events.postAreaBtn();
@@ -34,12 +34,13 @@ const events = {
         countryId: document.getElementById("country_name-post-input").value, // mejor un <select>
       };
       const response = await functions.fetch("http://localhost:3000/cities/post", "POST", body);
-      functions.fillNode("pop-container", dom.response);
+      functions.clearNode("response-container");
+      functions.fillNode("response-container", dom.response);
       if (response.success) {
         document.getElementById("response").classList.remove("response-error");
         document.getElementById("response").classList.add("response-success");
         functions.fillNode("response", dom.successIcon);
-        functions.fillNode("response", response.response);
+        functions.fillNode("response", response.body);
         setTimeout(() => {
           document.getElementById("pop").remove();
           document.getElementById("areas-btn").click();
@@ -48,7 +49,7 @@ const events = {
         document.getElementById("response").classList.remove("response-success");
         document.getElementById("response").classList.add("response-error");
         functions.fillNode("response", dom.errorIcon);
-        functions.fillNode("response", response.response);
+        functions.fillNode("response", response.body);
       }
     });
   },
@@ -64,7 +65,7 @@ const events = {
           document.getElementById("response").classList.remove("response-error");
           document.getElementById("response").classList.add("response-success");
           functions.fillNode("response", dom.successIcon);
-          functions.fillNode("response", response.response);
+          functions.fillNode("response", response.body);
           setTimeout(() => {
             document.getElementById("pop").remove();
             document.getElementById("areas-btn").click();
@@ -73,7 +74,7 @@ const events = {
           document.getElementById("response").classList.remove("response-success");
           document.getElementById("response").classList.add("response-error");
           functions.fillNode("response", dom.errorIcon);
-          functions.fillNode("response", response.response);
+          functions.fillNode("response", response.body);
         }
       });
     });

@@ -149,7 +149,7 @@ body {
   height: 100vh;
   justify-content: center;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
   #pop-container {
@@ -186,20 +186,22 @@ body {
       cursor: pointer;
       background-color: $color5;
     }
-    #response {
-      border-radius: 1rem;
-      font-family: "Josefin Sans", sans-serif;
+    #response-container {
       margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      .fas {
-        margin-right: 0.5rem;
+      #response {
+        border-radius: 1rem;
+        font-family: "Josefin Sans", sans-serif;
+        padding: 0.5rem 1rem;
+        .fas {
+          margin-right: 0.5rem;
+        }
       }
-    }
-    .response-success {
-      background-color: #00ff0066; //ver este colores, tal vez algo mas pastel?
-    }
-    .response-error {
-      background-color: #ff000066; //ver este colores, tal vez algo mas pastel?
+      .response-success {
+        background-color: #00ff0066; //ver este colores, tal vez algo mas pastel?
+      }
+      .response-error {
+        background-color: #ff000066; //ver este colores, tal vez algo mas pastel?
+      }
     }
   }
 }
