@@ -28,8 +28,15 @@ const dom = {
     "<h2>Crear una nueva ciudad</h2>" +
     "<input id='area_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />" +
     "<input id='country_name-post-input' type='number' placeholder='Ingresa a que país pertenece' autocomplete='off' />" +
-    "<button id='area_save-btn'>Guardar</button>" +
+    "<button id='area_save-post-btn'>Guardar</button>" +
     "<div id='response-container'></div>",
+  areaPut: (cityName) => {
+    return `<h2>Actualiza los datos de ${cityName}</h2>
+      <input id='area_new_name-put-input' type='text' placeholder='Ingrese el nuevo nombre de la ciudad' autocomplete='off' />
+      <input id='country_name-put-input' type='number' placeholder='Ingresa el nuevo país al cual pertenece' autocomplete='off' />
+      <button id='area_save-put-btn'>Guardar</button>
+      <div id='response-container'></div>`;
+  },
   successIcon: "<i class='fas fa-check-circle'></i>",
   errorIcon: "<i class='fas fa-exclamation-circle'></i>",
 };
