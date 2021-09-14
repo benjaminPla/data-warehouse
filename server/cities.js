@@ -1,6 +1,9 @@
 import { sequelize } from "./server.js";
 
 const cities = {
+  dropTable: async () => {
+    await sequelize.query("DROP TABLE IF EXISTS cities;");
+  },
   createTable: async () => {
     await sequelize.query(
       "CREATE TABLE IF NOT EXISTS cities ( " +
@@ -29,7 +32,8 @@ const cities = {
     );
   },
   findAll: async () => {
-    return await sequelize.query("SELECT * FROM cities WHERE 1;", {
+    const sql = "SELECT cities.id, cities.name, countries.name FROM cities INNER JOIN countries ON countries.id = cities.country_id;";
+    return await sequelize.query(sql, {
       type: "SELECT",
     });
   },
@@ -40,12 +44,9 @@ const cities = {
     });
   },
   post: async (data) => {
-    await sequelize.query(
-      "INSERT INTO cities (name, country_id) VALUES (?, ?);",
-      {
-        replacements: [data.name, data.countryId],
-      }
-    );
+    await sequelize.query("INSERT INTO cities (name, country_id) VALUES (?, ?);", {
+      replacements: [data.name, data.countryId],
+    });
   },
   delete: async (data) => {
     await sequelize.query("DELETE FROM cities WHERE name = ?;", {

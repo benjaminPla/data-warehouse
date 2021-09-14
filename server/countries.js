@@ -1,6 +1,9 @@
 import { sequelize } from "./server.js";
 
 const countries = {
+  dropTable: async () => {
+    await sequelize.query("DROP TABLE IF EXISTS countries;");
+  },
   createTable: async () => {
     await sequelize.query(
       "CREATE TABLE IF NOT EXISTS countries ( " +
@@ -40,12 +43,9 @@ const countries = {
     });
   },
   post: async (data) => {
-    await sequelize.query(
-      "INSERT INTO countries (name, region_id) VALUES (?, ?);",
-      {
-        replacements: [data.name, data.regionId],
-      }
-    );
+    await sequelize.query("INSERT INTO countries (name, region_id) VALUES (?, ?);", {
+      replacements: [data.name, data.regionId],
+    });
   },
   delete: async (data) => {
     await sequelize.query("DELETE FROM countries WHERE name = ?;", {
@@ -53,12 +53,9 @@ const countries = {
     });
   },
   put: async (data) => {
-    await sequelize.query(
-      "UPDATE countries SET name = ?, region_id = ? WHERE name = ?;",
-      {
-        replacements: [data.newName, data.regionId, data.name],
-      }
-    );
+    await sequelize.query("UPDATE countries SET name = ?, region_id = ? WHERE name = ?;", {
+      replacements: [data.newName, data.regionId, data.name],
+    });
   },
 };
 

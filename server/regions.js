@@ -1,21 +1,22 @@
 import { sequelize } from "./server.js";
 
 const regions = {
+  dropTable: async () => {
+    await sequelize.query("DROP TABLE IF EXISTS regions CASCADE;");
+  },
   createTable: async () => {
-    await sequelize.query(
-      "CREATE TABLE IF NOT EXISTS regions (" +
-        "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY," +
-        "name VARCHAR(50) NOT NULL);"
-    );
+    await sequelize.query("CREATE TABLE IF NOT EXISTS regions (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50) NOT NULL);");
   },
   insertInto: async () => {
     await sequelize.query(
       "INSERT INTO regions VALUES" +
-        "(1, 'Region 1')," +
-        "(2, 'Region 2')," +
-        "(3, 'Region 3')," +
-        "(4, 'Region 4')," +
-        "(5, 'Region 5');"
+        "(1, 'América del Norte')," +
+        " (2, 'América Central')," +
+        " (3, 'América del Sur')," +
+        " (4, 'África')," +
+        " (5, 'Europa')," +
+        " (6, 'Oceanía')," +
+        " (7, 'Asia');"
     );
   },
   findAll: async () => {

@@ -14,8 +14,10 @@ const dom = {
     "<ul id='areas'></ul>",
   area: (area) => {
     return `
-    <li area-id="${area.id}">
-    <span>${area.name}</span>
+    <li area-id="${area.city_id}">
+    <span>${area.city_name}</span>
+    <span>${area.country_id}</span>
+    <span>${area.country_name}</span>
     <div>
     <button><i class="fas fa-pencil-alt"></i></button>
     <button><i class="fas fa-trash-alt"></i></button>

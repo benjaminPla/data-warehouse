@@ -13,8 +13,15 @@ const sequelize = new Sequelize("data_warehouse", "root", "", {
 });
 await sequelize.authenticate(console.log("sequelize on"));
 
-// regions.createTable().then(() => regions.insertInto());
-// countries.createTable().then(() => countries.insertInto());
-// cities.createTable().then(() => cities.insertInto());
+cities
+  .dropTable()
+  .then(() => countries.dropTable())
+  .then(() => regions.dropTable())
+  .then(() => regions.createTable())
+  .then(() => regions.insertInto())
+  .then(() => countries.createTable())
+  .then(() => countries.insertInto())
+  .then(() => cities.createTable())
+  .then(() => cities.insertInto());
 
 export { sequelize };
