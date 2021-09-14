@@ -242,21 +242,21 @@ body #section-login .container input[type="button"]:hover {
   margin-top: 0.5rem;
 }
 
-#pop #pop-container #response-container #response {
+#pop #pop-container #response {
   border-radius: 1rem;
   font-family: "Josefin Sans", sans-serif;
   padding: 0.5rem 1rem;
 }
 
-#pop #pop-container #response-container #response .fas {
+#pop #pop-container #response .fas {
   margin-right: 0.5rem;
 }
 
-#pop #pop-container #response-container .response-success {
+#pop #pop-container .response-success {
   background-color: #00ff0066;
 }
 
-#pop #pop-container #response-container .response-error {
+#pop #pop-container .response-error {
   background-color: #ff000066;
 }
 

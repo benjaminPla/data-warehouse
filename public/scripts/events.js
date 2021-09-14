@@ -12,6 +12,7 @@ const events = {
       });
       events.postAreaBtn();
       events.areaDeleteBtn();
+      events.areaPutBtn();
     });
   },
   postAreaBtn: () => {
@@ -28,29 +29,15 @@ const events = {
     });
   },
   areaPostSaveBtn: () => {
-    document.getElementById("area_save-btn").addEventListener("click", async () => {
+    document.getElementById("area_save-post-btn").addEventListener("click", async () => {
       const body = {
         name: document.getElementById("area_name-post-input").value,
         countryId: document.getElementById("country_name-post-input").value, // mejor un <select>
       };
-      const response = await functions.fetch("http://localhost:3000/cities/post", "POST", body);
+      const data = await functions.fetch("http://localhost:3000/cities/post", "POST", body);
       functions.clearNode("response-container");
       functions.fillNode("response-container", dom.response);
-      if (response.success) {
-        document.getElementById("response").classList.remove("response-error");
-        document.getElementById("response").classList.add("response-success");
-        functions.fillNode("response", dom.successIcon);
-        functions.fillNode("response", response.body);
-        setTimeout(() => {
-          document.getElementById("pop").remove();
-          document.getElementById("areas-btn").click();
-        }, 1000);
-      } else {
-        document.getElementById("response").classList.remove("response-success");
-        document.getElementById("response").classList.add("response-error");
-        functions.fillNode("response", dom.errorIcon);
-        functions.fillNode("response", response.body);
-      }
+      functions.response(data);
     });
   },
   areaDeleteBtn: () => {
@@ -58,25 +45,37 @@ const events = {
       btn.addEventListener("click", async () => {
         functions.fillNode("section-main", dom.pop);
         events.closePop();
+        functions.clearNode("pop-container");
         functions.fillNode("pop-container", dom.response);
         const body = { name: btn.parentElement.parentElement.parentElement.childNodes[1].textContent };
-        let response = await functions.fetch("http://localhost:3000/cities/delete", "DELETE", body);
-        if (response.success) {
-          document.getElementById("response").classList.remove("response-error");
-          document.getElementById("response").classList.add("response-success");
-          functions.fillNode("response", dom.successIcon);
-          functions.fillNode("response", response.body);
-          setTimeout(() => {
-            document.getElementById("pop").remove();
-            document.getElementById("areas-btn").click();
-          }, 1000);
-        } else {
-          document.getElementById("response").classList.remove("response-success");
-          document.getElementById("response").classList.add("response-error");
-          functions.fillNode("response", dom.errorIcon);
-          functions.fillNode("response", response.body);
-        }
+        let data = await functions.fetch("http://localhost:3000/cities/delete", "DELETE", body);
+        functions.response(data);
       });
+    });
+  },
+  areaPutBtn: () => {
+    document.querySelectorAll(".fa-pencil-alt").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const cityName = btn.parentElement.parentElement.parentElement.childNodes[1].textContent;
+        functions.fillNode("section-main", dom.pop);
+        events.closePop();
+        functions.clearNode("pop-container");
+        functions.fillNode("pop-container", dom.areaPut(cityName));
+        events.areaPutSaveBtn(cityName);
+      });
+    });
+  },
+  areaPutSaveBtn: (cityName) => {
+    document.getElementById("area_save-put-btn").addEventListener("click", async () => {
+      functions.clearNode("response-container");
+      functions.fillNode("response-container", dom.response);
+      const body = {
+        name: cityName,
+        newName: document.getElementById("area_new_name-put-input").value,
+        countryId: document.getElementById("country_name-put-input").value,
+      };
+      let data = await functions.fetch("http://localhost:3000/cities/put", "PUT", body);
+      functions.response(data);
     });
   },
 };
