@@ -8,7 +8,7 @@ regionsRoutes.get("/regions/findAll", regionsControllers.findAll);
 regionsRoutes.get(
   "/regions/findByName",
   regionsMiddlewares.missingName,
-  regionsMiddlewares.notFound,
+  regionsMiddlewares.regionNotFound,
   regionsControllers.findByName
 );
 regionsRoutes.post(
@@ -20,14 +20,14 @@ regionsRoutes.post(
 regionsRoutes.delete(
   "/regions/delete",
   regionsMiddlewares.missingName,
-  regionsMiddlewares.notFound,
+  regionsMiddlewares.regionNotFound,
   regionsControllers.delete
 );
 regionsRoutes.put(
   "/regions/put",
   regionsMiddlewares.missingName,
   regionsMiddlewares.missingNewName,
-  regionsMiddlewares.notFound,
+  regionsMiddlewares.regionNotFound,
   regionsControllers.put
 );
 

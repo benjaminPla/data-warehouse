@@ -1,21 +1,23 @@
 import { regions } from "../../server/regions.js";
 
+let response = { success: false, body: null };
+
 const regionsMiddlewares = {
-  notFound: async (req, res, next) => {
-    (await regions.findByName(req.body.name)) == ""
-      ? res.send("region not found")
-      : next();
+  regionNotFound: async (req, res, next) => {
+    response.body = "region not found";
+    (await regions.findByName(req.body.name)) == "" ? res.send(response) : next();
   },
   nameAlreadyExists: async (req, res, next) => {
-    (await regions.findByName(req.body.name)) == ""
-      ? next()
-      : res.send("region already exists");
+    response.body = "region already exists";
+    (await regions.findByName(req.body.name)) == "" ? next() : res.send(response);
   },
   missingName: (req, res, next) => {
-    !req.body.name ? res.send("missing name") : next();
+    response.body = "missing name";
+    !req.body.name ? res.send(response) : next();
   },
   missingNewName: (req, res, next) => {
-    !req.body.newName ? res.send("missing newName") : next();
+    response.body = "missing newName";
+    !req.body.newName ? res.send(response) : next();
   },
 };
 
