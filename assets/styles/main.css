@@ -187,7 +187,7 @@ body #section-login .container input[type="button"]:hover {
       -ms-flex-pack: center;
           justify-content: center;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
 }
@@ -238,22 +238,25 @@ body #section-login .container input[type="button"]:hover {
   background-color: #284b63;
 }
 
-#pop #pop-container #response {
+#pop #pop-container #response-container {
+  margin-top: 0.5rem;
+}
+
+#pop #pop-container #response-container #response {
   border-radius: 1rem;
   font-family: "Josefin Sans", sans-serif;
-  margin-top: 0.5rem;
   padding: 0.5rem 1rem;
 }
 
-#pop #pop-container #response .fas {
+#pop #pop-container #response-container #response .fas {
   margin-right: 0.5rem;
 }
 
-#pop #pop-container .response-success {
+#pop #pop-container #response-container .response-success {
   background-color: #00ff0066;
 }
 
-#pop #pop-container .response-error {
+#pop #pop-container #response-container .response-error {
   background-color: #ff000066;
 }
 
@@ -305,3 +308,4 @@ nav li:hover {
           animation: hover 0.1s linear forwards;
   cursor: pointer;
 }
+/*# sourceMappingURL=main.css.map */
