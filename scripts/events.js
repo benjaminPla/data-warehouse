@@ -2,6 +2,11 @@ import { functions } from "./functions.js";
 import { dom } from "./dom.js";
 
 const events = {
+  loginBtn: () => {
+    document.getElementById("login-btn").addEventListener("click", () => {
+      console.log("si");
+    });
+  },
   areasBtn: () => {
     document.getElementById("areas-btn").addEventListener("click", async () => {
       functions.clearNode("section-main");
