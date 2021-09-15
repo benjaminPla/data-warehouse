@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
@@ -153,15 +155,22 @@
   margin-bottom: 0.5rem;
 }
 
-#pop #pop-container input {
+#pop #pop-container input,
+#pop #pop-container select {
   border-radius: 2rem;
   border: none;
-  display: block;
   height: 30px;
   margin-bottom: 0.5rem;
   outline: none;
   padding: 0 1rem;
   width: 100%;
+}
+
+#pop #pop-container select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
 }
 
 #pop #pop-container button {

@@ -16,10 +16,14 @@ const events = {
     });
   },
   postAreaBtn: () => {
-    document.getElementById("post_area-btn").addEventListener("click", () => {
+    document.getElementById("post_area-btn").addEventListener("click", async () => {
       functions.fillNode("section-main", dom.pop);
       events.closePop();
-      functions.fillNode("pop-container", dom.areaPost);
+      functions.fillNode("pop-container", dom.areaPost());
+      const country = await functions.fetch("http://localhost:3000/countries/findAll", "GET");
+      country.body.forEach((country) => {
+        functions.fillNode("cities-select", dom.option(country));
+      });
       events.areaPostSaveBtn();
     });
   },
@@ -32,7 +36,7 @@ const events = {
     document.getElementById("area_save-post-btn").addEventListener("click", async () => {
       const body = {
         name: document.getElementById("area_name-post-input").value,
-        countryId: document.getElementById("country_name-post-input").value, // mejor un <select>
+        countryId: document.getElementById("cities-select").value,
       };
       const data = await functions.fetch("http://localhost:3000/cities/post", "POST", body);
       functions.clearNode("response-container");
