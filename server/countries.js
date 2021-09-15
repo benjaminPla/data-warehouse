@@ -12,8 +12,7 @@ const countries = {
         "region_id INT NOT NULL, " +
         "FOREIGN KEY (region_id) REFERENCES regions (id) " +
         "ON DELETE CASCADE " +
-        "ON UPDATE CASCADE " +
-        ");"
+        "ON UPDATE CASCADE);"
     );
   },
   insertInto: async () => {

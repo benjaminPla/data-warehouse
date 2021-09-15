@@ -12,8 +12,7 @@ const cities = {
         "country_id INT NOT NULL, " +
         "FOREIGN KEY (country_id) REFERENCES countries (id) " +
         "ON DELETE CASCADE " +
-        "ON UPDATE CASCADE " +
-        ");"
+        "ON UPDATE CASCADE);"
     );
   },
   insertInto: async () => {

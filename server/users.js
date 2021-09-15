@@ -1,20 +1,41 @@
+import { sequelize } from "./server.js";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
+
+function encripter(string) {
+  return jwt.sign(string, process.env.TOKEN);
+}
+function desencripter(string) {
+  return jwt.verify(string, process.env.TOKEN);
+}
+
 const users = {
-  createTable: () => {
-    return (
-      "CREATE TABLE IF NOT EXISTS users (" +
-      "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY," +
-      "first_name VARCHAR(50) NOT NULL," +
-      "last_name VARCHAR(50) NOT NULL," +
-      "position VARCHAR(50) NOT NULL," +
-      "email VARCHAR(50) NOT NULL," +
-      "company VARCHAR(50) NOT NULL);"
+  dropTable: async () => {
+    await sequelize.query("DROP TABLE IF EXISTS users;");
+  },
+  createTable: async () => {
+    await sequelize.query(
+      "CREATE TABLE IF NOT EXISTS users " +
+        "(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+        "user_name VARCHAR(50) NOT NULL, " +
+        "password VARCHAR(100) NOT NULL, " +
+        "rank INT NOT NULL);"
     );
   },
-  insertInto: () => {
-    return (
-      "INSERT INTO users VALUES" +
-      "(1, 'benjamin', 'pla', 'administrador', 'benjaminPla.dev@gmail.com', 'free lancer');"
-    );
+  insertInto: async () => {
+    await sequelize.query(`INSERT INTO users VALUES (1, 'super admin', '${encripter("1234")}', 1), (2, 'user 1', '${encripter("admin")}', 2);`);
+  },
+  findAll: async () => {
+    return await sequelize.query("SELECT * FROM users WHERE 1;", {
+      type: "SELECT",
+    });
+  },
+  login: async (data) => {
+    return await sequelize.query("SELECT * FROM users WHERE user_name = ? AND password = ?;", {
+      replacements: [data.user_name, encripter(data.password)],
+      type: "SELECT",
+    });
   },
 };
 
