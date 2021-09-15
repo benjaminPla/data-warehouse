@@ -16,8 +16,8 @@ const dom = {
     return `
     <li area-id="${area.city_id}">
     <span>${area.city_name}</span>
-    <span>${area.country_id}</span>
     <span>${area.country_name}</span>
+    <span>${area.region_name}</span>
     <div>
     <button><i class="fas fa-pencil-alt"></i></button>
     <button><i class="fas fa-trash-alt"></i></button>
