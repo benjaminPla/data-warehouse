@@ -7,7 +7,6 @@ const events = {
       functions.clearNode("section-main");
       functions.fillNode("section-main", dom.areas);
       const areas = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
-      console.log(areas);
       areas.body.forEach((area) => {
         functions.fillNode("areas", dom.area(area));
       });

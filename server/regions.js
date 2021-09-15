@@ -2,7 +2,7 @@ import { sequelize } from "./server.js";
 
 const regions = {
   dropTable: async () => {
-    await sequelize.query("DROP TABLE IF EXISTS regions CASCADE;");
+    await sequelize.query("DROP TABLE IF EXISTS regions;");
   },
   createTable: async () => {
     await sequelize.query("CREATE TABLE IF NOT EXISTS regions (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50) NOT NULL);");

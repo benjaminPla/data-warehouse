@@ -5,63 +5,6 @@
   padding: 0;
 }
 
-body {
-  background-color: #ffffff;
-  color: #353535;
-}
-
-body #section-login {
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  background-color: #3c6e71;
-  font-family: "Mulish", sans-serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body #section-login .container {
-  text-align: center;
-  padding: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 30%;
-  background-color: #ffffff;
-}
-
-body #section-login .container h1 {
-  font-size: 2rem;
-}
-
-body #section-login .container input {
-  outline: none;
-  padding: 0 1rem;
-  border: none;
-  height: 30px;
-  margin: 1rem 0;
-}
-
-body #section-login .container input[type="button"] {
-  background-color: #353535;
-}
-
-body #section-login .container input[type="button"]:hover {
-  cursor: pointer;
-  background-color: #d9d9d9;
-}
-
 @-webkit-keyframes hover {
   0% {
     -webkit-transform: scale(1);
@@ -140,21 +83,20 @@ body #section-login .container input[type="button"]:hover {
 }
 
 #section-main #areas li {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   background-color: #d9d9d9;
   border-bottom: 1px solid #000;
   border-radius: 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3] 0.3fr;
+      grid-template-columns: repeat(3, 1fr) 0.3fr;
   list-style: none;
   margin-bottom: 0.5rem;
   padding: 0.1rem 1rem;
+}
+
+#section-main #areas li div {
+  text-align: right;
 }
 
 #section-main #areas li button {
@@ -258,6 +200,58 @@ body #section-login .container input[type="button"]:hover {
 
 #pop #pop-container .response-error {
   background-color: #ff000066;
+}
+
+#section-login {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: #3c6e71;
+  font-family: "Mulish", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#section-login .container {
+  text-align: center;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 30%;
+  background-color: #ffffff;
+}
+
+#section-login .container h1 {
+  font-size: 2rem;
+}
+
+#section-login .container input {
+  outline: none;
+  padding: 0 1rem;
+  border: none;
+  height: 30px;
+  margin: 1rem 0;
+}
+
+#section-login .container input[type="button"] {
+  background-color: #353535;
+}
+
+#section-login .container input[type="button"]:hover {
+  cursor: pointer;
+  background-color: #d9d9d9;
 }
 
 nav {
