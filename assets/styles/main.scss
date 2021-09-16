@@ -74,9 +74,10 @@ $color5: #284b63;
       }
     }
   }
-  #areas {
+  .data-container {
     font-family: "Josefin Sans", sans-serif;
     font-weight: 300;
+    overflow: hidden;
     padding: 0 1rem;
     li {
       background-color: $color4;
@@ -155,24 +156,45 @@ $color5: #284b63;
       cursor: pointer;
       background-color: $color5;
     }
-    #response-container {
-      margin-top: 0.5rem;
-    }
-    #response {
-      border-radius: 1rem;
-      font-family: "Josefin Sans", sans-serif;
-      padding: 0.5rem 1rem;
-      .fas {
-        margin-right: 0.5rem;
-      }
-    }
-    .response-success {
-      background-color: #00ff0066; //ver este colores, tal vez algo mas pastel?
-    }
-    .response-error {
-      background-color: #ff000066; //ver este colores, tal vez algo mas pastel?
-    }
   }
+}
+#response-container {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+#response {
+  border-radius: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  .fas {
+    margin-right: 0.5rem;
+  }
+}
+.response-success {
+  background-color: #00ff0066; //ver este colores, tal vez algo mas pastel?
+}
+.response-error {
+  background-color: #ff000066; //ver este colores, tal vez algo mas pastel?
+}
+.limiter {
+  align-items: center;
+  background-color: $color2;
+  border-bottom: 1px solid #000;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+  padding: 0.1rem 1rem;
+  font-family: "Mulish", sans-serif;
+  color: $color3;
+  .fas:hover {
+    cursor: pointer;
+    color: $color1;
+  }
+}
+.vertical-expand {
+  height: 0;
 }
 
 @import "./login", "./nav";

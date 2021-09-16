@@ -11,7 +11,12 @@ const dom = {
     "<button><i class='fas fa-file-upload'></i></button>" +
     "</div>" +
     "</div>" +
-    "<ul id='areas'></ul>",
+    "<div class='limiter'><span>Regiones</span><span><i expand='regions' class='fas fa-angle-down'></i></span></div>" +
+    "<ul id='regions' class='data-container'></ul>" +
+    "<div class='limiter'><span>Países</span><span><i expand='countries' class='fas fa-angle-down'></i></span></div>" +
+    "<ul id='countries' class='data-container'></ul>" +
+    "<div class='limiter'><span>Ciudades</span><span><i expand='areas' class='fas fa-angle-down'></i></span></div>" +
+    "<ul id='areas' class='data-container'></ul>",
   area: (area) => {
     return `
     <li area-id="${area.city_id}">

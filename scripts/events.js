@@ -2,9 +2,33 @@ import { functions } from "./functions.js";
 import { dom } from "./dom.js";
 
 const events = {
+  expandBtn: () => {
+    document.querySelectorAll(".fa-angle-down").forEach((btn) => {
+      btn.addEventListener("click", (element) => {
+        document.getElementById(element.target.attributes[0].value).classList.toggle("vertical-expand");
+      });
+    });
+  },
   loginBtn: () => {
-    document.getElementById("login-btn").addEventListener("click", () => {
-      console.log("si");
+    document.getElementById("login-btn").addEventListener("click", async () => {
+      functions.clearNode("response-container");
+      functions.fillNode("response-container", dom.response);
+      const body = {
+        user_name: document.getElementById("user-name").value,
+        password: document.getElementById("password").value,
+      };
+      const login = await functions.fetch("http://localhost:3000/users/login", "POST", body);
+      if (login.success) {
+        document.getElementById("response").classList.add("response-success");
+        functions.fillNode("response", login.body);
+        setInterval(() => {
+          location.href = "http://127.0.0.1:5500/public/home.html";
+        }),
+          500;
+      } else {
+        document.getElementById("response").classList.add("response-error");
+        functions.fillNode("response", login.body);
+      }
     });
   },
   areasBtn: () => {
@@ -18,6 +42,7 @@ const events = {
       events.postAreaBtn();
       events.areaDeleteBtn();
       events.areaPutBtn();
+      events.expandBtn();
     });
   },
   postAreaBtn: () => {
