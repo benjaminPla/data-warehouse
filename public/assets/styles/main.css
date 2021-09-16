@@ -78,13 +78,14 @@
   color: #d9d9d9;
 }
 
-#section-main #areas {
+#section-main .data-container {
   font-family: "Josefin Sans", sans-serif;
   font-weight: 300;
+  overflow: hidden;
   padding: 0 1rem;
 }
 
-#section-main #areas li {
+#section-main .data-container li {
   background-color: #d9d9d9;
   border-bottom: 1px solid #000;
   border-radius: 1rem;
@@ -97,22 +98,22 @@
   padding: 0.1rem 1rem;
 }
 
-#section-main #areas li div {
+#section-main .data-container li div {
   text-align: right;
 }
 
-#section-main #areas li button {
+#section-main .data-container li button {
   border: none;
   background-color: transparent;
   margin-left: 1rem;
 }
 
-#section-main #areas li button:hover {
+#section-main .data-container li button:hover {
   cursor: pointer;
   color: #ffffff;
 }
 
-#section-main #areas li:hover {
+#section-main .data-container li:hover {
   background-color: #284b63;
   color: #ffffff;
 }
@@ -189,26 +190,56 @@
   background-color: #284b63;
 }
 
-#pop #pop-container #response-container {
+#response-container {
   margin-top: 0.5rem;
+  text-align: center;
 }
 
-#pop #pop-container #response {
+#response {
   border-radius: 1rem;
   font-family: "Josefin Sans", sans-serif;
   padding: 0.5rem 1rem;
+  text-align: center;
 }
 
-#pop #pop-container #response .fas {
+#response .fas {
   margin-right: 0.5rem;
 }
 
-#pop #pop-container .response-success {
+.response-success {
   background-color: #00ff0066;
 }
 
-#pop #pop-container .response-error {
+.response-error {
   background-color: #ff000066;
+}
+
+.limiter {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #3c6e71;
+  border-bottom: 1px solid #000;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+  padding: 0.1rem 1rem;
+  font-family: "Mulish", sans-serif;
+  color: #ffffff;
+}
+
+.limiter .fas:hover {
+  cursor: pointer;
+  color: #353535;
+}
+
+.vertical-expand {
+  height: 0;
 }
 
 #section-login {
@@ -281,7 +312,7 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Mulish", sans-serif;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;

@@ -9,7 +9,7 @@ const usersControllers = {
     res.send(response);
   },
   login: async (req, res) => {
-    response.body = await users.login(req.body);
+    response.body = `welcome ${req.body.user_name}`;
     res.send(response);
   },
 };

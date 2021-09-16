@@ -5,7 +5,7 @@ import { usersMiddlewares } from "../middlewares/users.js";
 const usersRoutes = express.Router();
 
 usersRoutes.get("/users/findAll", usersControllers.findAll);
-usersRoutes.get(
+usersRoutes.post(
   "/users/login",
   usersMiddlewares.missingUserName,
   usersMiddlewares.missingPassword,
