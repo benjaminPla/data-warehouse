@@ -1,5 +1,4 @@
 .table {
-  height: 30px;
   list-style: none;
   overflow: hidden;
   .table-header {
@@ -19,9 +18,9 @@
       flex-direction: row;
       text-align: right;
       .inputs-hide {
-        height: 0;
+        align-items: center;
+        display: flex;
         overflow: hidden;
-        width: 0;
         input {
           background-color: transparent;
           border: none;
@@ -37,7 +36,7 @@
           font-weight: 300;
         }
         .fa-search {
-          font-size: 0.7rem;
+          font-size: 0.8rem;
         }
         .fa-plus-square {
           margin-left: 1rem;

@@ -20,16 +20,15 @@ $color5: #284b63;
     transform: scale(1.1);
   }
 }
-
 #section-main {
   margin: 0.5rem 0;
   padding: 0 1rem;
 }
 .vertical-expand {
-  height: auto !important;
+  height: 30px !important;
 }
 .horizontal-expand {
-  width: auto !important;
+  width: 0 !important;
 }
 
 @import "./login", "./nav", "./tables", "./pop", "./response";

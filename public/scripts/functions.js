@@ -1,6 +1,13 @@
 import { dom } from "./dom.js";
 
 const functions = {
+  pop: (content) => {
+    functions.fillNode("section-main", dom.pop);
+    functions.fillNode("pop-container", content);
+    document.getElementById("pop").addEventListener("mousedown", (element) => {
+      if (element.target.id === "pop") document.getElementById("pop").remove();
+    });
+  },
   fetch: async (endpoint, method, body) => {
     return await fetch(endpoint, {
       method: method,

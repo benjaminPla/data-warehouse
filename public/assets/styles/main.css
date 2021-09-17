@@ -35,11 +35,11 @@
 }
 
 .vertical-expand {
-  height: auto !important;
+  height: 30px !important;
 }
 
 .horizontal-expand {
-  width: auto !important;
+  width: 0 !important;
 }
 
 #section-login {
@@ -155,7 +155,6 @@ nav li:hover {
 }
 
 .table {
-  height: 30px;
   list-style: none;
   overflow: hidden;
 }
@@ -194,9 +193,13 @@ nav li:hover {
 }
 
 .table .table-header .inputs .inputs-hide {
-  height: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
-  width: 0;
 }
 
 .table .table-header .inputs .inputs-hide input {
@@ -234,7 +237,7 @@ nav li:hover {
 }
 
 .table .table-header .inputs .inputs-hide .fa-search {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .table .table-header .inputs .inputs-hide .fa-plus-square {
