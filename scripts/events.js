@@ -5,7 +5,9 @@ const events = {
   expandBtn: () => {
     document.querySelectorAll(".fa-angle-down").forEach((btn) => {
       btn.addEventListener("click", (element) => {
-        document.getElementById(element.target.attributes[0].value).classList.toggle("vertical-expand");
+        document.getElementById(element.target.parentElement.parentElement.parentElement.id).classList.toggle("vertical-expand");
+        element.target.previousElementSibling.classList.toggle("horizontal-expand");
+        element.target.previousElementSibling.classList.toggle("vertical-expand");
       });
     });
   },
@@ -34,15 +36,25 @@ const events = {
   areasBtn: () => {
     document.getElementById("areas-btn").addEventListener("click", async () => {
       functions.clearNode("section-main");
-      functions.fillNode("section-main", dom.areas);
-      const areas = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
-      areas.body.forEach((area) => {
-        functions.fillNode("areas", dom.area(area));
+      functions.fillNode("section-main", dom.table("regions-table", "Regiones"));
+      const regions = await functions.fetch("http://localhost:3000/regions/findAll", "GET");
+      regions.body.forEach((region) => {
+        functions.fillNode("regions-table", dom.tableData(region));
       });
-      events.postAreaBtn();
-      events.areaDeleteBtn();
-      events.areaPutBtn();
+      functions.fillNode("section-main", dom.table("countries-table", "Países"));
+      const countries = await functions.fetch("http://localhost:3000/countries/findAll", "GET");
+      countries.body.forEach((country) => {
+        functions.fillNode("countries-table", dom.tableData(country));
+      });
+      functions.fillNode("section-main", dom.table("cities-table", "Ciudades"));
+      const cities = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
+      cities.body.forEach((city) => {
+        functions.fillNode("cities-table", dom.tableData(city));
+      });
       events.expandBtn();
+      // // events.postAreaBtn();
+      // events.areaDeleteBtn();
+      // events.areaPutBtn();
     });
   },
   postAreaBtn: () => {

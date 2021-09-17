@@ -29,6 +29,28 @@
   }
 }
 
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate 0deg;
+            transform: rotate 0deg;
+  }
+  100% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate 0deg;
+            transform: rotate 0deg;
+  }
+  100% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+}
+
 #section-main {
   padding: 0 1rem;
 }
@@ -239,7 +261,15 @@
 }
 
 .vertical-expand {
-  height: 0;
+  height: auto !important;
+}
+
+.horizontal-expand {
+  width: auto !important;
+}
+
+#section-main {
+  margin: 0.5rem 0;
 }
 
 #section-login {
@@ -352,5 +382,136 @@ nav li:hover {
   -webkit-animation: hover 0.1s linear forwards;
           animation: hover 0.1s linear forwards;
   cursor: pointer;
+}
+
+.table {
+  height: 30px;
+  list-style: none;
+  overflow: hidden;
+}
+
+.table .table-header {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #3c6e71;
+  border-bottom: 1px solid #000;
+  border-radius: 1rem;
+  color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Mulish", sans-serif;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 1rem;
+}
+
+.table .table-header .inputs {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: right;
+}
+
+.table .table-header .inputs .inputs-hide {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+.table .table-header .inputs .inputs-hide input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+  outline: none;
+}
+
+.table .table-header .inputs .inputs-hide input::-webkit-input-placeholder {
+  color: #ffffff;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+}
+
+.table .table-header .inputs .inputs-hide input:-ms-input-placeholder {
+  color: #ffffff;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+}
+
+.table .table-header .inputs .inputs-hide input::-ms-input-placeholder {
+  color: #ffffff;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+}
+
+.table .table-header .inputs .inputs-hide input::placeholder {
+  color: #ffffff;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+}
+
+.table .table-header .inputs .inputs-hide .fa-search {
+  font-size: 0.7rem;
+}
+
+.table .table-header .inputs .inputs-hide .fa-plus-square {
+  margin-left: 1rem;
+}
+
+.table .table-header .inputs .fa-angle-down {
+  margin-left: 2rem;
+}
+
+.table .table-header .inputs .fas:hover {
+  color: #000;
+  cursor: pointer;
+}
+
+.table .table-data {
+  background-color: #d9d9d9;
+  border-bottom: 1px solid #000;
+  border-radius: 1rem;
+  display: -ms-grid;
+  display: grid;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+  -ms-grid-columns: 0.03fr 1fr 0.3fr;
+      grid-template-columns: 0.03fr 1fr 0.3fr;
+  margin: 0 1rem 0.5rem 1rem;
+  padding: 0.2rem 1rem;
+  text-align: left;
+}
+
+.table .table-data div {
+  text-align: right;
+}
+
+.table .table-data div button {
+  background-color: transparent;
+  border: none;
+  margin-left: 0.5rem;
+}
+
+.table .table-data div button:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.table .table-data:hover {
+  background-color: #3c6e71;
+  color: #ffffff;
 }
 /*# sourceMappingURL=main.css.map */
