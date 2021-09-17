@@ -1,0 +1,83 @@
+.table {
+  height: 30px;
+  list-style: none;
+  overflow: hidden;
+  .table-header {
+    align-items: center;
+    background-color: $color2;
+    border-bottom: 1px solid #000;
+    border-radius: 1rem;
+    color: $color3;
+    display: flex;
+    font-family: "Mulish", sans-serif;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 1rem;
+    .inputs {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      text-align: right;
+      .inputs-hide {
+        height: 0;
+        overflow: hidden;
+        width: 0;
+        input {
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid $color3;
+          color: $color3;
+          font-family: "Josefin Sans", sans-serif;
+          font-weight: 300;
+          outline: none;
+        }
+        input::placeholder {
+          color: $color3;
+          font-family: "Josefin Sans", sans-serif;
+          font-weight: 300;
+        }
+        .fa-search {
+          font-size: 0.7rem;
+        }
+        .fa-plus-square {
+          margin-left: 1rem;
+        }
+      }
+      .fa-angle-down {
+        margin-left: 2rem;
+      }
+      .fas:hover {
+        color: #000;
+        cursor: pointer;
+      }
+    }
+  }
+  .table-data {
+    background-color: $color4;
+    border-bottom: 1px solid #000;
+    border-radius: 1rem;
+    display: grid;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 300;
+    grid-template-columns: 0.03fr 1fr 0.3fr;
+    margin: 0 1rem 0.5rem 1rem;
+    padding: 0.2rem 1rem;
+    text-align: left;
+    div {
+      text-align: right;
+      button {
+        background-color: transparent;
+        border: none;
+        margin-left: 0.5rem;
+      }
+      button:hover {
+        color: $color3;
+        cursor: pointer;
+      }
+    }
+  }
+  .table-data:hover {
+    background-color: $color2;
+    color: $color3;
+  }
+}

@@ -15,20 +15,8 @@ const dom = {
     "<ul id='regions' class='data-container'></ul>" +
     "<div class='limiter'><span>Países</span><span><i expand='countries' class='fas fa-angle-down'></i></span></div>" +
     "<ul id='countries' class='data-container'></ul>" +
-    "<div class='limiter'><span>Ciudades</span><span><i expand='areas' class='fas fa-angle-down'></i></span></div>" +
-    "<ul id='areas' class='data-container'></ul>",
-  area: (area) => {
-    return `
-    <li area-id="${area.city_id}">
-    <span>${area.city_name}</span>
-    <span>${area.country_name}</span>
-    <span>${area.region_name}</span>
-    <div>
-    <button><i class="fas fa-pencil-alt"></i></button>
-    <button><i class="fas fa-trash-alt"></i></button>
-    </div>
-    </li>`;
-  },
+    "<div class='limiter'><span>Ciudades</span><span><i expand='cities' class='fas fa-angle-down'></i></span></div>" +
+    "<ul id='cities' class='data-container'></ul>",
   pop: "<div id='pop'><div id='pop-container'></div></div>",
   response: "<span id='response'></span>",
   areaPost: (option) => {
@@ -51,6 +39,33 @@ const dom = {
   },
   successIcon: "<i class='fas fa-check-circle'></i>",
   errorIcon: "<i class='fas fa-exclamation-circle'></i>",
+  table: (id, header) => {
+    return `
+    <ul id='${id}' class='table'>
+      <li class='table-header'>
+        <span>${header}</span>
+        <div class='inputs'>
+          <div class='inputs-hide'>
+            <i class='fas fa-search'></i>
+            <input type='text' placeholder='Buscar...'>
+            <i class='fas fa-plus-square'></i>
+          </div>
+          <i expand='cities' class='fas fa-angle-down'></i>
+        </div>
+      </li>
+    </ul>`;
+  },
+  tableData: (data) => {
+    return `
+    <li class='table-data'>
+    <span>${data.id}</span>
+    <span>${data.name}</span>
+    <div>
+    <button><i class="fas fa-pencil-alt"></i></button>
+        <button><i class="fas fa-trash-alt"></i></button>
+      </div>
+    </li>`;
+  },
 };
 
 export { dom };

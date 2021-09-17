@@ -40,6 +40,15 @@ $color5: #284b63;
     transform: scale(1.1);
   }
 }
+@keyframes rotate {
+  0% {
+    transform: rotate (0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
 #section-main {
   padding: 0 1rem;
   .control-panel {
@@ -172,10 +181,10 @@ $color5: #284b63;
   }
 }
 .response-success {
-  background-color: #00ff0066; //ver este colores, tal vez algo mas pastel?
+  background-color: #00ff0066; //ver este color, tal vez algo mas pastel?
 }
 .response-error {
-  background-color: #ff000066; //ver este colores, tal vez algo mas pastel?
+  background-color: #ff000066; //ver este color, tal vez algo mas pastel?
 }
 .limiter {
   align-items: center;
@@ -194,7 +203,12 @@ $color5: #284b63;
   }
 }
 .vertical-expand {
-  height: 0;
+  height: auto !important;
 }
-
-@import "./login", "./nav";
+.horizontal-expand {
+  width: auto !important;
+}
+#section-main {
+  margin: 0.5rem 0;
+}
+@import "./login", "./nav", "./tables";

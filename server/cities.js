@@ -32,7 +32,7 @@ const cities = {
   },
   findAll: async () => {
     const sql =
-      "SELECT cities.id AS city_id, cities.name AS city_name, countries.name AS country_name, regions.name AS region_name FROM cities " +
+      "SELECT cities.id AS id, cities.name AS name, countries.name AS country_name, regions.name AS region_name FROM cities " +
       "INNER JOIN countries ON countries.id = cities.country_id " +
       "INNER JOIN regions ON regions.id = countries.region_id;";
     return await sequelize.query(sql, {
