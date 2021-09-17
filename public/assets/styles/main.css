@@ -7,28 +7,6 @@
   padding: 0;
 }
 
-@-webkit-keyframes hover {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
-  }
-}
-
-@keyframes hover {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
-  }
-}
-
 #section-main {
   margin: 0.5rem 0;
   padding: 0 1rem;
@@ -149,8 +127,10 @@ nav #home:hover {
 }
 
 nav li:hover {
-  -webkit-animation: hover 0.1s linear forwards;
-          animation: hover 0.1s linear forwards;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
   cursor: pointer;
 }
 

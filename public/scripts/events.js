@@ -60,16 +60,18 @@ const events = {
   },
   deleteBtns: () => {
     document.querySelectorAll(".fa-trash-alt").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (element) => {
         functions.pop(dom.confirm);
+        sessionStorage.setItem("del", element.target.parentElement.parentElement.children[1].textContent);
         events.confirmNo();
-        events.confirmYes(); //hacer un async-await?
+        events.confirmYes();
       });
     });
   },
   confirmYes: () => {
-    document.getElementById("confirm-yes-btn").addEventListener("click", async () => {
-      const body = { name: "orto" };
+    document.getElementById("confirm-yes-btn").addEventListener("click", async (element) => {
+      console.log(element.target.parentElement);
+      const body = { name: sessionStorage.getItem("del") };
       const data = await functions.fetch("http://localhost:3000/regions/delete", "DELETE", body);
       functions.response(data);
     });
