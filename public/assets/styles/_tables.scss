@@ -65,12 +65,10 @@
     text-align: left;
     div {
       text-align: right;
-      button {
-        background-color: transparent;
-        border: none;
+      .fas {
         margin-left: 0.5rem;
       }
-      button:hover {
+      .fas:hover {
         color: $color3;
         cursor: pointer;
       }
@@ -79,5 +77,8 @@
   .table-data:hover {
     background-color: $color2;
     color: $color3;
+    .fas {
+      color: #000;
+    }
   }
 }

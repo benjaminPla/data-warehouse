@@ -11,26 +11,6 @@ $color2: #3c6e71;
 $color3: #ffffff;
 $color4: #d9d9d9;
 $color5: #284b63;
-// $color1: #bee9e8;
-// $color2: #62b6cb;
-// $color3: #1b4965;
-// $color4: #cae9ff;
-// $color5: #5fa8d3;
-// $color1: #6b9080;
-// $color2: #a4c3b2;
-// $color3: #cce3de;
-// $color4: #eaf4f4;
-// $color5: #f6fff8;
-// $color1: #edafb8;
-// $color2: #f7e1d7;
-// $color3: #dedbd2;
-// $color4: #b0c4b1;
-// $color5: #4a5759;
-// $color1: #c9e4ca;
-// $color2: #87bba2;
-// $color3: #55828b;
-// $color4: #3b6064;
-// $color5: #364958;
 
 @keyframes hover {
   0% {
@@ -40,167 +20,10 @@ $color5: #284b63;
     transform: scale(1.1);
   }
 }
-@keyframes rotate {
-  0% {
-    transform: rotate (0deg);
-  }
-  100% {
-    transform: rotate(90deg);
-  }
-}
 
 #section-main {
+  margin: 0.5rem 0;
   padding: 0 1rem;
-  .control-panel {
-    background-color: $color5;
-    border-bottom: 1px solid #000;
-    border-radius: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0.5rem;
-    padding: 1rem;
-    div {
-      display: flex;
-      input {
-        border-radius: 2rem;
-        border: none;
-        height: 25px;
-        outline: none;
-        padding: 0 1rem;
-        width: 250px;
-      }
-      button {
-        font-size: 1.5rem;
-        color: $color3;
-        border: none;
-        background-color: transparent;
-        margin-left: 1rem;
-      }
-      button:hover {
-        cursor: pointer;
-        color: $color4;
-      }
-    }
-  }
-  .data-container {
-    font-family: "Josefin Sans", sans-serif;
-    font-weight: 300;
-    overflow: hidden;
-    padding: 0 1rem;
-    li {
-      background-color: $color4;
-      border-bottom: 1px solid #000;
-      border-radius: 1rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr) 0.3fr;
-      list-style: none;
-      margin-bottom: 0.5rem;
-      padding: 0.1rem 1rem;
-      div {
-        text-align: right;
-      }
-      button {
-        border: none;
-        background-color: transparent;
-        margin-left: 1rem;
-      }
-      button:hover {
-        cursor: pointer;
-        color: $color3;
-      }
-    }
-    li:hover {
-      background-color: $color5;
-      color: $color3;
-    }
-  }
-}
-#pop {
-  align-items: center;
-  background-color: rgba($color: $color2, $alpha: 0.6);
-  display: flex;
-  font-family: "Mulish", sans-serif;
-  height: 100vh;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  #pop-container {
-    background-color: $color4;
-    border-bottom: 1px solid #000;
-    border-radius: 2rem;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    text-align: center;
-    h2 {
-      margin-bottom: 0.5rem;
-    }
-    input,
-    select {
-      border-radius: 2rem;
-      border: none;
-      height: 30px;
-      margin-bottom: 0.5rem;
-      outline: none;
-      padding: 0 1rem;
-      width: 100%;
-    }
-    select {
-      appearance: none;
-      cursor: pointer;
-    }
-    button {
-      background-color: $color2;
-      border-radius: 1rem;
-      border: none;
-      color: $color3;
-      font-family: "Mulish", sans-serif;
-      justify-self: right;
-      padding: 0.5rem 1rem;
-    }
-    button:hover {
-      cursor: pointer;
-      background-color: $color5;
-    }
-  }
-}
-#response-container {
-  margin-top: 0.5rem;
-  text-align: center;
-}
-#response {
-  border-radius: 1rem;
-  font-family: "Josefin Sans", sans-serif;
-  padding: 0.5rem 1rem;
-  text-align: center;
-  .fas {
-    margin-right: 0.5rem;
-  }
-}
-.response-success {
-  background-color: #00ff0066; //ver este color, tal vez algo mas pastel?
-}
-.response-error {
-  background-color: #ff000066; //ver este color, tal vez algo mas pastel?
-}
-.limiter {
-  align-items: center;
-  background-color: $color2;
-  border-bottom: 1px solid #000;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0.5rem 0.5rem 0.5rem;
-  padding: 0.1rem 1rem;
-  font-family: "Mulish", sans-serif;
-  color: $color3;
-  .fas:hover {
-    cursor: pointer;
-    color: $color1;
-  }
 }
 .vertical-expand {
   height: auto !important;
@@ -208,7 +31,5 @@ $color5: #284b63;
 .horizontal-expand {
   width: auto !important;
 }
-#section-main {
-  margin: 0.5rem 0;
-}
-@import "./login", "./nav", "./tables";
+
+@import "./login", "./nav", "./tables", "./pop", "./response";

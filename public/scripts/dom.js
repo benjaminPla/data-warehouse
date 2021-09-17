@@ -19,12 +19,11 @@ const dom = {
     "<ul id='cities' class='data-container'></ul>",
   pop: "<div id='pop'><div id='pop-container'></div></div>",
   response: "<span id='response'></span>",
-  areaPost: (option) => {
+  regionPost: () => {
     return `
-    <h2>Crear una nueva ciudad</h2>
-    <input id='area_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />
-    <select id='cities-select'>${option}</select>
-    <button id='area_save-post-btn'>Guardar</button>
+    <h2>Crear una nueva región</h2>
+    <input id='region_name-post-input' type='text' placeholder='Ingrese el nombre de la región' autocomplete='off' />
+    <button id='region_save-post-btn'>Guardar</button>
     <div id='response-container'></div>`;
   },
   areaPut: (cityName) => {
@@ -39,16 +38,16 @@ const dom = {
   },
   successIcon: "<i class='fas fa-check-circle'></i>",
   errorIcon: "<i class='fas fa-exclamation-circle'></i>",
-  table: (id, header) => {
+  table: (tableId, header, btnPostId) => {
     return `
-    <ul id='${id}' class='table'>
+    <ul id='${tableId}' class='table'>
       <li class='table-header'>
         <span>${header}</span>
         <div class='inputs'>
           <div class='inputs-hide'>
             <i class='fas fa-search'></i>
             <input type='text' placeholder='Buscar...'>
-            <i class='fas fa-plus-square'></i>
+            <i id='${btnPostId}' class='fas fa-plus-square'></i>
           </div>
           <i expand='cities' class='fas fa-angle-down'></i>
         </div>
@@ -58,14 +57,20 @@ const dom = {
   tableData: (data) => {
     return `
     <li class='table-data'>
-    <span>${data.id}</span>
-    <span>${data.name}</span>
-    <div>
-    <button><i class="fas fa-pencil-alt"></i></button>
-        <button><i class="fas fa-trash-alt"></i></button>
+      <span>${data.id}</span>
+      <span>${data.name}</span>
+      <div>
+        <i class="fas fa-pencil-alt"></i>
+        <i class="fas fa-trash-alt"></i>
       </div>
     </li>`;
   },
+  confirm:
+    "<h2>¿Desea continuar?</h2>" +
+    "<div>" +
+    "<button id='confirm-yes-btn'>CONTINUAR</button>" +
+    "<button id='confirm-no-btn'>CANCELAR</button>" +
+    "</div>",
 };
 
 export { dom };
