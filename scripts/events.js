@@ -13,60 +13,44 @@ const events = {
   },
   loginBtn: () => {
     document.getElementById("login-btn").addEventListener("click", async () => {
-      functions.clearNode("response-container");
-      functions.fillNode("response-container", dom.response);
       const body = {
         user_name: document.getElementById("user-name").value,
         password: document.getElementById("password").value,
       };
-      const login = await functions.fetch("http://localhost:3000/users/login", "POST", body);
-      if (login.success) {
-        document.getElementById("response").classList.add("response-success");
-        functions.fillNode("response", login.body);
-        setInterval(() => {
-          location.href = "http://127.0.0.1:5500/public/home.html";
-        }),
-          500;
-      } else {
-        document.getElementById("response").classList.add("response-error");
-        functions.fillNode("response", login.body);
-      }
+      const data = await functions.fetch("http://localhost:3000/users/login", "POST", body);
+      functions.response(data, "http://127.0.0.1:5500/public/home.html");
     });
   },
   areasBtn: () => {
     document.getElementById("areas-btn").addEventListener("click", async () => {
       functions.clearNode("section-main");
-      functions.fillNode("section-main", dom.table("regions-table", "Regiones"));
+      functions.fillNode("section-main", dom.table("regions-table", "Regiones", "regions_post-btn"));
       const regions = await functions.fetch("http://localhost:3000/regions/findAll", "GET");
       regions.body.forEach((region) => {
         functions.fillNode("regions-table", dom.tableData(region));
       });
-      functions.fillNode("section-main", dom.table("countries-table", "Países"));
+      functions.fillNode("section-main", dom.table("countries-table", "Países", "countries_post-btn"));
       const countries = await functions.fetch("http://localhost:3000/countries/findAll", "GET");
       countries.body.forEach((country) => {
         functions.fillNode("countries-table", dom.tableData(country));
       });
-      functions.fillNode("section-main", dom.table("cities-table", "Ciudades"));
+      functions.fillNode("section-main", dom.table("cities-table", "Ciudades", "cities_post-btn"));
       const cities = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
       cities.body.forEach((city) => {
         functions.fillNode("cities-table", dom.tableData(city));
       });
       events.expandBtn();
-      // // events.postAreaBtn();
-      // events.areaDeleteBtn();
+      events.regionsPostBtn();
+      events.deleteBtns();
       // events.areaPutBtn();
     });
   },
-  postAreaBtn: () => {
-    document.getElementById("post_area-btn").addEventListener("click", async () => {
+  regionsPostBtn: () => {
+    document.getElementById("regions_post-btn").addEventListener("click", () => {
       functions.fillNode("section-main", dom.pop);
       events.closePop();
-      functions.fillNode("pop-container", dom.areaPost());
-      const country = await functions.fetch("http://localhost:3000/countries/findAll", "GET");
-      country.body.forEach((country) => {
-        functions.fillNode("cities-select", dom.option(country));
-      });
-      events.areaPostSaveBtn();
+      functions.fillNode("pop-container", dom.regionPost());
+      events.regionPostSaveBtn();
     });
   },
   closePop: () => {
@@ -74,29 +58,39 @@ const events = {
       if (element.target.id === "pop") document.getElementById("pop").remove();
     });
   },
-  areaPostSaveBtn: () => {
-    document.getElementById("area_save-post-btn").addEventListener("click", async () => {
+  regionPostSaveBtn: () => {
+    document.getElementById("region_save-post-btn").addEventListener("click", async () => {
       const body = {
-        name: document.getElementById("area_name-post-input").value,
-        countryId: document.getElementById("cities-select").value,
+        name: document.getElementById("region_name-post-input").value,
       };
-      const data = await functions.fetch("http://localhost:3000/cities/post", "POST", body);
+      const data = await functions.fetch("http://localhost:3000/regions/post", "POST", body);
       functions.clearNode("response-container");
       functions.fillNode("response-container", dom.response);
       functions.response(data);
     });
   },
-  areaDeleteBtn: () => {
+  deleteBtns: () => {
     document.querySelectorAll(".fa-trash-alt").forEach((btn) => {
       btn.addEventListener("click", async () => {
         functions.fillNode("section-main", dom.pop);
         events.closePop();
         functions.clearNode("pop-container");
-        functions.fillNode("pop-container", dom.response);
-        const body = { name: btn.parentElement.parentElement.parentElement.childNodes[1].textContent };
-        let data = await functions.fetch("http://localhost:3000/cities/delete", "DELETE", body);
-        functions.response(data);
+        functions.fillNode("pop-container", dom.confirm);
+        events.confirmNo();
+        events.confirmYes();
       });
+    });
+  },
+  confirmYes: () => {
+    document.getElementById("confirm-yes-btn").addEventListener("click", async () => {
+      const body = { name: "orto" };
+      const data = await functions.fetch("http://localhost:3000/regions/delete", "DELETE", body);
+      functions.response(data);
+    });
+  },
+  confirmNo: () => {
+    document.getElementById("confirm-no-btn").addEventListener("click", () => {
+      document.getElementById("pop").remove();
     });
   },
   areaPutBtn: () => {

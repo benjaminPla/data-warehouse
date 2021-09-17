@@ -12,18 +12,18 @@ const functions = {
       .then((res) => res.json())
       .catch((err) => console.log(err));
   },
-  response: (data) => {
+  response: (data, redirect) => {
+    document.getElementById("response") ? functions.clearNode("response") : functions.fillNode("response-container", dom.response);
     if (data.success) {
       document.getElementById("response").classList.remove("response-error");
-      document.getElementById("response").classList.add("response-success");
       functions.fillNode("response", dom.successIcon);
       functions.fillNode("response", data.body);
       setTimeout(() => {
-        document.getElementById("pop").remove();
-        document.getElementById("areas-btn").click();
-      }, 1000);
+        if (document.getElementById("pop")) document.getElementById("pop").remove();
+        if (document.getElementById("areas-btn")) document.getElementById("areas-btn").click();
+        if (redirect) location.href = redirect;
+      }, 700);
     } else {
-      document.getElementById("response").classList.remove("response-success");
       document.getElementById("response").classList.add("response-error");
       functions.fillNode("response", dom.errorIcon);
       functions.fillNode("response", data.body);
