@@ -30,7 +30,8 @@ nav {
     color: #000;
   }
   li:hover {
-    animation: hover 0.1s linear forwards;
+    transform: scale(1.1);
+    transition: 0.1s;
     cursor: pointer;
   }
 }
