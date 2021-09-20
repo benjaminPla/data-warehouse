@@ -27,7 +27,8 @@ const functions = {
       functions.fillNode("response", data.body);
       setTimeout(() => {
         if (document.getElementById("pop")) document.getElementById("pop").remove();
-        if (document.getElementById("areas-btn")) document.getElementById("areas-btn").click();
+        if (document.getElementById("regions-table")) document.getElementById("areas-btn").click();
+        if (document.getElementById("users-table")) document.getElementById("users-btn").click();
         if (redirect) location.href = redirect;
       }, 700);
     } else {

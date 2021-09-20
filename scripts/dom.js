@@ -65,6 +65,20 @@ const dom = {
       </li>
     </ul>`;
   },
+  tableDataUsers: (data, gridStyle) => {
+    return `
+    <li class='table-data'>
+      <div class='${gridStyle}'>
+        <span>${data.id}</span>
+        <span>${data.name}</span>
+        <span>rank: ${data.rank}</span>
+      </div>
+      <div>
+        <i id="edit-users-${data.name}" class="fas fa-pencil-alt"></i>
+        <i id="del-users-${data.name}" class="fas fa-trash-alt"></i>
+      </div>
+    </li>`;
+  },
   tableDataRegion: (data, gridStyle) => {
     return `
     <li class='table-data'>

@@ -2,6 +2,18 @@ import { functions } from "./functions.js";
 import { dom } from "./dom.js";
 
 const events = {
+  usersBtn: () => {
+    document.getElementById("users-btn").addEventListener("click", async () => {
+      functions.clearNode("section-main");
+      functions.fillNode("section-main", dom.table("users-table", "users", "users_post-btn"));
+      const data = await functions.fetch("http://localhost:3000/users/findAll", "GET");
+      data.body.forEach((user) => {
+        functions.fillNode("users-table", dom.tableDataUsers(user, "table-data-x3"));
+      });
+      events.expandBtn();
+      events.deleteBtns();
+    });
+  },
   onEnter: (buttonId) => {
     window.addEventListener("keyup", (key) => {
       if (key.key == "Enter") document.getElementById(buttonId).click();
