@@ -11,8 +11,12 @@ const usersMiddlewares = {
     response.body = "missing password";
     !req.body.password ? res.send(response) : next();
   },
-  notFound: async (req, res, next) => {
+  userNameDoNotFound: async (req, res, next) => {
     response.body = "user not found";
+    (await users.findByName(req.body)) == "" ? res.send(response) : next();
+  },
+  dataDoNotMatch: async (req, res, next) => {
+    response.body = "data do not match";
     (await users.login(req.body)) == "" ? res.send(response) : next();
   },
 };

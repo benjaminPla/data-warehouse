@@ -31,6 +31,12 @@ const users = {
       type: "SELECT",
     });
   },
+  findByName: async (data) => {
+    return await sequelize.query("SELECT * FROM users WHERE user_name = ?;", {
+      replacements: [data.user_name],
+      type: "SELECT",
+    });
+  },
   login: async (data) => {
     return await sequelize.query("SELECT * FROM users WHERE user_name = ? AND password = ?;", {
       replacements: [data.user_name, encripter(data.password)],

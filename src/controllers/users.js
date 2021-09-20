@@ -8,6 +8,10 @@ const usersControllers = {
     response.body = await users.findAll();
     res.send(response);
   },
+  findByName: async (req, res) => {
+    response.body = await users.findByName(req.body);
+    res.send(response);
+  },
   login: async (req, res) => {
     response.body = `welcome ${req.body.user_name}`;
     res.send(response);

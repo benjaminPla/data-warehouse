@@ -5,11 +5,12 @@ import { usersMiddlewares } from "../middlewares/users.js";
 const usersRoutes = express.Router();
 
 usersRoutes.get("/users/findAll", usersControllers.findAll);
+usersRoutes.get("/users/findByName", usersMiddlewares.missingUserName, usersMiddlewares.userNameDoNotFound, usersControllers.findByName);
 usersRoutes.post(
   "/users/login",
   usersMiddlewares.missingUserName,
   usersMiddlewares.missingPassword,
-  usersMiddlewares.notFound,
+  usersMiddlewares.dataDoNotMatch,
   usersControllers.login
 );
 
