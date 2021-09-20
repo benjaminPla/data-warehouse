@@ -9,6 +9,7 @@ const countriesMiddlewares = {
     (await countries.findByName(req.body.name)) == "" ? res.send(response) : next();
   },
   nameAlreadyExists: async (req, res, next) => {
+    response.body = "country already exist";
     (await countries.findByName(req.body.name)) == "" ? next() : res.send(response);
   },
   missingName: (req, res, next) => {
