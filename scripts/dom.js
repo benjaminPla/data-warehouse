@@ -32,24 +32,32 @@ const dom = {
     <select id="city_post-select"><option selected disabled>Seleccionar</option></select>
     <button id="city_save-post-btn">Guardar</button>
     <div id='response-container'></div>`,
-  putRegion: (regionName) => {
+  putUser: (name) => {
     return `
-  <h2>Edita ${regionName}</h2>
+  <h2>Edita ${name}</h2>
+  <input id='user-new_name-put-input' type='text' placeholder='Ingrese el nuevo nombre del usuario' autocomplete='off' />
+  <input id='user-new_password-put-input' type='password' placeholder='Ingrese la nueva contraseña' autocomplete='off' />
+  <button id="user_save-put-btn">Guardar</button>
+  <div id='response-container'></div>`;
+  },
+  putRegion: (name) => {
+    return `
+  <h2>Edita ${name}</h2>
   <input id='region-new_name-put-input' type='text' placeholder='Ingrese el nuevo nombre de la región' autocomplete='off' />
   <button id="region_save-put-btn">Guardar</button>
   <div id='response-container'></div>`;
   },
-  putCountry: (countryName) => {
+  putCountry: (name) => {
     return `
-  <h2>Edita ${countryName}</h2>
+  <h2>Edita ${name}</h2>
   <input id='country-new_name-put-input' type='text' placeholder='Ingrese el nuevo nombre del país' autocomplete='off' />
   <select id="country_put-select"><option selected disabled>Seleccionar</option></select>
   <button id="country_save-put-btn">Guardar</button>
   <div id='response-container'></div>`;
   },
-  putCity: (cityName) => {
+  putCity: (name) => {
     return `
-  <h2>Edita ${cityName}</h2>
+  <h2>Edita ${name}</h2>
   <input id='city-new_name-put-input' type='text' placeholder='Ingrese el nuevo nombre de la ciudad' autocomplete='off' />
   <select id="city_put-select"><option selected disabled>Seleccionar</option></select>
   <button id="city_save-put-btn">Guardar</button>
