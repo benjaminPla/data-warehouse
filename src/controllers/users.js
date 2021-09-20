@@ -12,6 +12,11 @@ const usersControllers = {
     response.body = await users.findByName(req.body);
     res.send(response);
   },
+  post: (req, res) => {
+    response.body = `posted ${req.body.name}`;
+    users.post(req.body);
+    res.send(response);
+  },
   delete: (req, res) => {
     response.body = `deleted ${req.body.name}`;
     users.delete(req.body);

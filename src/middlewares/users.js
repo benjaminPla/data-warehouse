@@ -11,6 +11,10 @@ const usersMiddlewares = {
     response.body = "missing password";
     !req.body.password ? res.send(response) : next();
   },
+  userAlreadyExists: async (req, res, next) => {
+    response.body = "user already exists";
+    (await users.findByName(req.body)) == "" ? next() : res.send(response);
+  },
   nameDoNotFound: async (req, res, next) => {
     response.body = "user not found";
     (await users.findByName(req.body)) == "" ? res.send(response) : next();

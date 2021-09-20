@@ -34,6 +34,11 @@ const users = {
       type: "SELECT",
     });
   },
+  post: async (data) => {
+    await sequelize.query("INSERT INTO users (name, password, rank) VALUES (?, ?, 2);", {
+      replacements: [data.name, encripter(data.password)],
+    });
+  },
   delete: async (data) => {
     await sequelize.query("DELETE FROM users WHERE name = ?;", {
       replacements: [data.name],
