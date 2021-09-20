@@ -30,7 +30,7 @@ const users = {
   },
   findByName: async (data) => {
     return await sequelize.query("SELECT * FROM users WHERE name = ?;", {
-      replacements: [data.name],
+      replacements: [data],
       type: "SELECT",
     });
   },
@@ -42,6 +42,11 @@ const users = {
   delete: async (data) => {
     await sequelize.query("DELETE FROM users WHERE name = ?;", {
       replacements: [data.name],
+    });
+  },
+  put: async (data) => {
+    await sequelize.query("UPDATE users SET name = ?, password = ? WHERE name = ?;", {
+      replacements: [data.newName, encripter(data.password), data.name],
     });
   },
   login: async (data) => {

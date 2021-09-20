@@ -12,6 +12,7 @@ const events = {
       });
       events.expandBtn();
       events.userPostBtn();
+      events.putBtns();
       events.deleteBtns();
     });
   },
@@ -159,7 +160,22 @@ const events = {
           });
           events.cityPutSaveBtn(btn.id.split("-")[2]);
         }
+        if (btn.id.split("-")[1] === "users") {
+          functions.pop(dom.putUser(btn.id.split("-")[2]));
+          events.userPutSaveBtn(btn.id.split("-")[2]);
+        }
       });
+    });
+  },
+  userPutSaveBtn: (userName) => {
+    document.getElementById("user_save-put-btn").addEventListener("click", async () => {
+      const body = {
+        name: userName,
+        newName: document.getElementById("user-new_name-put-input").value,
+        password: document.getElementById("user-new_password-put-input").value,
+      };
+      const data = await functions.fetch("http://localhost:3000/users/put", "PUT", body);
+      functions.response(data);
     });
   },
   regionPutSaveBtn: (regionName) => {

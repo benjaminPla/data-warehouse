@@ -14,6 +14,14 @@ usersRoutes.post(
   usersControllers.post
 );
 usersRoutes.delete("/users/delete", usersMiddlewares.missingName, usersMiddlewares.nameDoNotFound, usersControllers.delete);
+usersRoutes.put(
+  "/users/put",
+  usersMiddlewares.missingName,
+  usersMiddlewares.missingNewName,
+  usersMiddlewares.missingPassword,
+  usersMiddlewares.newNameAlreadyExist,
+  usersControllers.put
+);
 usersRoutes.post(
   "/users/login",
   usersMiddlewares.missingName,

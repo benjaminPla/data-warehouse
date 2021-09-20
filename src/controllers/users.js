@@ -22,6 +22,11 @@ const usersControllers = {
     users.delete(req.body);
     res.send(response);
   },
+  put: (req, res) => {
+    response.body = `updated ${req.body.name} to ${req.body.newName}`;
+    users.put(req.body);
+    res.send(response);
+  },
   login: (req, res) => {
     response.body = `welcome ${req.body.name}`;
     res.send(response);
