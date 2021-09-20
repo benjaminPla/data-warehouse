@@ -12,6 +12,10 @@ const citiesMiddlewares = {
     response.body = "city already exists";
     (await cities.findByName(req.body.name)) == "" ? next() : res.send(response);
   },
+  newNameAlreadyExists: async (req, res, next) => {
+    response.body = "another city already exist with that name";
+    (await cities.findByName(req.body.newName)) == "" ? next() : res.send(response);
+  },
   missingName: (req, res, next) => {
     response.body = "missing name";
     !req.body.name ? res.send(response) : next();

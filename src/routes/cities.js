@@ -5,12 +5,7 @@ import { citiesMiddlewares } from "../middlewares/cities.js";
 const citiesRoutes = express.Router();
 
 citiesRoutes.get("/cities/findAll", citiesControllers.findAll);
-citiesRoutes.get(
-  "/cities/findByName",
-  citiesMiddlewares.missingName,
-  citiesMiddlewares.cityNotFound,
-  citiesControllers.findByName
-);
+citiesRoutes.get("/cities/findByName", citiesMiddlewares.missingName, citiesMiddlewares.cityNotFound, citiesControllers.findByName);
 citiesRoutes.post(
   "/cities/post",
   citiesMiddlewares.missingName,
@@ -19,16 +14,12 @@ citiesRoutes.post(
   citiesMiddlewares.countryNotFound,
   citiesControllers.post
 );
-citiesRoutes.delete(
-  "/cities/delete",
-  citiesMiddlewares.missingName,
-  citiesMiddlewares.cityNotFound,
-  citiesControllers.delete
-);
+citiesRoutes.delete("/cities/delete", citiesMiddlewares.missingName, citiesMiddlewares.cityNotFound, citiesControllers.delete);
 citiesRoutes.put(
   "/cities/put",
   citiesMiddlewares.missingName,
   citiesMiddlewares.missingNewName,
+  citiesMiddlewares.newNameAlreadyExists,
   citiesMiddlewares.missingCountryId,
   citiesMiddlewares.countryNotFound,
   citiesMiddlewares.cityNotFound,

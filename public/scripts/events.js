@@ -47,6 +47,7 @@ const events = {
       events.regionsPostBtn();
       events.countriesPostBtn();
       events.citiesPostBtn();
+      events.putBtns();
       events.deleteBtns();
     });
   },
@@ -105,13 +106,64 @@ const events = {
       functions.response(data);
     });
   },
-  // editBtns: () => {
-  //   document.querySelectorAll(".fa-pencil-alt").forEach((btn) => {
-  //     btn.addEventListener("click", () => {
-  //       functions.pop(dom.)
-  //     });
-  //   });
-  // },
+  putBtns: () => {
+    document.querySelectorAll(".fa-pencil-alt").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        if (btn.id.split("-")[1] === "regions") {
+          functions.pop(dom.putRegion(btn.id.split("-")[2]));
+          events.regionPutSaveBtn(btn.id.split("-")[2]);
+        }
+        if (btn.id.split("-")[1] === "countries") {
+          functions.pop(dom.putCountry(btn.id.split("-")[2]));
+          const data = await functions.fetch("http://localhost:3000/regions/findAll", "GET");
+          data.body.forEach((region) => {
+            functions.fillNode("country_put-select", dom.option(region));
+          });
+          events.countryPutSaveBtn(btn.id.split("-")[2]);
+        }
+        if (btn.id.split("-")[1] === "cities") {
+          functions.pop(dom.putCity(btn.id.split("-")[2]));
+          const data = await functions.fetch("http://localhost:3000/countries/findAll", "GET");
+          data.body.forEach((country) => {
+            functions.fillNode("city_put-select", dom.option(country));
+          });
+          events.cityPutSaveBtn(btn.id.split("-")[2]);
+        }
+      });
+    });
+  },
+  regionPutSaveBtn: (regionName) => {
+    document.getElementById("region_save-put-btn").addEventListener("click", async () => {
+      const body = {
+        name: regionName,
+        newName: document.getElementById("region-new_name-put-input").value,
+      };
+      const data = await functions.fetch("http://localhost:3000/regions/put", "PUT", body);
+      functions.response(data);
+    });
+  },
+  countryPutSaveBtn: (countryName) => {
+    document.getElementById("country_save-put-btn").addEventListener("click", async () => {
+      const body = {
+        name: countryName,
+        newName: document.getElementById("country-new_name-put-input").value,
+        regionId: document.getElementById("country_put-select").value,
+      };
+      const data = await functions.fetch("http://localhost:3000/countries/put", "PUT", body);
+      functions.response(data);
+    });
+  },
+  cityPutSaveBtn: (cityName) => {
+    document.getElementById("city_save-put-btn").addEventListener("click", async () => {
+      const body = {
+        name: cityName,
+        newName: document.getElementById("city-new_name-put-input").value,
+        countryId: document.getElementById("city_put-select").value,
+      };
+      const data = await functions.fetch("http://localhost:3000/cities/put", "PUT", body);
+      functions.response(data);
+    });
+  },
   deleteBtns: () => {
     document.querySelectorAll(".fa-trash-alt").forEach((btn) => {
       btn.addEventListener("click", () => {

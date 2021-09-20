@@ -4,6 +4,11 @@ const dom = {
     <div id='pop-container'></div>
   </div>`,
   response: "<span id='response'></span>",
+  successIcon: "<i class='fas fa-check-circle'></i>",
+  errorIcon: "<i class='fas fa-exclamation-circle'></i>",
+  option: (data) => {
+    return `<option value="${data.id}">${data.name}</option>`;
+  },
   regionPost: `
     <h2>Crear una nueva región</h2>
     <input id='region_name-post-input' type='text' placeholder='Ingrese el nombre de la región' autocomplete='off' />
@@ -21,11 +26,29 @@ const dom = {
     <select id="city_post-select"><option selected disabled>Seleccionar</option></select>
     <button id="city_save-post-btn">Guardar</button>
     <div id='response-container'></div>`,
-  option: (data) => {
-    return `<option value="${data.id}">${data.name}</option>`;
+  putRegion: (regionName) => {
+    return `
+  <h2>Edita ${regionName}</h2>
+  <input id='region-new_name-put-input' type='text' placeholder='Ingrese el nuevo nombre de la región' autocomplete='off' />
+  <button id="region_save-put-btn">Guardar</button>
+  <div id='response-container'></div>`;
   },
-  successIcon: "<i class='fas fa-check-circle'></i>",
-  errorIcon: "<i class='fas fa-exclamation-circle'></i>",
+  putCountry: (countryName) => {
+    return `
+  <h2>Edita ${countryName}</h2>
+  <input id='country-new_name-put-input' type='text' placeholder='Ingrese el nuevo nombre del país' autocomplete='off' />
+  <select id="country_put-select"><option selected disabled>Seleccionar</option></select>
+  <button id="country_save-put-btn">Guardar</button>
+  <div id='response-container'></div>`;
+  },
+  putCity: (cityName) => {
+    return `
+  <h2>Edita ${cityName}</h2>
+  <input id='city-new_name-put-input' type='text' placeholder='Ingrese el nuevo nombre de la ciudad' autocomplete='off' />
+  <select id="city_put-select"><option selected disabled>Seleccionar</option></select>
+  <button id="city_save-put-btn">Guardar</button>
+  <div id='response-container'></div>`;
+  },
   table: (tableId, header, btnPostId) => {
     return `
     <ul id='${tableId}' class='table'>
@@ -50,7 +73,7 @@ const dom = {
         <span>${data.name}</span>
       </div>
       <div>
-        <i class="fas fa-pencil-alt"></i>
+        <i id="edit-regions-${data.name}" class="fas fa-pencil-alt"></i>
         <i id="del-regions-${data.name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
@@ -64,7 +87,7 @@ const dom = {
         <span>${data.region_name}</span>
       </div>
       <div>
-        <i class="fas fa-pencil-alt"></i>
+        <i id="edit-countries-${data.name}" class="fas fa-pencil-alt"></i>
         <i id="del-countries-${data.name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
@@ -79,7 +102,7 @@ const dom = {
         <span>${data.region_name}</span>
       </div>
       <div>
-        <i class="fas fa-pencil-alt"></i>
+        <i id="edit-cities-${data.name}" class="fas fa-pencil-alt"></i>
         <i id="del-cities-${data.name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
