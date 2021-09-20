@@ -5,10 +5,11 @@ import { usersMiddlewares } from "../middlewares/users.js";
 const usersRoutes = express.Router();
 
 usersRoutes.get("/users/findAll", usersControllers.findAll);
-usersRoutes.get("/users/findByName", usersMiddlewares.missingUserName, usersMiddlewares.userNameDoNotFound, usersControllers.findByName);
+usersRoutes.get("/users/findByName", usersMiddlewares.missingName, usersMiddlewares.nameDoNotFound, usersControllers.findByName);
+usersRoutes.delete("/users/delete", usersMiddlewares.missingName, usersMiddlewares.nameDoNotFound, usersControllers.delete);
 usersRoutes.post(
   "/users/login",
-  usersMiddlewares.missingUserName,
+  usersMiddlewares.missingName,
   usersMiddlewares.missingPassword,
   usersMiddlewares.dataDoNotMatch,
   usersControllers.login

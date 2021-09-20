@@ -6,9 +6,6 @@ dotenv.config();
 function encripter(string) {
   return jwt.sign(string, process.env.TOKEN);
 }
-function desencripter(string) {
-  return jwt.verify(string, process.env.TOKEN);
-}
 
 const users = {
   dropTable: async () => {
@@ -18,7 +15,7 @@ const users = {
     await sequelize.query(
       "CREATE TABLE IF NOT EXISTS users " +
         "(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
-        "user_name VARCHAR(50) NOT NULL, " +
+        "name VARCHAR(50) NOT NULL, " +
         "password VARCHAR(100) NOT NULL, " +
         "rank INT NOT NULL);"
     );
@@ -32,14 +29,19 @@ const users = {
     });
   },
   findByName: async (data) => {
-    return await sequelize.query("SELECT * FROM users WHERE user_name = ?;", {
-      replacements: [data.user_name],
+    return await sequelize.query("SELECT * FROM users WHERE name = ?;", {
+      replacements: [data.name],
       type: "SELECT",
     });
   },
+  delete: async (data) => {
+    await sequelize.query("DELETE FROM users WHERE name = ?;", {
+      replacements: [data.name],
+    });
+  },
   login: async (data) => {
-    return await sequelize.query("SELECT * FROM users WHERE user_name = ? AND password = ?;", {
-      replacements: [data.user_name, encripter(data.password)],
+    return await sequelize.query("SELECT * FROM users WHERE name = ? AND password = ?;", {
+      replacements: [data.name, encripter(data.password)],
       type: "SELECT",
     });
   },

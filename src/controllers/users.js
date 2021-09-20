@@ -12,8 +12,13 @@ const usersControllers = {
     response.body = await users.findByName(req.body);
     res.send(response);
   },
-  login: async (req, res) => {
-    response.body = `welcome ${req.body.user_name}`;
+  delete: (req, res) => {
+    response.body = `deleted ${req.body.name}`;
+    users.delete(req.body);
+    res.send(response);
+  },
+  login: (req, res) => {
+    response.body = `welcome ${req.body.name}`;
     res.send(response);
   },
 };
