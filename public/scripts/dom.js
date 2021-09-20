@@ -9,11 +9,17 @@ const dom = {
     <input id='region_name-post-input' type='text' placeholder='Ingrese el nombre de la región' autocomplete='off' />
     <button id='region_save-post-btn'>Guardar</button>
     <div id='response-container'></div>`,
-  countriesPost: `
-    <h2>Crear una nueva ciudad</h2>
-    <input id='country_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />
+  countryPost: `
+    <h2>Crear un nuevo país</h2>
+    <input id='country_name-post-input' type='text' placeholder='Ingrese el nombre del país' autocomplete='off' />
     <select id="country_post-select"><option selected disabled>Seleccionar</option></select>
     <button id="country_save-post-btn">Guardar</button>
+    <div id='response-container'></div>`,
+  cityPost: `
+    <h2>Crear una nueva ciudad</h2>
+    <input id='city_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />
+    <select id="city_post-select"><option selected disabled>Seleccionar</option></select>
+    <button id="city_save-post-btn">Guardar</button>
     <div id='response-container'></div>`,
   option: (data) => {
     return `<option value="${data.id}">${data.name}</option>`;
