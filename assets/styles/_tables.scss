@@ -58,10 +58,25 @@
     display: grid;
     font-family: "Josefin Sans", sans-serif;
     font-weight: 300;
-    grid-template-columns: 0.03fr 1fr 0.3fr;
+    grid-template-columns: 1fr 0.1fr;
     margin: 0 1rem 0.5rem 1rem;
     padding: 0.2rem 1rem;
     text-align: left;
+    .table-data-x2 {
+      display: grid;
+      grid-template-columns: 30px 250px;
+      text-align: left;
+    }
+    .table-data-x3 {
+      display: grid;
+      grid-template-columns: 30px repeat(2, 250px);
+      text-align: left;
+    }
+    .table-data-x4 {
+      display: grid;
+      grid-template-columns: 30px repeat(3, 250px);
+      text-align: left;
+    }
     div {
       text-align: right;
       .fas {

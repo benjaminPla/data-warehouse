@@ -27,14 +27,45 @@ const dom = {
       </li>
     </ul>`;
   },
-  tableData: (data) => {
+  tableDataRegion: (data, gridStyle) => {
     return `
     <li class='table-data'>
-      <span>${data.id}</span>
-      <span>${data.name}</span>
+      <div class='${gridStyle}'>
+        <span>${data.id}</span>
+        <span>${data.name}</span>
+      </div>
       <div>
         <i class="fas fa-pencil-alt"></i>
-        <i class="fas fa-trash-alt"></i>
+        <i id="del-regions-${data.name}" class="fas fa-trash-alt"></i>
+      </div>
+    </li>`;
+  },
+  tableDataCountry: (data, gridStyle) => {
+    return `
+    <li class='table-data'>
+      <div class='${gridStyle}'>
+        <span>${data.id}</span>
+        <span>${data.name}</span>
+        <span>${data.region_name}</span>
+      </div>
+      <div>
+        <i class="fas fa-pencil-alt"></i>
+        <i id="del-countries-${data.name}" class="fas fa-trash-alt"></i>
+      </div>
+    </li>`;
+  },
+  tableDataCity: (data, gridStyle) => {
+    return `
+    <li class='table-data'>
+      <div class='${gridStyle}'>
+        <span>${data.id}</span>
+        <span>${data.name}</span>
+        <span>${data.country_name}</span>
+        <span>${data.region_name}</span>
+      </div>
+      <div>
+        <i class="fas fa-pencil-alt"></i>
+        <i id="del-cities-${data.name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
   },
@@ -45,6 +76,7 @@ const dom = {
     <button id='confirm-no-btn'>CANCELAR</button>
   </div>
   <div id='response-container'></div>`,
+  span: (data) => `<span>${data}</span>`,
 };
 
 export { dom };
