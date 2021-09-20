@@ -241,10 +241,34 @@ nav li:hover {
   display: grid;
   font-family: "Josefin Sans", sans-serif;
   font-weight: 300;
-  -ms-grid-columns: 0.03fr 1fr 0.3fr;
-      grid-template-columns: 0.03fr 1fr 0.3fr;
+  -ms-grid-columns: 1fr 0.1fr;
+      grid-template-columns: 1fr 0.1fr;
   margin: 0 1rem 0.5rem 1rem;
   padding: 0.2rem 1rem;
+  text-align: left;
+}
+
+.table .table-data .table-data-x2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30px 250px;
+      grid-template-columns: 30px 250px;
+  text-align: left;
+}
+
+.table .table-data .table-data-x3 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30px (250px)[2];
+      grid-template-columns: 30px repeat(2, 250px);
+  text-align: left;
+}
+
+.table .table-data .table-data-x4 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30px (250px)[3];
+      grid-template-columns: 30px repeat(3, 250px);
   text-align: left;
 }
 

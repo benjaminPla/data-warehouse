@@ -31,9 +31,13 @@ const countries = {
     );
   },
   findAll: async () => {
-    return await sequelize.query("SELECT * FROM countries WHERE 1;", {
-      type: "SELECT",
-    });
+    return await sequelize.query(
+      "SELECT countries.id AS id, countries.name AS name, regions.id AS region_id, regions.name AS region_name FROM countries " +
+        "INNER JOIN regions ON regions.id = countries.region_id",
+      {
+        type: "SELECT",
+      }
+    );
   },
   findByName: async (data) => {
     return await sequelize.query("SELECT * FROM countries WHERE name = ?", {
