@@ -3,7 +3,7 @@ import { dom } from "./dom.js";
 
 const events = {
   onEnter: (buttonId) => {
-    addEventListener("keyup", (key) => {
+    window.addEventListener("keyup", (key) => {
       if (key.key == "Enter") document.getElementById(buttonId).click();
     });
   },
@@ -45,12 +45,13 @@ const events = {
       });
       events.expandBtn();
       events.regionsPostBtn();
+      events.countriesPostBtn();
       events.deleteBtns();
     });
   },
   regionsPostBtn: () => {
     document.getElementById("regions_post-btn").addEventListener("click", () => {
-      functions.pop(dom.regionPostPop);
+      functions.pop(dom.regionPost);
       events.regionsPostSaveBtn();
     });
   },
@@ -63,6 +64,33 @@ const events = {
       functions.response(data);
     });
   },
+  countriesPostBtn: () => {
+    document.getElementById("countries_post-btn").addEventListener("click", async () => {
+      functions.pop(dom.countriesPost);
+      const regions = await functions.fetch("http://localhost:3000/regions/findAll", "GET");
+      regions.body.forEach((region) => {
+        functions.fillNode("country_post-select", dom.option(region));
+      });
+      events.countriesPostSaveBtn();
+    });
+  },
+  countriesPostSaveBtn: () => {
+    document.getElementById("country_save-post-btn").addEventListener("click", async () => {
+      const body = {
+        name: document.getElementById("country_name-post-input").value,
+        regionId: document.getElementById("country_post-select").value,
+      };
+      const data = await functions.fetch("http://localhost:3000/countries/post", "POST", body);
+      functions.response(data);
+    });
+  },
+  // editBtns: () => {
+  //   document.querySelectorAll(".fa-pencil-alt").forEach((btn) => {
+  //     btn.addEventListener("click", () => {
+  //       functions.pop(dom.)
+  //     });
+  //   });
+  // },
   deleteBtns: () => {
     document.querySelectorAll(".fa-trash-alt").forEach((btn) => {
       btn.addEventListener("click", () => {
