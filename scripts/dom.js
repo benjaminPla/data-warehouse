@@ -9,6 +9,12 @@ const dom = {
   option: (data) => {
     return `<option value="${data.id}">${data.name}</option>`;
   },
+  userPost: `
+    <h2>Crear un nuevo usuario</h2>
+    <input id='user_name-post-input' type='text' placeholder='Ingrese el nombre de usuario' autocomplete='off' />
+    <input id='user_password-post-input' type='password' placeholder='Ingrese la contraseña' autocomplete='off' />
+    <button id='user_save-post-btn'>Guardar</button>
+    <div id='response-container'></div>`,
   regionPost: `
     <h2>Crear una nueva región</h2>
     <input id='region_name-post-input' type='text' placeholder='Ingrese el nombre de la región' autocomplete='off' />

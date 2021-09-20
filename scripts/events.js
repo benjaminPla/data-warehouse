@@ -11,7 +11,25 @@ const events = {
         functions.fillNode("users-table", dom.tableDataUsers(user, "table-data-x3"));
       });
       events.expandBtn();
+      events.userPostBtn();
       events.deleteBtns();
+    });
+  },
+  userPostBtn: () => {
+    document.getElementById("users_post-btn").addEventListener("click", () => {
+      functions.pop(dom.userPost);
+      events.usersPostSaveBtn();
+    });
+  },
+  usersPostSaveBtn: () => {
+    document.getElementById("user_save-post-btn").addEventListener("click", async () => {
+      const body = {
+        name: document.getElementById("user_name-post-input").value,
+        password: document.getElementById("user_password-post-input").value,
+        rank: 2,
+      };
+      const data = await functions.fetch("http://localhost:3000/users/post", "POST", body);
+      functions.response(data);
     });
   },
   onEnter: (buttonId) => {
@@ -30,7 +48,7 @@ const events = {
   loginBtn: () => {
     document.getElementById("login-btn").addEventListener("click", async () => {
       const body = {
-        user_name: document.getElementById("user-name").value,
+        name: document.getElementById("user-name").value,
         password: document.getElementById("password").value,
       };
       const data = await functions.fetch("http://localhost:3000/users/login", "POST", body);
