@@ -3,37 +3,13 @@ import { users } from "../../server/users.js";
 let response = { success: false, body: null };
 
 const usersMiddlewares = {
-  missingId: (req, res, next) => {
-    response.body = "missing id";
-    !req.body.id ? res.send(response) : next();
-  },
-  missingName: (req, res, next) => {
-    response.body = "missing name";
-    !req.body.name ? res.send(response) : next();
-  },
-  missingPassword: (req, res, next) => {
-    response.body = "missing password";
-    !req.body.password ? res.send(response) : next();
-  },
-  missingNewName: (req, res, next) => {
-    response.body = "missing newName";
-    !req.body.newName ? res.send(response) : next();
-  },
-  newNameAlreadyExist: async (req, res, next) => {
-    response.body = "another user with that name already exists";
-    (await users.findByName(req.body.newName)) == "" ? next() : res.send(response);
+  userNotFound: async (req, res, next) => {
+    response.body = "user not found";
+    (await users.findOne(req.body)) == "" ? res.send(response) : next();
   },
   userAlreadyExists: async (req, res, next) => {
     response.body = "user already exists";
-    (await users.findByName(req.body.name)) == "" ? next() : res.send(response);
-  },
-  userNotFound: async (req, res, next) => {
-    response.body = "user not found";
-    (await users.findById(req.body)) == "" ? res.send(response) : next();
-  },
-  nameDoNotFound: async (req, res, next) => {
-    response.body = "user not found";
-    (await users.findByName(req.body.name)) == "" ? res.send(response) : next();
+    (await users.findOne(req.body)) == "" ? next() : res.send(response);
   },
   dataDoNotMatch: async (req, res, next) => {
     response.body = "data do not match";

@@ -21,6 +21,10 @@ const globalsMiddlewares = {
     response.body = "missing countryId";
     !req.body.countryId ? res.send(response) : next();
   },
+  missingPassword: (req, res, next) => {
+    response.body = "missing password";
+    !req.body.password ? res.send(response) : next();
+  },
 };
 
 export { globalsMiddlewares };

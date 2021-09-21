@@ -54,8 +54,8 @@ const cities = {
     });
   },
   put: async (data) => {
-    await sequelize.query("UPDATE cities SET name = ?, country_id = ? WHERE name = ?;", {
-      replacements: [data.newName, data.countryId, data.name],
+    await sequelize.query("UPDATE cities SET name = ?, country_id = ? WHERE id = ? OR name = ?;", {
+      replacements: [data.newName, data.countryId, data.id, data.name],
     });
   },
 };

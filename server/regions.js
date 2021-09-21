@@ -41,7 +41,7 @@ const regions = {
     });
   },
   put: async (data) => {
-    await sequelize.query("UPDATE regions SET name = ? WHERE id = ? OR name = ?;", {
+    await sequelize.query("UPDATE regions SET name = ? WHERE id = ? OR id = ?;", {
       replacements: [data.newName, data.id, data.name],
     });
   },

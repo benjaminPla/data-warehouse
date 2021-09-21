@@ -197,7 +197,7 @@ const events = {
         newName: document.getElementById("user-new_name-put-input").value,
         password: document.getElementById("user-new_password-put-input").value,
       };
-      const data = await functions.fetch("http://localhost:3000/users/put", "PUT", body);
+      const data = await functions.fetch("http://localhost:3000/users/putByName", "PUT", body);
       functions.response(data);
     });
   },

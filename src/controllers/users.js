@@ -8,8 +8,8 @@ const usersControllers = {
     response.body = await users.findAll();
     res.send(response);
   },
-  findByName: async (req, res) => {
-    response.body = await users.findByName(req.body);
+  findOne: async (req, res) => {
+    response.body = await users.findOne(req.body);
     res.send(response);
   },
   post: (req, res) => {
