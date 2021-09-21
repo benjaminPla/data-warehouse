@@ -8,22 +8,22 @@ const countriesControllers = {
     response.body = await countries.findAll();
     res.send(response);
   },
-  findByName: async (req, res) => {
-    response.body = await countries.findByName(req.body.name);
+  findOne: async (req, res) => {
+    response.body = await countries.findOne(req.body);
     res.send(response);
   },
   post: (req, res) => {
-    response.body = `posted ${req.body.name}`;
+    response.body = "successfully posted";
     countries.post(req.body);
     res.send(response);
   },
   delete: (req, res) => {
-    response.body = `deleted ${req.body.name}`;
-    countries.delete(req.body.name);
+    response.body = "successfully deleted";
+    countries.delete(req.body);
     res.send(response);
   },
   put: (req, res) => {
-    response.body = `updated ${req.body.name} to ${req.body.newName}`;
+    response.body = "successfully updated";
     countries.put(req.body);
     res.send(response);
   },

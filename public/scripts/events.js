@@ -218,7 +218,7 @@ const events = {
         newName: document.getElementById("country-new_name-put-input").value,
         regionId: document.getElementById("country_put-select").value,
       };
-      const data = await functions.fetch("http://localhost:3000/countries/put", "PUT", body);
+      const data = await functions.fetch("http://localhost:3000/countries/putByName", "PUT", body);
       functions.response(data);
     });
   },

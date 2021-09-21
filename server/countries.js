@@ -34,14 +34,12 @@ const countries = {
     return await sequelize.query(
       "SELECT countries.id AS id, countries.name AS name, regions.id AS region_id, regions.name AS region_name FROM countries " +
         "INNER JOIN regions ON regions.id = countries.region_id",
-      {
-        type: "SELECT",
-      }
+      { type: "SELECT" }
     );
   },
-  findById: async (data) => {
-    return await sequelize.query("SELECT * FROM countries WHERE id = ? OR id = ?", {
-      replacements: [data.id, data.countryId],
+  findOne: async (data) => {
+    return await sequelize.query("SELECT * FROM countries WHERE id = ? OR name = ?;", {
+      replacements: [data.id, data.name],
       type: "SELECT",
     });
   },
@@ -51,8 +49,8 @@ const countries = {
     });
   },
   delete: async (data) => {
-    await sequelize.query("DELETE FROM countries WHERE id = ?;", {
-      replacements: [data.id],
+    await sequelize.query("DELETE FROM countries WHERE id = ? OR name= ?;", {
+      replacements: [data.id, data.name],
     });
   },
   put: async (data) => {
@@ -63,3 +61,25 @@ const countries = {
 };
 
 export { countries };
+
+// findOne: async (data) => {
+//   return await sequelize.query("SELECT * FROM regions WHERE id = ? OR name = ?;", {
+//     replacements: [data.id, data.name],
+//     type: "SELECT",
+//   });
+// },
+// post: async (data) => {
+//   await sequelize.query("INSERT INTO regions (name) VALUES (?);", {
+//     replacements: [data.name],
+//   });
+// },
+// delete: async (data) => {
+//   await sequelize.query("DELETE FROM regions WHERE id = ? OR name = ?;", {
+//     replacements: [data.id, data.name],
+//   });
+// },
+// put: async (data) => {
+//   await sequelize.query("UPDATE regions SET name = ? WHERE id = ? OR name = ?;", {
+//     replacements: [data.newName, data.id, data.name],
+//   });
+// },

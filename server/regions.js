@@ -25,8 +25,8 @@ const regions = {
     });
   },
   findOne: async (data) => {
-    return await sequelize.query("SELECT * FROM regions WHERE id = ? OR name = ?;", {
-      replacements: [data.id, data.name],
+    return await sequelize.query("SELECT * FROM regions WHERE id = ? OR name = ? OR id = ?;", {
+      replacements: [data.id, data.name, data.regionId],
       type: "SELECT",
     });
   },

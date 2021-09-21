@@ -6,31 +6,15 @@ let response = { success: false, body: null };
 const countriesMiddlewares = {
   countryNotFound: async (req, res, next) => {
     response.body = "country not found";
-    (await countries.findByName(req.body.name)) == "" ? res.send(response) : next();
+    (await countries.findOne(req.body)) == "" ? res.send(response) : next();
   },
   nameAlreadyExists: async (req, res, next) => {
-    response.body = "country already exist";
-    (await countries.findByName(req.body.name)) == "" ? next() : res.send(response);
-  },
-  newNameAlreadyExists: async (req, res, next) => {
-    response.body = "another country already exist with that name";
-    (await countries.findByName(req.body.newName)) == "" ? next() : res.send(response);
-  },
-  missingName: (req, res, next) => {
-    response.body = "missing name";
-    !req.body.name ? res.send(response) : next();
-  },
-  missingNewName: (req, res, next) => {
-    response.body = "missing newName";
-    !req.body.newName ? res.send(response) : next();
-  },
-  missingRegionId: (req, res, next) => {
-    response.body = "missing regionId";
-    !req.body.regionId ? res.send(response) : next();
+    response.body = "country already exists";
+    (await countries.findOne(req.body)) == "" ? next() : res.send(response);
   },
   regionNotFound: async (req, res, next) => {
     response.body = "region not found";
-    (await regions.findById(req.body.regionId)) == "" ? res.send(response) : next();
+    (await regions.findOne(req.body)) == "" ? res.send(response) : next();
   },
 };
 
