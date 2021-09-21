@@ -160,13 +160,12 @@ const events = {
   putBtns: () => {
     document.querySelectorAll(".fa-pencil-alt").forEach((btn) => {
       btn.addEventListener("click", async () => {
-        const method = btn.id.split("-")[0];
         const path = btn.id.split("-")[1];
         const id = btn.id.split("-")[2];
         const name = btn.id.split("-")[3];
         if (path === "regions") {
           functions.pop(dom.putRegion(name));
-          events.regionPutSaveBtn(name);
+          events.regionPutSaveBtn(id);
         }
         if (path === "countries") {
           functions.pop(dom.putCountry(name));
@@ -202,13 +201,13 @@ const events = {
       functions.response(data);
     });
   },
-  regionPutSaveBtn: (regionName) => {
+  regionPutSaveBtn: (regionId) => {
     document.getElementById("region_save-put-btn").addEventListener("click", async () => {
       const body = {
-        name: regionName,
+        id: regionId,
         newName: document.getElementById("region-new_name-put-input").value,
       };
-      const data = await functions.fetch("http://localhost:3000/regions/put", "PUT", body);
+      const data = await functions.fetch("http://localhost:3000/regions/putById", "PUT", body);
       functions.response(data);
     });
   },
@@ -249,7 +248,7 @@ const events = {
       const id = sessionStorage.getItem("del").split("-")[2];
       const path = sessionStorage.getItem("del").split("-")[1];
       const body = { id: id };
-      const endPoint = `http://localhost:3000/${path}/delete`;
+      const endPoint = `http://localhost:3000/${path}/deleteById`;
       const data = await functions.fetch(endPoint, "DELETE", body);
       functions.response(data);
     });
