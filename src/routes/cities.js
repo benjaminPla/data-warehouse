@@ -1,40 +1,39 @@
 import express from "express";
 import { citiesControllers } from "../controllers/cities.js";
 import { citiesMiddlewares } from "../middlewares/cities.js";
+import { globalsMiddlewares } from "../middlewares/globals.js";
 
 const citiesRoutes = express.Router();
 
 citiesRoutes.get("/cities/findAll", citiesControllers.findAll);
-citiesRoutes.get("/cities/findById", citiesMiddlewares.missingId, citiesMiddlewares.cityIdNotFound, citiesControllers.findById);
-citiesRoutes.get("/cities/findByName", citiesMiddlewares.missingName, citiesMiddlewares.cityNameNotFound, citiesControllers.findByName);
+citiesRoutes.get("/cities/findById", globalsMiddlewares.missingId, citiesMiddlewares.cityNotFound, citiesControllers.findOne);
+citiesRoutes.get("/cities/findByName", globalsMiddlewares.missingName, citiesMiddlewares.cityNotFound, citiesControllers.findOne);
 citiesRoutes.post(
   "/cities/post",
-  citiesMiddlewares.missingName,
-  citiesMiddlewares.missingCountryId,
-  citiesMiddlewares.cityAlreadyExists,
+  globalsMiddlewares.missingName,
+  globalsMiddlewares.missingCountryId,
+  citiesMiddlewares.nameAlreadyExists,
   citiesMiddlewares.countryNotFound,
   citiesControllers.post
 );
-citiesRoutes.delete("/cities/deleteById", citiesMiddlewares.missingId, citiesMiddlewares.cityIdNotFound, citiesControllers.delete);
-citiesRoutes.delete("/cities/deleteByName", citiesMiddlewares.missingName, citiesMiddlewares.cityNameNotFound, citiesControllers.delete);
+citiesRoutes.delete("/cities/deleteById", globalsMiddlewares.missingId, citiesMiddlewares.cityNotFound, citiesControllers.delete);
+citiesRoutes.delete("/cities/deleteByName", globalsMiddlewares.missingName, citiesMiddlewares.cityNotFound, citiesControllers.delete);
 citiesRoutes.put(
   "/cities/putById",
-  citiesMiddlewares.missingId,
-  citiesMiddlewares.missingNewName,
-  citiesMiddlewares.missingCountryId,
-  citiesMiddlewares.cityIdNotFound,
+  globalsMiddlewares.missingId,
+  globalsMiddlewares.missingNewName,
+  globalsMiddlewares.missingCountryId,
+  citiesMiddlewares.cityNotFound,
   citiesMiddlewares.countryNotFound,
-  citiesMiddlewares.newNameAlreadyExists,
   citiesControllers.put
 );
 citiesRoutes.put(
   "/cities/putByName",
-  citiesMiddlewares.missingName,
-  citiesMiddlewares.missingNewName,
-  citiesMiddlewares.newNameAlreadyExists,
-  citiesMiddlewares.missingCountryId,
+  globalsMiddlewares.missingName,
+  globalsMiddlewares.missingNewName,
+  globalsMiddlewares.missingCountryId,
   citiesMiddlewares.countryNotFound,
-  citiesMiddlewares.cityNameNotFound,
+  citiesMiddlewares.cityNotFound,
   citiesControllers.put
 );
 

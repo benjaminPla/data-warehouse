@@ -8,12 +8,8 @@ const citiesControllers = {
     response.body = await cities.findAll();
     res.send(response);
   },
-  findById: async (req, res) => {
-    response.body = await cities.findById(req.body);
-    res.send(response);
-  },
-  findByName: async (req, res) => {
-    response.body = await cities.findByName(req.body);
+  findOne: async (req, res) => {
+    response.body = await cities.findOne(req.body);
     res.send(response);
   },
   post: (req, res) => {

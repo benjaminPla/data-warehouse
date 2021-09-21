@@ -35,19 +35,11 @@ const cities = {
       "SELECT cities.id AS id, cities.name AS name, countries.name AS country_name, regions.name AS region_name FROM cities " +
       "INNER JOIN countries ON countries.id = cities.country_id " +
       "INNER JOIN regions ON regions.id = countries.region_id;";
-    return await sequelize.query(sql, {
-      type: "SELECT",
-    });
+    return await sequelize.query(sql, { type: "SELECT" });
   },
-  findById: async (data) => {
-    return await sequelize.query("SELECT * FROM cities WHERE id = ?;", {
-      replacements: [data.id],
-      type: "SELECT",
-    });
-  },
-  findByName: async (data) => {
-    return await sequelize.query("SELECT * FROM cities WHERE name = ?;", {
-      replacements: [data.name],
+  findOne: async (data) => {
+    return await sequelize.query("SELECT * FROM cities WHERE id = ? OR name = ?;", {
+      replacements: [data.id, data.name],
       type: "SELECT",
     });
   },
@@ -62,8 +54,8 @@ const cities = {
     });
   },
   put: async (data) => {
-    await sequelize.query("UPDATE cities SET name = ? WHERE name = ?;", {
-      replacements: [data.newName, data.name],
+    await sequelize.query("UPDATE cities SET name = ?, country_id = ? WHERE name = ?;", {
+      replacements: [data.newName, data.countryId, data.name],
     });
   },
 };

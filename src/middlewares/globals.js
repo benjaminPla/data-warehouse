@@ -17,6 +17,10 @@ const globalsMiddlewares = {
     response.body = "missing regionId";
     !req.body.regionId ? res.send(response) : next();
   },
+  missingCountryId: (req, res, next) => {
+    response.body = "missing countryId";
+    !req.body.countryId ? res.send(response) : next();
+  },
 };
 
 export { globalsMiddlewares };

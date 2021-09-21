@@ -38,8 +38,8 @@ const countries = {
     );
   },
   findOne: async (data) => {
-    return await sequelize.query("SELECT * FROM countries WHERE id = ? OR name = ?;", {
-      replacements: [data.id, data.name],
+    return await sequelize.query("SELECT * FROM countries WHERE id = ? OR name = ? OR id = ?;", {
+      replacements: [data.id, data.name, data.countryId],
       type: "SELECT",
     });
   },

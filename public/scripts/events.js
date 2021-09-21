@@ -229,7 +229,7 @@ const events = {
         newName: document.getElementById("city-new_name-put-input").value,
         countryId: document.getElementById("city_put-select").value,
       };
-      const data = await functions.fetch("http://localhost:3000/cities/put", "PUT", body);
+      const data = await functions.fetch("http://localhost:3000/cities/putByName", "PUT", body);
       functions.response(data);
     });
   },
