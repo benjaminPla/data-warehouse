@@ -29,6 +29,7 @@ const functions = {
         if (document.getElementById("pop")) document.getElementById("pop").remove();
         if (document.getElementById("regions-table")) document.getElementById("areas-btn").click();
         if (document.getElementById("users-table")) document.getElementById("users-btn").click();
+        if (document.getElementById("contacts-table")) document.getElementById("contacts-btn").click();
         if (redirect) location.href = redirect;
       }, 700);
     } else {

@@ -93,8 +93,8 @@ const dom = {
         <span>${data.interest}</span>
       </div>
       <div>
-        <i id="edit-users-${data.name}" class="fas fa-pencil-alt"></i>
-        <i id="del-users-${data.name}" class="fas fa-trash-alt"></i>
+        <i id="put-contacts-${data.id}-${data.name}" class="fas fa-pencil-alt"></i>
+        <i id="delete-contacts-${data.id}-${data.name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
   },
@@ -107,8 +107,8 @@ const dom = {
         <span>rank: ${data.rank}</span>
       </div>
       <div>
-        <i id="edit-users-${data.name}" class="fas fa-pencil-alt"></i>
-        <i id="del-users-${data.name}" class="fas fa-trash-alt"></i>
+        <i id="put-users-${data.id}-${data.name}" class="fas fa-pencil-alt"></i>
+        <i id="delete-users-${data.id}-${data.name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
   },
@@ -120,8 +120,8 @@ const dom = {
         <span>${data.name}</span>
       </div>
       <div>
-        <i id="edit-regions-${data.name}" class="fas fa-pencil-alt"></i>
-        <i id="del-regions-${data.name}" class="fas fa-trash-alt"></i>
+        <i id="put-regions-${data.id}-${data.name}" class="fas fa-pencil-alt"></i>
+        <i id="delete-regions-${data.id}-${data.name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
   },
@@ -134,8 +134,8 @@ const dom = {
         <span>${data.region_name}</span>
       </div>
       <div>
-        <i id="edit-countries-${data.name}" class="fas fa-pencil-alt"></i>
-        <i id="del-countries-${data.name}" class="fas fa-trash-alt"></i>
+        <i id="put-countries-${data.id}-${data.name}" class="fas fa-pencil-alt"></i>
+        <i id="delete-countries-${data.id}-${data.name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
   },
@@ -149,8 +149,8 @@ const dom = {
         <span>${data.region_name}</span>
       </div>
       <div>
-        <i id="edit-cities-${data.name}" class="fas fa-pencil-alt"></i>
-        <i id="del-cities-${data.name}" class="fas fa-trash-alt"></i>
+        <i id="put-cities-${data.id}-${data.name}" class="fas fa-pencil-alt"></i>
+        <i id="delete-cities-${data.id}-${data.name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
   },
