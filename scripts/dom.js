@@ -13,6 +13,7 @@ const dom = {
     <h2>Crear un nuevo usuario</h2>
     <input id='user_name-post-input' type='text' placeholder='Ingrese el nombre de usuario' autocomplete='off' />
     <input id='user_password-post-input' type='password' placeholder='Ingrese la contraseña' autocomplete='off' />
+    <input id='user_password_repeat-post-input' type='password' placeholder='Repite la contraseña' autocomplete='off' />
     <button id='user_save-post-btn'>Guardar</button>
     <div id='response-container'></div>`,
   regionPost: `
@@ -78,6 +79,24 @@ const dom = {
         </div>
       </li>
     </ul>`;
+  },
+  tableDataContacts: (data, gridStyle) => {
+    return `
+    <li class='table-data'>
+      <div class='${gridStyle}'>
+        <span>${data.id}</span>
+        <span>${data.first_name} ${data.last_name}</span>
+        <span>${data.city_id}</span>
+        <span>${data.company_id}</span>
+        <span>${data.role}</span>
+        <span>${data.media}</span>
+        <span>${data.interest}</span>
+      </div>
+      <div>
+        <i id="edit-users-${data.name}" class="fas fa-pencil-alt"></i>
+        <i id="del-users-${data.name}" class="fas fa-trash-alt"></i>
+      </div>
+    </li>`;
   },
   tableDataUsers: (data, gridStyle) => {
     return `
