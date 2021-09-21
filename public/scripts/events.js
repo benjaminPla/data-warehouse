@@ -2,10 +2,20 @@ import { functions } from "./functions.js";
 import { dom } from "./dom.js";
 
 const events = {
+  contactsBtns: () => {
+    document.getElementById("contacts-btn").addEventListener("click", async () => {
+      functions.clearNode("section-main");
+      functions.fillNode("section-main", dom.table("contacts-table", "Contactos", "contacts_post-btn"));
+      const data = await functions.fetch("http://localhost:3000/contacts/findAll", "GET");
+      data.body.forEach((contact) => {
+        functions.fillNode("contacts-table", dom.tableDataContacts(contact, "table-data-x7"));
+      });
+    });
+  },
   usersBtn: () => {
     document.getElementById("users-btn").addEventListener("click", async () => {
       functions.clearNode("section-main");
-      functions.fillNode("section-main", dom.table("users-table", "users", "users_post-btn"));
+      functions.fillNode("section-main", dom.table("users-table", "Usarios", "users_post-btn"));
       const data = await functions.fetch("http://localhost:3000/users/findAll", "GET");
       data.body.forEach((user) => {
         functions.fillNode("users-table", dom.tableDataUsers(user, "table-data-x3"));
@@ -29,8 +39,15 @@ const events = {
         password: document.getElementById("user_password-post-input").value,
         rank: 2,
       };
-      const data = await functions.fetch("http://localhost:3000/users/post", "POST", body);
-      functions.response(data);
+      if (document.getElementById("user_password_repeat-post-input").value !== document.getElementById("user_password-post-input").value) {
+        document.getElementById("response") ? functions.clearNode("response") : functions.fillNode("response-container", dom.response);
+        document.getElementById("response").classList.add("response-error");
+        functions.fillNode("response", dom.errorIcon);
+        functions.fillNode("response", "passwords do not match");
+      } else {
+        const data = await functions.fetch("http://localhost:3000/users/post", "POST", body);
+        functions.response(data);
+      }
     });
   },
   onEnter: (buttonId) => {

@@ -5,6 +5,7 @@ import { countriesRoutes } from "./src/routes/countries.js";
 import { regionsRoutes } from "./src/routes/regions.js";
 import { citiesRoutes } from "./src/routes/cities.js";
 import { usersRoutes } from "./src/routes/users.js";
+import { contactsRoutes } from "./src/routes/contacts.js";
 
 dotenv.config();
 const app = express();
@@ -15,6 +16,7 @@ app.use(regionsRoutes);
 app.use(countriesRoutes);
 app.use(citiesRoutes);
 app.use(usersRoutes);
+app.use(contactsRoutes);
 
 const PORT = process.env.PORT || "3001";
 app.listen(PORT, console.log(`srv on port: ${PORT}`));
