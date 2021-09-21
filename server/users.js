@@ -28,6 +28,12 @@ const users = {
       type: "SELECT",
     });
   },
+  findById: async (data) => {
+    return await sequelize.query("SELECT * FROM users WHERE id = ?;", {
+      replacements: [data.id],
+      type: "SELECT",
+    });
+  },
   findByName: async (data) => {
     return await sequelize.query("SELECT * FROM users WHERE name = ?;", {
       replacements: [data],
@@ -40,11 +46,12 @@ const users = {
     });
   },
   delete: async (data) => {
-    await sequelize.query("DELETE FROM users WHERE name = ?;", {
-      replacements: [data.name],
+    await sequelize.query("DELETE FROM users WHERE id = ?;", {
+      replacements: [data.id],
     });
   },
   put: async (data) => {
+    console.log(data);
     await sequelize.query("UPDATE users SET name = ?, password = ? WHERE name = ?;", {
       replacements: [data.newName, encripter(data.password), data.name],
     });

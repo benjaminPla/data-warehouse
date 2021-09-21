@@ -3,6 +3,10 @@ import { users } from "../../server/users.js";
 let response = { success: false, body: null };
 
 const usersMiddlewares = {
+  missingId: (req, res, next) => {
+    response.body = "missing id";
+    !req.body.id ? res.send(response) : next();
+  },
   missingName: (req, res, next) => {
     response.body = "missing name";
     !req.body.name ? res.send(response) : next();
@@ -22,6 +26,10 @@ const usersMiddlewares = {
   userAlreadyExists: async (req, res, next) => {
     response.body = "user already exists";
     (await users.findByName(req.body.name)) == "" ? next() : res.send(response);
+  },
+  userNotFound: async (req, res, next) => {
+    response.body = "user not found";
+    (await users.findById(req.body)) == "" ? res.send(response) : next();
   },
   nameDoNotFound: async (req, res, next) => {
     response.body = "user not found";

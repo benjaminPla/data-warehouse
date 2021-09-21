@@ -39,9 +39,15 @@ const cities = {
       type: "SELECT",
     });
   },
+  findById: async (data) => {
+    return await sequelize.query("SELECT * FROM cities WHERE id = ?;", {
+      replacements: [data.id],
+      type: "SELECT",
+    });
+  },
   findByName: async (data) => {
-    return await sequelize.query("SELECT * FROM cities WHERE name = ?", {
-      replacements: [data],
+    return await sequelize.query("SELECT * FROM cities WHERE name = ?;", {
+      replacements: [data.name],
       type: "SELECT",
     });
   },
@@ -51,8 +57,8 @@ const cities = {
     });
   },
   delete: async (data) => {
-    await sequelize.query("DELETE FROM cities WHERE name = ?;", {
-      replacements: [data],
+    await sequelize.query("DELETE FROM cities WHERE id = ? OR name = ?;", {
+      replacements: [data.id, data.name],
     });
   },
   put: async (data) => {

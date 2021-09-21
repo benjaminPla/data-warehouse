@@ -122,9 +122,13 @@ const contacts = {
     (100, 'Nananne', 'Emmerson', 100, 100, 'Marketing', 'Morissette, Kerluke and Upton', 100);`);
   },
   findAll: async () => {
-    return await sequelize.query("SELECT * FROM contacts WHERE 1;", {
-      type: "SELECT",
-    });
+    return await sequelize.query("SELECT * FROM contacts WHERE 1;", { type: "SELECT" });
+  },
+  findById: async (data) => {
+    return await sequelize.query("SELECT * FROM contacts WHERE id = ?;", { replacements: [data.id], type: "SELECT" });
+  },
+  delete: async (data) => {
+    await sequelize.query("DELETE FROM contacts WHERE id = ?;", { replacements: [data.id] });
   },
 };
 

@@ -8,6 +8,15 @@ const contactsControllers = {
     response.body = await contacts.findAll();
     res.send(response);
   },
+  findById: async (req, res) => {
+    response.body = await contacts.findById(req.body);
+    res.send(response);
+  },
+  delete: async (req, res) => {
+    contacts.delete(req.body);
+    response.body = `successfully deleted`;
+    res.send(response);
+  },
 };
 
 export { contactsControllers };

@@ -24,31 +24,25 @@ const regions = {
       type: "SELECT",
     });
   },
-  findById: async (data) => {
-    return await sequelize.query("SELECT * FROM regions WHERE id = ?", {
-      replacements: [data],
-      type: "SELECT",
-    });
-  },
-  findByName: async (data) => {
-    return await sequelize.query("SELECT * FROM regions WHERE name = ?", {
-      replacements: [data],
+  findOne: async (data) => {
+    return await sequelize.query("SELECT * FROM regions WHERE id = ? OR name = ?;", {
+      replacements: [data.id, data.name],
       type: "SELECT",
     });
   },
   post: async (data) => {
     await sequelize.query("INSERT INTO regions (name) VALUES (?);", {
-      replacements: [data],
+      replacements: [data.name],
     });
   },
   delete: async (data) => {
-    await sequelize.query("DELETE FROM regions WHERE name = ?;", {
-      replacements: [data],
+    await sequelize.query("DELETE FROM regions WHERE id = ? OR name = ?;", {
+      replacements: [data.id, data.name],
     });
   },
   put: async (data) => {
-    await sequelize.query("UPDATE regions SET name = ? WHERE name = ?;", {
-      replacements: [data.newName, data.name],
+    await sequelize.query("UPDATE regions SET name = ? WHERE id = ? OR name = ?;", {
+      replacements: [data.newName, data.id, data.name],
     });
   },
 };

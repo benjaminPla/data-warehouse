@@ -13,7 +13,7 @@ usersRoutes.post(
   usersMiddlewares.userAlreadyExists,
   usersControllers.post
 );
-usersRoutes.delete("/users/delete", usersMiddlewares.missingName, usersMiddlewares.nameDoNotFound, usersControllers.delete);
+usersRoutes.delete("/users/delete", usersMiddlewares.missingId, usersMiddlewares.userNotFound, usersControllers.delete);
 usersRoutes.put(
   "/users/put",
   usersMiddlewares.missingName,
@@ -26,6 +26,7 @@ usersRoutes.post(
   "/users/login",
   usersMiddlewares.missingName,
   usersMiddlewares.missingPassword,
+  usersMiddlewares.nameDoNotFound,
   usersMiddlewares.dataDoNotMatch,
   usersControllers.login
 );

@@ -8,22 +8,22 @@ const regionsControllers = {
     response.body = await regions.findAll();
     res.send(response);
   },
-  findByName: async (req, res) => {
-    response.body = await regions.findByName(req.body.name);
+  findOne: async (req, res) => {
+    response.body = await regions.findOne(req.body);
     res.send(response);
   },
   post: (req, res) => {
-    response.body = `posted ${req.body.name}`;
-    regions.post(req.body.name);
+    response.body = "successfully posted";
+    regions.post(req.body);
     res.send(response);
   },
   delete: (req, res) => {
-    response.body = `deleted ${req.body.name}`;
-    regions.delete(req.body.name);
+    response.body = "successfully deleted";
+    regions.delete(req.body);
     res.send(response);
   },
   put: (req, res) => {
-    response.body = `updated ${req.body.name} to ${req.body.newName}`;
+    response.body = "successfully updated";
     regions.put(req.body);
     res.send(response);
   },

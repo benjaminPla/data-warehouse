@@ -8,22 +8,26 @@ const citiesControllers = {
     response.body = await cities.findAll();
     res.send(response);
   },
+  findById: async (req, res) => {
+    response.body = await cities.findById(req.body);
+    res.send(response);
+  },
   findByName: async (req, res) => {
-    response.body = await cities.findByName(req.body.name);
+    response.body = await cities.findByName(req.body);
     res.send(response);
   },
   post: (req, res) => {
-    response.body = `posted ${req.body.name}`;
+    response.body = `successfully posted`;
     cities.post(req.body);
     res.send(response);
   },
   delete: (req, res) => {
-    response.body = `deleted ${req.body.name}`;
-    cities.delete(req.body.name);
+    response.body = "successfully deleted";
+    cities.delete(req.body);
     res.send(response);
   },
   put: (req, res) => {
-    response.body = `updated ${req.body.name} to ${req.body.newName}`;
+    response.body = `successfully updated`;
     cities.put(req.body);
     res.send(response);
   },

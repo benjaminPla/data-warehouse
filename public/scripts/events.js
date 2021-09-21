@@ -10,6 +10,9 @@ const events = {
       data.body.forEach((contact) => {
         functions.fillNode("contacts-table", dom.tableDataContacts(contact, "table-data-x7"));
       });
+      events.expandBtn();
+      events.expandBtn();
+      events.deleteBtns();
     });
   },
   usersBtn: () => {
@@ -157,29 +160,33 @@ const events = {
   putBtns: () => {
     document.querySelectorAll(".fa-pencil-alt").forEach((btn) => {
       btn.addEventListener("click", async () => {
-        if (btn.id.split("-")[1] === "regions") {
-          functions.pop(dom.putRegion(btn.id.split("-")[2]));
-          events.regionPutSaveBtn(btn.id.split("-")[2]);
+        const method = btn.id.split("-")[0];
+        const path = btn.id.split("-")[1];
+        const id = btn.id.split("-")[2];
+        const name = btn.id.split("-")[3];
+        if (path === "regions") {
+          functions.pop(dom.putRegion(name));
+          events.regionPutSaveBtn(name);
         }
-        if (btn.id.split("-")[1] === "countries") {
-          functions.pop(dom.putCountry(btn.id.split("-")[2]));
+        if (path === "countries") {
+          functions.pop(dom.putCountry(name));
           const data = await functions.fetch("http://localhost:3000/regions/findAll", "GET");
           data.body.forEach((region) => {
             functions.fillNode("country_put-select", dom.option(region));
           });
-          events.countryPutSaveBtn(btn.id.split("-")[2]);
+          events.countryPutSaveBtn(name);
         }
-        if (btn.id.split("-")[1] === "cities") {
-          functions.pop(dom.putCity(btn.id.split("-")[2]));
+        if (path === "cities") {
+          functions.pop(dom.putCity(name));
           const data = await functions.fetch("http://localhost:3000/countries/findAll", "GET");
           data.body.forEach((country) => {
             functions.fillNode("city_put-select", dom.option(country));
           });
-          events.cityPutSaveBtn(btn.id.split("-")[2]);
+          events.cityPutSaveBtn(name);
         }
-        if (btn.id.split("-")[1] === "users") {
-          functions.pop(dom.putUser(btn.id.split("-")[2]));
-          events.userPutSaveBtn(btn.id.split("-")[2]);
+        if (path === "users") {
+          functions.pop(dom.putUser(name));
+          events.userPutSaveBtn(name);
         }
       });
     });
@@ -239,8 +246,10 @@ const events = {
   },
   confirmYes: () => {
     document.getElementById("confirm-yes-btn").addEventListener("click", async () => {
-      const body = { name: sessionStorage.getItem("del").split("-")[2] };
-      const endPoint = `http://localhost:3000/${sessionStorage.getItem("del").split("-")[1]}/delete`;
+      const id = sessionStorage.getItem("del").split("-")[2];
+      const path = sessionStorage.getItem("del").split("-")[1];
+      const body = { id: id };
+      const endPoint = `http://localhost:3000/${path}/delete`;
       const data = await functions.fetch(endPoint, "DELETE", body);
       functions.response(data);
     });

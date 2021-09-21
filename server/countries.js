@@ -39,9 +39,9 @@ const countries = {
       }
     );
   },
-  findByName: async (data) => {
-    return await sequelize.query("SELECT * FROM countries WHERE name = ?", {
-      replacements: [data],
+  findById: async (data) => {
+    return await sequelize.query("SELECT * FROM countries WHERE id = ? OR id = ?", {
+      replacements: [data.id, data.countryId],
       type: "SELECT",
     });
   },
@@ -51,8 +51,8 @@ const countries = {
     });
   },
   delete: async (data) => {
-    await sequelize.query("DELETE FROM countries WHERE name = ?;", {
-      replacements: [data],
+    await sequelize.query("DELETE FROM countries WHERE id = ?;", {
+      replacements: [data.id],
     });
   },
   put: async (data) => {

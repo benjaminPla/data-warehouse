@@ -13,17 +13,17 @@ const usersControllers = {
     res.send(response);
   },
   post: (req, res) => {
-    response.body = `posted ${req.body.name}`;
+    response.body = `successfully posted`;
     users.post(req.body);
     res.send(response);
   },
   delete: (req, res) => {
-    response.body = `deleted ${req.body.name}`;
+    response.body = "successfully deleted";
     users.delete(req.body);
     res.send(response);
   },
   put: (req, res) => {
-    response.body = `updated ${req.body.name} to ${req.body.newName}`;
+    response.body = "successfully updated";
     users.put(req.body);
     res.send(response);
   },
