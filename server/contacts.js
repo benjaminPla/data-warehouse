@@ -125,10 +125,58 @@ const contacts = {
     return await sequelize.query("SELECT * FROM contacts WHERE 1;", { type: "SELECT" });
   },
   findById: async (data) => {
-    return await sequelize.query("SELECT * FROM contacts WHERE id = ?;", { replacements: [data.id], type: "SELECT" });
+    return await sequelize.query("SELECT * FROM contacts WHERE id = ?;", {
+      replacements: [data.id],
+      type: "SELECT",
+    });
   },
-  delete: async (data) => {
-    await sequelize.query("DELETE FROM contacts WHERE id = ?;", { replacements: [data.id] });
+  findByFullName: async (data) => {
+    return await sequelize.query("SELECT * FROM contacts WHERE first_name = ? AND last_name = ?;", {
+      replacements: [data.first_name, data.last_name],
+      type: "SELECT",
+    });
+  },
+  post: async (data) => {
+    await sequelize.query(
+      "INSERT INTO contacts " +
+        "(first_name, last_name, city_id, company_id, role, media, interest) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?);",
+      {
+        replacements: [
+          data.first_name,
+          data.last_name,
+          data.city_id,
+          data.company_id,
+          data.role,
+          data.media,
+          data.interest,
+        ],
+      }
+    );
+  },
+  deleteById: async (data) => {
+    await sequelize.query("DELETE FROM contacts WHERE id = ?;", {
+      replacements: [data.id],
+    });
+  },
+  put: async (data) => {
+    await sequelize.query(
+      "UPDATE contacts SET " +
+        "first_name = ?, last_name = ?, city_id = ?, company_id = ?, role = ?, media = ?, interest = ? " +
+        "WHERE id = ?;",
+      {
+        replacements: [
+          data.first_name,
+          data.last_name,
+          data.city_id,
+          data.company_id,
+          data.role,
+          data.media,
+          data.interest,
+          data.id,
+        ],
+      }
+    );
   },
 };
 

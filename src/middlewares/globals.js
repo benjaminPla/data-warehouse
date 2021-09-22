@@ -25,6 +25,34 @@ const globalsMiddlewares = {
     response.body = "missing password";
     !req.body.password ? res.send(response) : next();
   },
+  missingFirstName: (req, res, next) => {
+    response.body = "missing firstName";
+    !req.body.first_name ? res.send(response) : next();
+  },
+  missingLastName: (req, res, next) => {
+    response.body = "missing lastName";
+    !req.body.last_name ? res.send(response) : next();
+  },
+  missingCityId: (req, res, next) => {
+    response.body = "missing cityId";
+    !req.body.city_id ? res.send(response) : next();
+  },
+  missingCompanyId: (req, res, next) => {
+    response.body = "missing companyId";
+    !req.body.company_id ? res.send(response) : next();
+  },
+  missingRole: (req, res, next) => {
+    response.body = "missing role";
+    !req.body.role ? res.send(response) : next();
+  },
+  missingMedia: (req, res, next) => {
+    response.body = "missing media";
+    !req.body.media ? res.send(response) : next();
+  },
+  missingInterest: (req, res, next) => {
+    response.body = "missing interest";
+    !req.body.interest ? res.send(response) : next();
+  },
 };
 
 export { globalsMiddlewares };
