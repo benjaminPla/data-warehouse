@@ -5,7 +5,10 @@ const events = {
   contactsBtns: () => {
     document.getElementById("contacts-btn").addEventListener("click", async () => {
       functions.clearNode("section-main");
-      functions.fillNode("section-main", dom.table("contacts-table", "Contactos", "contacts_post-btn"));
+      functions.fillNode(
+        "section-main",
+        dom.table("contacts-table", "Contactos", "contacts_post-btn")
+      );
       const data = await functions.fetch("http://localhost:3000/contacts/findAll", "GET");
       data.body.forEach((contact) => {
         functions.fillNode("contacts-table", dom.tableDataContacts(contact, "table-data-x7"));
@@ -42,8 +45,13 @@ const events = {
         password: document.getElementById("user_password-post-input").value,
         rank: 2,
       };
-      if (document.getElementById("user_password_repeat-post-input").value !== document.getElementById("user_password-post-input").value) {
-        document.getElementById("response") ? functions.clearNode("response") : functions.fillNode("response-container", dom.response);
+      if (
+        document.getElementById("user_password_repeat-post-input").value !==
+        document.getElementById("user_password-post-input").value
+      ) {
+        document.getElementById("response")
+          ? functions.clearNode("response")
+          : functions.fillNode("response-container", dom.response);
         document.getElementById("response").classList.add("response-error");
         functions.fillNode("response", dom.errorIcon);
         functions.fillNode("response", "passwords do not match");
@@ -61,7 +69,9 @@ const events = {
   expandBtn: () => {
     document.querySelectorAll(".fa-angle-down").forEach((btn) => {
       btn.addEventListener("click", (element) => {
-        document.getElementById(element.target.parentElement.parentElement.parentElement.id).classList.toggle("vertical-expand");
+        document
+          .getElementById(element.target.parentElement.parentElement.parentElement.id)
+          .classList.toggle("vertical-expand");
         element.target.previousElementSibling.classList.toggle("horizontal-expand");
       });
     });
@@ -79,12 +89,18 @@ const events = {
   areasBtn: () => {
     document.getElementById("areas-btn").addEventListener("click", async () => {
       functions.clearNode("section-main");
-      functions.fillNode("section-main", dom.table("regions-table", "Regiones", "regions_post-btn"));
+      functions.fillNode(
+        "section-main",
+        dom.table("regions-table", "Regiones", "regions_post-btn")
+      );
       const regions = await functions.fetch("http://localhost:3000/regions/findAll", "GET");
       regions.body.forEach((region) => {
         functions.fillNode("regions-table", dom.tableDataRegion(region, "table-data-x2"));
       });
-      functions.fillNode("section-main", dom.table("countries-table", "Países", "countries_post-btn"));
+      functions.fillNode(
+        "section-main",
+        dom.table("countries-table", "Países", "countries_post-btn")
+      );
       const countries = await functions.fetch("http://localhost:3000/countries/findAll", "GET");
       countries.body.forEach((country) => {
         functions.fillNode("countries-table", dom.tableDataCountry(country, "table-data-x3"));
