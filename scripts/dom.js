@@ -129,11 +129,11 @@ const dom = {
       <div class='${gridStyle}'>
         <span>${data.id}</span>
         <span>${data.first_name} ${data.last_name}</span>
-        <span>${data.city_id}</span>
-        <span>${data.company_id}</span>
+        <span>${data.city_name}</span>
+        <span>${data.company_name}</span>
         <span>${data.role}</span>
         <span>${data.media}</span>
-        <span>${data.interest}</span>
+        <span class='text_align-right'>${data.interest}</span>
       </div>
       <div>
         <i id="put-contacts-${data.id}-${data.first_name} ${data.last_name}" class="fas fa-pencil-alt"></i>
