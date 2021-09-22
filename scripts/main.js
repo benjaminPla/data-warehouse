@@ -7,5 +7,6 @@ if (location.href.endsWith("index.html")) {
 if (location.href.endsWith("home.html")) {
   events.contactsBtns();
   events.usersBtn();
+  events.companiesBtn();
   events.areasBtn();
 }

@@ -20,6 +20,10 @@
   width: 0 !important;
 }
 
+.text_align-right {
+  text-align: right;
+}
+
 #section-login {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -272,6 +276,14 @@ nav li:hover {
   display: grid;
   -ms-grid-columns: 30px (250px)[3];
       grid-template-columns: 30px repeat(3, 250px);
+  text-align: left;
+}
+
+.table .table-data .table-data-x6 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30px (1fr)[5];
+      grid-template-columns: 30px repeat(5, 1fr);
   text-align: left;
 }
 

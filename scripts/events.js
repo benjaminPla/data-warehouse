@@ -2,6 +2,19 @@ import { functions } from "./functions.js";
 import { dom } from "./dom.js";
 
 const events = {
+  companiesBtn: () => {
+    document.getElementById("companies-btn").addEventListener("click", async () => {
+      functions.clearNode("section-main");
+      functions.fillNode(
+        "section-main",
+        dom.table("companies-table", "Compañías", "companies_post-btn")
+      );
+      const companies = await functions.fetch("http://localhost:3000/companies/findAll", "GET");
+      companies.body.forEach((company) => {
+        functions.fillNode("companies-table", dom.tableDataCompanies(company, "table-data-x6"));
+      });
+    });
+  },
   contactsBtns: () => {
     document.getElementById("contacts-btn").addEventListener("click", async () => {
       functions.clearNode("section-main");
@@ -15,6 +28,7 @@ const events = {
       });
       events.expandBtn();
       events.contactsPostBtn();
+      events.putBtns();
       events.deleteBtns();
     });
   },
@@ -211,28 +225,52 @@ const events = {
         if (path === "regions") {
           functions.pop(dom.putRegion(name));
           events.regionPutSaveBtn(id);
-        }
-        if (path === "countries") {
+        } else if (path === "countries") {
           functions.pop(dom.putCountry(name));
           const data = await functions.fetch("http://localhost:3000/regions/findAll", "GET");
           data.body.forEach((region) => {
             functions.fillNode("country_put-select", dom.option(region));
           });
           events.countryPutSaveBtn(name);
-        }
-        if (path === "cities") {
+        } else if (path === "cities") {
           functions.pop(dom.putCity(name));
           const data = await functions.fetch("http://localhost:3000/countries/findAll", "GET");
           data.body.forEach((country) => {
             functions.fillNode("city_put-select", dom.option(country));
           });
           events.cityPutSaveBtn(name);
-        }
-        if (path === "users") {
+        } else if (path === "users") {
           functions.pop(dom.putUser(name));
           events.userPutSaveBtn(name);
+        } else if (path == "contacts") {
+          functions.pop(dom.putContact(name));
+          const cities = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
+          cities.body.forEach((city) => {
+            functions.fillNode("contact_put-new_city_id-select", dom.option(city));
+          });
+          const companies = await functions.fetch("http://localhost:3000/companies/findAll", "GET");
+          companies.body.forEach((company) => {
+            functions.fillNode("contact_put-new_company_id-select", dom.option(company));
+          });
+          events.contactsPutSaveBtn(id);
         }
       });
+    });
+  },
+  contactsPutSaveBtn: (id) => {
+    document.getElementById("contact_save-put-btn").addEventListener("click", async () => {
+      const body = {
+        id: id,
+        first_name: document.getElementById("contact-new_first_name-put-input").value,
+        last_name: document.getElementById("contact-new_last_name-put-input").value,
+        city_id: document.getElementById("contact_put-new_city_id-select").value,
+        company_id: document.getElementById("contact_put-new_company_id-select").value,
+        role: document.getElementById("contact-new_role-put-input").value,
+        media: document.getElementById("contact-new_media-put-input").value,
+        interest: document.getElementById("contact-new_interest-put-input").value,
+      };
+      const data = await functions.fetch("http://localhost:3000/contacts/put", "PUT", body);
+      functions.response(data);
     });
   },
   userPutSaveBtn: (userName) => {
