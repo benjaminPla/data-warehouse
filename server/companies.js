@@ -9,7 +9,7 @@ const companies = {
       "CREATE TABLE IF NOT EXISTS companies (" +
         "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
         "name VARCHAR(50) NOT NULL, " +
-        "adress VARCHAR(50) NOT NULL, " +
+        "address VARCHAR(50) NOT NULL, " +
         "city_id INT NOT NULL, " +
         "email VARCHAR(50), " +
         "phone_number VARCHAR(50));"

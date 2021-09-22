@@ -22,5 +22,8 @@ $color5: #284b63;
 .horizontal-expand {
   width: 0 !important;
 }
+.text_align-right {
+  text-align: right;
+}
 
 @import "./login", "./nav", "./tables", "./pop", "./response";

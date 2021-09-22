@@ -45,6 +45,20 @@ const dom = {
     <select id="city_post-select"><option selected disabled>Seleccionar</option></select>
     <button id="city_save-post-btn">Guardar</button>
     <div id='response-container'></div>`,
+  putContact: (fullName) => {
+    return `
+  <h2>Edita a ${fullName}</h2>
+  <input id='contact-new_first_name-put-input' type='text' placeholder='Nuevo nombre' autocomplete='off' />
+  <input id='contact-new_last_name-put-input' type='text' placeholder='Apellido' autocomplete='off' />
+  <select id='contact_put-new_city_id-select'></select>
+  <select id='contact_put-new_company_id-select'></select>
+  <input id='contact-new_role-put-input' type='text' placeholder='Rol' autocomplete='off' />
+  <input id='contact-new_media-put-input' type='text' placeholder='Red/es favorita/s' autocomplete='off' />
+  <label>Interés</label>
+  <input id='contact-new_interest-put-input' type='range' min='0' max='100' step='25'/>
+  <button id="contact_save-put-btn">Guardar</button>
+  <div id='response-container'></div>`;
+  },
   putUser: (name) => {
     return `
   <h2>Edita ${name}</h2>
@@ -92,6 +106,23 @@ const dom = {
       </li>
     </ul>`;
   },
+  tableDataCompanies: (data, gridStyle) => {
+    return `
+    <li class='table-data'>
+      <div class='${gridStyle}'>
+        <span>${data.id}</span>
+        <span>${data.name}</span>
+        <span>${data.address}</span>
+        <span>${data.city_id}</span>
+        <span>${data.email}</span>
+        <span class='text_align-right'>${data.phone_number}</span>
+      </div>
+      <div>
+        <i id="put-companies-${data.id}-${data.name}" class="fas fa-pencil-alt"></i>
+        <i id="delete-companies-${data.id}-${data.name}" class="fas fa-trash-alt"></i>
+      </div>
+    </li>`;
+  },
   tableDataContacts: (data, gridStyle) => {
     return `
     <li class='table-data'>
@@ -105,8 +136,8 @@ const dom = {
         <span>${data.interest}</span>
       </div>
       <div>
-        <i id="put-contacts-${data.id}-${data.name}" class="fas fa-pencil-alt"></i>
-        <i id="delete-contacts-${data.id}-${data.name}" class="fas fa-trash-alt"></i>
+        <i id="put-contacts-${data.id}-${data.first_name} ${data.last_name}" class="fas fa-pencil-alt"></i>
+        <i id="delete-contacts-${data.id}-${data.first_name} ${data.last_name}" class="fas fa-trash-alt"></i>
       </div>
     </li>`;
   },
