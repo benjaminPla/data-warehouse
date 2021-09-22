@@ -343,6 +343,10 @@ nav li:hover {
   margin-bottom: 0.5rem;
 }
 
+#pop #pop-container label {
+  text-align: left;
+}
+
 #pop #pop-container input,
 #pop #pop-container select {
   border-radius: 2rem;

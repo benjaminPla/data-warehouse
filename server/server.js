@@ -4,6 +4,7 @@ import { countries } from "./countries.js";
 import { cities } from "./cities.js";
 import { users } from "./users.js";
 import { contacts } from "./contacts.js";
+import { companies } from "./companies.js";
 
 const sequelize = new Sequelize("data_warehouse", "root", "", {
   host: "localhost",
@@ -28,6 +29,9 @@ cities
   .then(() => users.dropTable())
   .then(() => users.createTable())
   .then(() => users.insertInto())
+  .then(() => companies.dropTable())
+  .then(() => companies.createTable())
+  .then(() => companies.insertInto())
   .then(() => contacts.dropTable())
   .then(() => contacts.createTable())
   .then(() => contacts.insertInto());

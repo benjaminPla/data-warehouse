@@ -14,8 +14,37 @@ const events = {
         functions.fillNode("contacts-table", dom.tableDataContacts(contact, "table-data-x7"));
       });
       events.expandBtn();
-      events.expandBtn();
+      events.contactsPostBtn();
       events.deleteBtns();
+    });
+  },
+  contactsPostBtn: () => {
+    document.getElementById("contacts_post-btn").addEventListener("click", async () => {
+      functions.pop(dom.contactPost);
+      const cities = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
+      cities.body.forEach((city) => {
+        functions.fillNode("contact_post-city_id-select", dom.option(city));
+      });
+      const companies = await functions.fetch("http://localhost:3000/companies/findAll", "GET");
+      companies.body.forEach((company) => {
+        functions.fillNode("contact_post-company_id-select", dom.option(company));
+      });
+      events.contactsPostSaveBtn();
+    });
+  },
+  contactsPostSaveBtn: () => {
+    document.getElementById("contact_save-post-btn").addEventListener("click", async () => {
+      const body = {
+        first_name: document.getElementById("contact_first_name-post-input").value,
+        last_name: document.getElementById("contact_last_name-post-input").value,
+        city_id: document.getElementById("contact_post-city_id-select").value,
+        company_id: document.getElementById("contact_post-company_id-select").value,
+        role: document.getElementById("contact_role-post-input").value,
+        media: document.getElementById("contact_media-post-input").value,
+        interest: document.getElementById("contact_interest-post-input").value,
+      };
+      const data = await functions.fetch("http://localhost:3000/contacts/post", "POST", body);
+      functions.response(data);
     });
   },
   usersBtn: () => {
