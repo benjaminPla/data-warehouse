@@ -9,26 +9,38 @@ const dom = {
   option: (data) => {
     return `<option value="${data.id}">${data.name}</option>`;
   },
+  contactPost: `
+    <h2>Crea un nuevo contacto</h2>
+    <input id='contact_first_name-post-input' type='text' placeholder='Nombre' autocomplete='off' />
+    <input id='contact_last_name-post-input' type='text' placeholder='Apellido' autocomplete='off' />
+    <select id='contact_post-city_id-select'></select>
+    <select id='contact_post-company_id-select'></select>
+    <input id='contact_role-post-input' type='text' placeholder='Rol' autocomplete='off' />
+    <input id='contact_media-post-input' type='text' placeholder='Red/es favorita/s' autocomplete='off' />
+    <label>Interés</label>
+    <input id='contact_interest-post-input' type='range' min='0' max='100' step='25'/>
+    <button id='contact_save-post-btn'>Guardar</button>
+    <div id='response-container'></div>`,
   userPost: `
-    <h2>Crear un nuevo usuario</h2>
+    <h2>Crea un nuevo usuario</h2>
     <input id='user_name-post-input' type='text' placeholder='Ingrese el nombre de usuario' autocomplete='off' />
     <input id='user_password-post-input' type='password' placeholder='Ingrese la contraseña' autocomplete='off' />
     <input id='user_password_repeat-post-input' type='password' placeholder='Repite la contraseña' autocomplete='off' />
     <button id='user_save-post-btn'>Guardar</button>
     <div id='response-container'></div>`,
   regionPost: `
-    <h2>Crear una nueva región</h2>
+    <h2>Crea una nueva región</h2>
     <input id='region_name-post-input' type='text' placeholder='Ingrese el nombre de la región' autocomplete='off' />
     <button id='region_save-post-btn'>Guardar</button>
     <div id='response-container'></div>`,
   countryPost: `
-    <h2>Crear un nuevo país</h2>
+    <h2>Crea un nuevo país</h2>
     <input id='country_name-post-input' type='text' placeholder='Ingrese el nombre del país' autocomplete='off' />
     <select id="country_post-select"><option selected disabled>Seleccionar</option></select>
     <button id="country_save-post-btn">Guardar</button>
     <div id='response-container'></div>`,
   cityPost: `
-    <h2>Crear una nueva ciudad</h2>
+    <h2>Crea una nueva ciudad</h2>
     <input id='city_name-post-input' type='text' placeholder='Ingrese el nombre de la ciudad' autocomplete='off' />
     <select id="city_post-select"><option selected disabled>Seleccionar</option></select>
     <button id="city_save-post-btn">Guardar</button>
