@@ -16,24 +16,24 @@ const sequelize = new Sequelize("data_warehouse", "root", "", {
 });
 await sequelize.authenticate(console.log("sequelize on"));
 
-cities
+contacts
   .dropTable()
+  .then(() => companies.dropTable())
+  .then(() => cities.dropTable())
   .then(() => countries.dropTable())
   .then(() => regions.dropTable())
+  .then(() => users.dropTable())
   .then(() => regions.createTable())
   .then(() => regions.insertInto())
   .then(() => countries.createTable())
   .then(() => countries.insertInto())
   .then(() => cities.createTable())
   .then(() => cities.insertInto())
-  .then(() => users.dropTable())
-  .then(() => users.createTable())
-  .then(() => users.insertInto())
-  .then(() => companies.dropTable())
+  .then(() => contacts.createTable())
+  .then(() => contacts.insertInto())
   .then(() => companies.createTable())
   .then(() => companies.insertInto())
-  .then(() => contacts.dropTable())
-  .then(() => contacts.createTable())
-  .then(() => contacts.insertInto());
+  .then(() => users.createTable())
+  .then(() => users.insertInto());
 
 export { sequelize };

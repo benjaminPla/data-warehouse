@@ -113,7 +113,7 @@ const dom = {
         <span>${data.id}</span>
         <span>${data.name}</span>
         <span>${data.address}</span>
-        <span>${data.city_id}</span>
+        <span>${data.city_name}</span>
         <span>${data.email}</span>
         <span class='text_align-right'>${data.phone_number}</span>
       </div>
