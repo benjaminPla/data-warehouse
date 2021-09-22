@@ -29,10 +29,10 @@ contacts
   .then(() => countries.insertInto())
   .then(() => cities.createTable())
   .then(() => cities.insertInto())
-  .then(() => contacts.createTable())
-  .then(() => contacts.insertInto())
   .then(() => companies.createTable())
   .then(() => companies.insertInto())
+  .then(() => contacts.createTable())
+  .then(() => contacts.insertInto())
   .then(() => users.createTable())
   .then(() => users.insertInto());
 
