@@ -13,6 +13,21 @@ const events = {
       companies.body.forEach((company) => {
         functions.fillNode("companies-table", dom.tableDataCompanies(company, "table-data-x6"));
       });
+      events.companiesPostBtn();
+    });
+  },
+  companiesPostBtn: () => {
+    document.getElementById("companies_post-btn").addEventListener("click", async () => {
+      functions.pop(dom.companiesPost); //terminar
+      const companies = await functions.fetch("http://localhost:3000/companies/findAll", "GET");
+      // companies.body.forEach((company) => {
+      //   functions.fillNode("company_post-city_id-select", dom.option(company));
+      // });
+      // const companies = await functions.fetch("http://localhost:3000/companies/findAll", "GET");
+      // companies.body.forEach((company) => {
+      //   functions.fillNode("contact_post-company_id-select", dom.option(company));
+      // });
+      events.contactsPostSaveBtn();
     });
   },
   contactsBtns: () => {
@@ -165,6 +180,7 @@ const events = {
     document.getElementById("regions_post-btn").addEventListener("click", () => {
       functions.pop(dom.regionPost);
       events.regionsPostSaveBtn();
+      events.onEnter("region_save-post-btn");
     });
   },
   regionsPostSaveBtn: () => {

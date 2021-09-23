@@ -52,6 +52,7 @@
     }
   }
   .table-data {
+    align-items: center;
     background-color: $color4;
     border-bottom: 1px solid #000;
     border-radius: 1rem;
@@ -62,7 +63,6 @@
     margin: 0 1rem 0.5rem 1rem;
     padding: 0.2rem 1rem;
     text-align: left;
-    align-items: center;
     .table-data-x2 {
       display: grid;
       grid-template-columns: 30px 250px;
@@ -98,6 +98,21 @@
         cursor: pointer;
       }
     }
+  }
+  .interest0::before {
+    content: " \2606   - ";
+  }
+  .interest25::before {
+    content: " \2606 \2606   - ";
+  }
+  .interest50::before {
+    content: " \2606 \2606 \2606   - ";
+  }
+  .interest75::before {
+    content: " \2606 \2606 \2606 \2606   - ";
+  }
+  .interest100::before {
+    content: " \2606 \2606 \2606 \2606 \2606   - ";
   }
   .table-data:hover {
     background-color: $color2;
