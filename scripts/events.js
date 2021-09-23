@@ -14,11 +14,13 @@ const events = {
         functions.fillNode("companies-table", dom.tableDataCompanies(company, "table-data-x6"));
       });
       events.companiesPostBtn();
+      events.putBtns();
+      events.deleteBtns();
     });
   },
   companiesPostBtn: () => {
     document.getElementById("companies_post-btn").addEventListener("click", async () => {
-      functions.pop(dom.companiesPost); 
+      functions.pop(dom.companiesPost);
       const cities = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
       cities.body.forEach((city) => {
         functions.fillNode("company_post-city_id-select", dom.option(city));
@@ -278,8 +280,29 @@ const events = {
             functions.fillNode("contact_put-new_company_id-select", dom.option(company));
           });
           events.contactsPutSaveBtn(id);
+        } else if (path == "companies") {
+          functions.pop(dom.putCompany(name));
+          const cities = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
+          cities.body.forEach((city) => {
+            functions.fillNode("company_put-new_city_id-select", dom.option(city));
+          });
+          events.companiesPutSaveBtn(id);
         }
       });
+    });
+  },
+  companiesPutSaveBtn: (id) => {
+    document.getElementById("company_save-put-btn").addEventListener("click", async () => {
+      const body = {
+        id: id,
+        name: document.getElementById("company-new_name-put-input").value,
+        address: document.getElementById("company-new_address-put-input").value,
+        city_id: document.getElementById("company_put-new_city_id-select").value,
+        email: document.getElementById("company-new_email-put-input").value,
+        phone_number: document.getElementById("company-new_phone_number-put-input").value,
+      };
+      const data = await functions.fetch("http://localhost:3000/companies/put", "PUT", body);
+      functions.response(data);
     });
   },
   contactsPutSaveBtn: (id) => {
