@@ -1,22 +1,22 @@
 # Data-Warehouse
 
-Acamica - https://www.linkedin.com/school/acamica/ 
+[Acamica](https://www.linkedin.com/school/acamica/)
 Proyecto 4
-Alumno - Pla Benjamin
+Alumno - [Pla Benjamin](https://www.linkedin.com/in/benjamin-pla/)
 
 ## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas; o bien realizarlas desde el siguiente enlace:_
+
+#### [Data-Warehouse](https://benjaminpla.github.io/data-warehouse/)
 
 ### Pre-requisitos 📋
 
 _Que cosas necesitas para instalar el software y como instalarlas_
 
-```
-- Editor de texto
-- Node.Js - https://nodejs.org/es/
-- XAMPP - https://www.apachefriends.org/es/index.html
-```
+* Editor de texto
+* [Node.Js](https://nodejs.org/es/)
+* [XAMPP](https://www.apachefriends.org/es/index.html)
 
 ### Instalación 🔧
 
@@ -39,11 +39,14 @@ El archivo ".env" no se encuentra dentro de ".gitignore" para optimizar la insta
 Puedes testear todos los endpoints desde tu navegador o utilizando Postman:
 
 _Si elijes Postman primero crea y activa un Enviroment con {"base": "http://localhost:3000"}_
+_Luego importa las rutas_
+```
+https://www.getpostman.com/collections/145da5a8b67392d1dbfe
+```
 
 ### Analice las pruebas end-to-end 🔩
 
 Puedes verificar el correcto funcionamiento de la API siguiendo su documentacion:
-
 
 ```
 https://app.swaggerhub.com/apis/benjaminPla/delilah/1.0.0
@@ -66,10 +69,10 @@ https://app.swaggerhub.com/apis/benjaminPla/delilah/1.0.0
 
 ## Licencia 📄
 
-Compyleft
+Copyleft
 
 ## Expresiones de Gratitud 🎁
 
 * Grupo dwfs-online-74 - Slack - Acamica
-* https://www.linkedin.com/in/juancruzgs/
+* [Juanchi](https://www.linkedin.com/in/juancruzgs/)
 * Flor, mi amor
