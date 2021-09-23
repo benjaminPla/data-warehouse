@@ -20,7 +20,9 @@ const functions = {
       .catch((err) => console.log(err));
   },
   response: (data, redirect) => {
-    document.getElementById("response") ? functions.clearNode("response") : functions.fillNode("response-container", dom.response);
+    document.getElementById("response")
+      ? functions.clearNode("response")
+      : functions.fillNode("response-container", dom.response);
     if (data.success) {
       document.getElementById("response").classList.remove("response-error");
       functions.fillNode("response", dom.successIcon);
@@ -29,7 +31,10 @@ const functions = {
         if (document.getElementById("pop")) document.getElementById("pop").remove();
         if (document.getElementById("regions-table")) document.getElementById("areas-btn").click();
         if (document.getElementById("users-table")) document.getElementById("users-btn").click();
-        if (document.getElementById("contacts-table")) document.getElementById("contacts-btn").click();
+        if (document.getElementById("contacts-table"))
+          document.getElementById("contacts-btn").click();
+        if (document.getElementById("companies-table"))
+          document.getElementById("companies-btn").click();
         if (redirect) location.href = redirect;
       }, 700);
     } else {

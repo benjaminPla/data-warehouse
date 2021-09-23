@@ -11,15 +11,12 @@ const dom = {
   },
   companiesPost: `
     <h2>Crea una nueva compañía</h2>
-    <input id='contact_first_name-post-input' type='text' placeholder='Nombre' autocomplete='off' />
-    <input id='contact_last_name-post-input' type='text' placeholder='Apellido' autocomplete='off' />
-    <select id='contact_post-city_id-select'></select>
-    <select id='contact_post-company_id-select'></select>
-    <input id='contact_role-post-input' type='text' placeholder='Rol' autocomplete='off' />
-    <input id='contact_media-post-input' type='text' placeholder='Red/es favorita/s' autocomplete='off' />
-    <label>Interés</label>
-    <input id='contact_interest-post-input' type='range' min='0' max='100' step='25'/>
-    <button id='contact_save-post-btn'>Guardar</button>
+    <input id='company_name-post-input' type='text' placeholder='Nombre' autocomplete='off' />
+    <input id='company_address-post-input' type='text' placeholder='Dirección' autocomplete='off' />
+    <select id='company_post-city_id-select'></select>
+    <input id='company_email-post-input' type='text' placeholder='Email' autocomplete='off' />
+    <input id='company_phone_number-post-input' type='text' placeholder='Número de Teléfono ' autocomplete='off' />
+    <button id='company_save-post-btn'>Guardar</button>
     <div id='response-container'></div>`,
   contactPost: `
     <h2>Crea un nuevo contacto</h2>
