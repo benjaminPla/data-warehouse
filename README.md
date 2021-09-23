@@ -1,8 +1,8 @@
 # Data-Warehouse
 
-[Acamica](https://www.linkedin.com/school/acamica/)
-Proyecto 4
-Alumno - [Pla Benjamin](https://www.linkedin.com/in/benjamin-pla/)
+* [Acamica](https://www.linkedin.com/school/acamica/)
+* Proyecto 4
+* Alumno - [Pla Benjamin](https://www.linkedin.com/in/benjamin-pla/)
 
 ## Comenzando 🚀
 
