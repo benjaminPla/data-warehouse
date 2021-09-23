@@ -15,7 +15,7 @@ const dom = {
     <input id='company_address-post-input' type='text' placeholder='Dirección' autocomplete='off' />
     <select id='company_post-city_id-select'></select>
     <input id='company_email-post-input' type='text' placeholder='Email' autocomplete='off' />
-    <input id='company_phone_number-post-input' type='text' placeholder='Número de Teléfono ' autocomplete='off' />
+    <input id='company_phone_number-post-input' type='text' placeholder='Número de Teléfono' autocomplete='off' />
     <button id='company_save-post-btn'>Guardar</button>
     <div id='response-container'></div>`,
   contactPost: `
@@ -54,6 +54,17 @@ const dom = {
     <select id="city_post-select"><option selected disabled>Seleccionar</option></select>
     <button id="city_save-post-btn">Guardar</button>
     <div id='response-container'></div>`,
+  putCompany: (name) => {
+    return `
+  <h2>Edita a ${name}</h2>
+  <input id='company-new_name-put-input' type='text' placeholder='Nuevo nombre' autocomplete='off' />
+  <input id='company-new_address-put-input' type='text' placeholder='Dirección' autocomplete='off' />
+  <select id='company_put-new_city_id-select'></select>
+  <input id='company-new_email-put-input' type='text' placeholder='Email' autocomplete='off' />
+  <input id='company-new_phone_number-put-input' type='text' placeholder='Número de Teléfono' autocomplete='off' />
+  <button id="company_save-put-btn">Guardar</button>
+  <div id='response-container'></div>`;
+  },
   putContact: (fullName) => {
     return `
   <h2>Edita a ${fullName}</h2>
