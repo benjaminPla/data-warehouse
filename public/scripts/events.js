@@ -18,16 +18,25 @@ const events = {
   },
   companiesPostBtn: () => {
     document.getElementById("companies_post-btn").addEventListener("click", async () => {
-      functions.pop(dom.companiesPost); //terminar
-      const companies = await functions.fetch("http://localhost:3000/companies/findAll", "GET");
-      // companies.body.forEach((company) => {
-      //   functions.fillNode("company_post-city_id-select", dom.option(company));
-      // });
-      // const companies = await functions.fetch("http://localhost:3000/companies/findAll", "GET");
-      // companies.body.forEach((company) => {
-      //   functions.fillNode("contact_post-company_id-select", dom.option(company));
-      // });
-      events.contactsPostSaveBtn();
+      functions.pop(dom.companiesPost); 
+      const cities = await functions.fetch("http://localhost:3000/cities/findAll", "GET");
+      cities.body.forEach((city) => {
+        functions.fillNode("company_post-city_id-select", dom.option(city));
+      });
+      events.companiesPostSaveBtn();
+    });
+  },
+  companiesPostSaveBtn: () => {
+    document.getElementById("company_save-post-btn").addEventListener("click", async () => {
+      const body = {
+        name: document.getElementById("company_name-post-input").value,
+        address: document.getElementById("company_address-post-input").value,
+        city_id: document.getElementById("company_post-city_id-select").value,
+        email: document.getElementById("company_email-post-input").value,
+        phone_number: document.getElementById("company_phone_number-post-input").value,
+      };
+      const data = await functions.fetch("http://localhost:3000/companies/post", "POST", body);
+      functions.response(data);
     });
   },
   contactsBtns: () => {

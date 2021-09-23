@@ -54,32 +54,13 @@ const countries = {
     });
   },
   put: async (data) => {
-    await sequelize.query("UPDATE countries SET name = ?, region_id = ? WHERE id = ? OR name = ?;", {
-      replacements: [data.newName, data.regionId, data.id, data.name],
-    });
+    await sequelize.query(
+      "UPDATE countries SET name = ?, region_id = ? WHERE id = ? OR name = ?;",
+      {
+        replacements: [data.newName, data.regionId, data.id, data.name],
+      }
+    );
   },
 };
 
 export { countries };
-
-// findOne: async (data) => {
-//   return await sequelize.query("SELECT * FROM regions WHERE id = ? OR name = ?;", {
-//     replacements: [data.id, data.name],
-//     type: "SELECT",
-//   });
-// },
-// post: async (data) => {
-//   await sequelize.query("INSERT INTO regions (name) VALUES (?);", {
-//     replacements: [data.name],
-//   });
-// },
-// delete: async (data) => {
-//   await sequelize.query("DELETE FROM regions WHERE id = ? OR name = ?;", {
-//     replacements: [data.id, data.name],
-//   });
-// },
-// put: async (data) => {
-//   await sequelize.query("UPDATE regions SET name = ? WHERE id = ? OR name = ?;", {
-//     replacements: [data.newName, data.id, data.name],
-//   });
-// },

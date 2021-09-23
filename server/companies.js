@@ -56,7 +56,7 @@ const companies = {
     return await sequelize.query(
       "SELECT companies.id AS id, companies.name AS name,companies.address AS address, cities.name AS city_name, " +
         "companies.email AS email, companies.phone_number AS phone_number FROM companies " +
-        "INNER JOIN cities ON cities.id = companies.city_id;",
+        "INNER JOIN cities ON cities.id = companies.city_id "+"ORDER BY id DESC;",
       { type: "SELECT" }
     );
   },
