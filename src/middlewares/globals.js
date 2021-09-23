@@ -53,6 +53,18 @@ const globalsMiddlewares = {
     response.body = "missing interest";
     !req.body.interest ? res.send(response) : next();
   },
+  missingAddress: (req, res, next) => {
+    response.body = "missing address";
+    !req.body.address ? res.send(response) : next();
+  },
+  missingEmail: (req, res, next) => {
+    response.body = "missing email";
+    !req.body.email ? res.send(response) : next();
+  },
+  missingPhoneNumber: (req, res, next) => {
+    response.body = "missing phoneNumber";
+    !req.body.phone_number ? res.send(response) : next();
+  },
 };
 
 export { globalsMiddlewares };

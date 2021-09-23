@@ -60,55 +60,39 @@ const companies = {
       { type: "SELECT" }
     );
   },
-  findById: async (data) => {
-    return await sequelize.query("SELECT * FROM contacts WHERE id = ?;", {
-      replacements: [data.id],
-      type: "SELECT",
-    });
-  },
-  findByFullName: async (data) => {
-    return await sequelize.query("SELECT * FROM contacts WHERE first_name = ? AND last_name = ?;", {
-      replacements: [data.first_name, data.last_name],
+  findOne: async (data) => {
+    return await sequelize.query("SELECT * FROM companies WHERE id = ? OR name = ?;", {
+      replacements: [data.id, data.name],
       type: "SELECT",
     });
   },
   post: async (data) => {
     await sequelize.query(
-      "INSERT INTO contacts " +
-        "(first_name, last_name, city_id, company_id, role, media, interest) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?);",
+      "INSERT INTO companies " +
+        "(name, address, city_id, email, phone_number) " +
+        "VALUES (?, ?, ?, ?, ?);",
       {
-        replacements: [
-          data.first_name,
-          data.last_name,
-          data.city_id,
-          data.company_id,
-          data.role,
-          data.media,
-          data.interest,
-        ],
+        replacements: [data.name, data.address, data.city_id, data.email, data.phone_number],
       }
     );
   },
-  deleteById: async (data) => {
-    await sequelize.query("DELETE FROM contacts WHERE id = ?;", {
-      replacements: [data.id],
+  delete: async (data) => {
+    await sequelize.query("DELETE FROM companies WHERE id = ? OR name = ?;", {
+      replacements: [data.id, data.name],
     });
   },
   put: async (data) => {
     await sequelize.query(
-      "UPDATE contacts SET " +
-        "first_name = ?, last_name = ?, city_id = ?, company_id = ?, role = ?, media = ?, interest = ? " +
+      "UPDATE companies SET " +
+        "name = ?, address = ?, city_id = ?, email = ?, phone_number = ? " +
         "WHERE id = ?;",
       {
         replacements: [
-          data.first_name,
-          data.last_name,
+          data.name,
+          data.address,
           data.city_id,
-          data.company_id,
-          data.role,
-          data.media,
-          data.interest,
+          data.email,
+          data.phone_number,
           data.id,
         ],
       }

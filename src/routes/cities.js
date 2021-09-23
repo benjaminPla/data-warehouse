@@ -6,8 +6,18 @@ import { globalsMiddlewares } from "../middlewares/globals.js";
 const citiesRoutes = express.Router();
 
 citiesRoutes.get("/cities/findAll", citiesControllers.findAll);
-citiesRoutes.get("/cities/findById", globalsMiddlewares.missingId, citiesMiddlewares.cityNotFound, citiesControllers.findOne);
-citiesRoutes.get("/cities/findByName", globalsMiddlewares.missingName, citiesMiddlewares.cityNotFound, citiesControllers.findOne);
+citiesRoutes.get(
+  "/cities/findById",
+  globalsMiddlewares.missingId,
+  citiesMiddlewares.cityNotFound,
+  citiesControllers.findOne
+);
+citiesRoutes.get(
+  "/cities/findByName",
+  globalsMiddlewares.missingName,
+  citiesMiddlewares.cityNotFound,
+  citiesControllers.findOne
+);
 citiesRoutes.post(
   "/cities/post",
   globalsMiddlewares.missingName,
@@ -16,8 +26,18 @@ citiesRoutes.post(
   citiesMiddlewares.countryNotFound,
   citiesControllers.post
 );
-citiesRoutes.delete("/cities/deleteById", globalsMiddlewares.missingId, citiesMiddlewares.cityNotFound, citiesControllers.delete);
-citiesRoutes.delete("/cities/deleteByName", globalsMiddlewares.missingName, citiesMiddlewares.cityNotFound, citiesControllers.delete);
+citiesRoutes.delete(
+  "/cities/deleteById",
+  globalsMiddlewares.missingId,
+  citiesMiddlewares.cityNotFound,
+  citiesControllers.delete
+);
+citiesRoutes.delete(
+  "/cities/deleteByName",
+  globalsMiddlewares.missingName,
+  citiesMiddlewares.cityNotFound,
+  citiesControllers.delete
+);
 citiesRoutes.put(
   "/cities/putById",
   globalsMiddlewares.missingId,
