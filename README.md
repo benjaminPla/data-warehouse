@@ -8,7 +8,7 @@
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas; o bien realizarlas desde el siguiente enlace:_
 
-#### [Data-Warehouse](https://benjaminpla.github.io/data-warehouse/)
+#### [Data-Warehouse](https://benjaminpla.github.io/data-warehouse/index.html)
 
 ### Pre-requisitos 📋
 
