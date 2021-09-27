@@ -49,7 +49,7 @@ https://www.getpostman.com/collections/145da5a8b67392d1dbfe
 Puedes verificar el correcto funcionamiento de la API siguiendo su documentacion:
 
 ```
-https://app.swaggerhub.com/apis/benjaminPla/data_warehouse/1.0.0
+https://app.swaggerhub.com/apis/benjaminPla/data-warehouse/1.0.0#/
 ```
 
 ## Construido con 🛠️
