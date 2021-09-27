@@ -5,10 +5,12 @@ import { cities } from "./cities.js";
 import { users } from "./users.js";
 import { contacts } from "./contacts.js";
 import { companies } from "./companies.js";
+import dotenv from "dotenv";
+dotenv.config();
 
-const sequelize = new Sequelize("data_warehouse", "root", "", {
-  host: "localhost",
-  dialect: "mariadb",
+const sequelize = new Sequelize(process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD, {
+  host: process.env.HOST,
+  dialect: process.env.DIALECT,
   logging: false,
   define: {
     freezeTableName: true,
