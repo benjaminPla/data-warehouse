@@ -32,7 +32,7 @@ git@github.com:benjaminPla/data-warehouse.git
 npm i
 ```
 
-El archivo ".env" no se encuentra dentro de ".gitignore" para optimizar la instalaccion y testeo
+_El archivo ".env" no se encuentra dentro de ".gitignore" para optimizar la instalaccion y testeo_
 
 ## Ejecutando las pruebas ⚙️
 
@@ -49,7 +49,7 @@ https://www.getpostman.com/collections/145da5a8b67392d1dbfe
 Puedes verificar el correcto funcionamiento de la API siguiendo su documentacion:
 
 ```
-https://app.swaggerhub.com/apis/benjaminPla/delilah/1.0.0
+https://app.swaggerhub.com/apis/benjaminPla/data_warehouse/1.0.0
 ```
 
 ## Construido con 🛠️
