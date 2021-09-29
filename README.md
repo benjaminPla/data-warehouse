@@ -1,78 +1,49 @@
 # Data-Warehouse
 
-* [Acamica](https://www.linkedin.com/school/acamica/)
-* Proyecto 4
-* Alumno - [Pla Benjamin](https://www.linkedin.com/in/benjamin-pla/)
+## [Pla Benjamin](https://www.linkedin.com/in/benjamin-pla/)
 
-## Comenzando 🚀
+### You will need
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas; o bien realizarlas desde el siguiente enlace:_
+- [XAMPP](https://www.apachefriends.org/es/index.html)
 
-#### [Data-Warehouse](https://benjaminpla.github.io/data-warehouse/index.html)
+### Step by step
 
-### Pre-requisitos 📋
-
-_Que cosas necesitas para instalar el software y como instalarlas_
-
-* Editor de texto
-* [Node.Js](https://nodejs.org/es/)
-* [XAMPP](https://www.apachefriends.org/es/index.html)
-
-### Instalación 🔧
-
-1.Clona repositorio GitHub desde tu consola:
+1. Clone GitHub repository. _You can run this command on your console_
 
 ```
-git@github.com:benjaminPla/data-warehouse.git
+git clone https://github.com/benjaminPla/data-warehouse.git
 ```
 
-2.Instala todos los paquetes necesarios:
+2. Install all necesary packages. _You can run this command on your console_
 
 ```
 npm i
 ```
 
-_El archivo ".env" no se encuentra dentro de ".gitignore" para optimizar la instalaccion y testeo_
-
-## Ejecutando las pruebas ⚙️
-
-Puedes testear todos los endpoints desde tu navegador o utilizando Postman:
-
-_Si elijes Postman primero crea y activa un Enviroment con {"base": "http://localhost:3000"}_
-_Luego importa las rutas_
-```
-https://www.getpostman.com/collections/145da5a8b67392d1dbfe
-```
-
-### Analice las pruebas end-to-end 🔩
-
-Puedes verificar el correcto funcionamiento de la API siguiendo su documentacion:
+3. Create 'data_warehouse' DATABASE from XAMPP. \_You can run this code on the SQL section\*
 
 ```
-https://app.swaggerhub.com/apis/benjaminPla/data-warehouse/1.0.0#/
+CREATE DATABASE IF NOT EXISTS data_warehouse;
 ```
 
-## Construido con 🛠️
+4. Start the server. _You can run this command on your console_
 
+```
+npm start
+```
 
-* [VSC](https://code.visualstudio.com/)
-* [Swagger](https://swagger.io/)
-* [GIT](https://git-scm.com/)
-* [GitHub](https://github.com/)
+**If you have troubles connecting to the server try changing the USERNAME to "root" on line 5 at 'server.js' file**
 
-## Autore ✒️
+5. Open the link below from your browser
 
-* **Pla Benjamin** 
-* [LinkedIn](https://www.linkedin.com/in/benjamin-pla/)
-* [GitHub](https://github.com/benjaminPla)
-* [CV](https://benjaminpla.github.io/cv/)
+```
+http://127.0.0.1:5500/public/index.html
+```
 
-## Licencia 📄
+### Notes
 
-Copyleft
-
-## Expresiones de Gratitud 🎁
-
-* Grupo dwfs-online-74 - Slack - Acamica
-* [Juanchi](https://www.linkedin.com/in/juancruzgs/)
-* Flor, mi amor
+const superAdmin =
+{
+user_name : 'super admin'
+password: '1234'
+}
